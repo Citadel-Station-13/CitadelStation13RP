@@ -62,6 +62,12 @@
 	flags |= SS_NO_FIRE
 	throw EXCEPTION("Subsystem [src]([type]) does not fire() but did not set the SS_NO_FIRE flag. Please add the SS_NO_FIRE flag to any subsystem that doesn't fire so it doesn't get added to the processing list and waste cpu.")
 
+/**
+ * Gets deciseconds between fires
+ */
+/datum/controller/subsystem/proc/get_delta_time()
+	return (flags & SS_TICKER)? (wait * world.tick_lag) : (wait)
+
 /datum/controller/subsystem/Destroy()
 	dequeue()
 	can_fire = 0

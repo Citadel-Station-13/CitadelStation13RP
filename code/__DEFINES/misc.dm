@@ -393,8 +393,14 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define RAD_LEVEL_VERY_HIGH	75
 
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
+
 #define RADIATION_THRESHOLD_CUTOFF	0.1	// Radiation will not affect a tile when below this value.
 
+#define CUSTOM_HOLOFORM_DELAY		10 SECONDS			//prevents spamming to make lag. it's pretty expensive to do this.
+
+#define HOLOFORM_FILTER_AI		"FILTER_AI"
+#define HOLOFORM_FILTER_PAI		"FILTER_PAI"
+#define HOLOFORM_FILTER_STATIC	"FILTER_STATIC"
 
 #define PR_ANNOUNCEMENTS_PER_ROUND	5
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
@@ -430,3 +436,11 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
 #define HOLY_WEAPONS /obj/item/nullrod
+
+//Dummy mob reserve slots
+#define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
+#define DUMMY_HUMAN_SLOT_HOLOFORM			"dummy_holoform_generation"
+#define DUMMY_HUMAN_SLOT_ADMIN "admintools"
+#define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
+#define DUMMY_HUMAN_SLOT_HALLUCINATION "dummy_hallucination"
+#define DUMMY_HUMAN_SLOT_EXAMINER "dummy_examiner"

@@ -128,7 +128,7 @@
 	spawn(10)
 		M.Animalize()
 
-
+/*
 /client/proc/makepAI(var/turf/T in mob_list)
 	set category = "Fun"
 	set name = "Make pAI"
@@ -155,6 +155,7 @@
 		if(candidate.key == choice.key)
 			paiController.pai_candidates.Remove(candidate)
 	feedback_add_details("admin_verb","MPAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+*/
 
 /client/proc/cmd_admin_alienize(var/mob/M in mob_list)
 	set category = "Fun"

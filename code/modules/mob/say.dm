@@ -106,13 +106,10 @@
 */
 
 /mob/proc/say_quote(var/message, var/datum/language/speaking = null)
-	var/verb = "says"
-	var/ending = copytext_char(message, length_char(message))
-	if(ending=="!")
-		verb=pick("exclaims","shouts","yells")
-	else if(ending=="?")
-		verb="asks"
-	return verb
+	var/overrode = speaking.get_spoken_verb(copytext_char(message, length(message)))
+	if(overrode)
+		return overrode
+	return say_mod(message)
 
 /mob/proc/emote(var/act, var/type, var/message)
 	if(act == "me")

@@ -115,16 +115,6 @@
 /mob/living/silicon/ai/special_mentions()
 	return list("AI") // AI door!
 
-// Converts specific characters, like +, |, and _ to formatted output.
-/mob/proc/say_emphasis(input)
-	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
-	input = replacetext_char(input, italics, "<i>$1</i>")
-	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
-	input = replacetext_char(input, bold, "<b>$1</b>")
-	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
-	input = replacetext_char(input, underline, "<u>$1</u>")
-	return input
-
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
 	if(!client)

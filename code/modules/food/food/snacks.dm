@@ -5,6 +5,10 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
 	flags = OPENCONTAINER
+	verb_say = "chirps"
+	verb_ask = "cheeps"
+	verb_exclaim = "cries"
+	verb_yell = "shriek"
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null

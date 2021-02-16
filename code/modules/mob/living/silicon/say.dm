@@ -36,16 +36,6 @@
 			message_mode = null
 		return radio.talk_into(src,message,message_mode,verb,speaking)
 
-/mob/living/silicon/say_quote(var/text)
-	var/ending = copytext(text, length(text))
-
-	if (ending == "?")
-		return speak_query
-	else if (ending == "!")
-		return speak_exclamation
-
-	return speak_statement
-
 #define IS_AI 1
 #define IS_ROBOT 2
 #define IS_PAI 3

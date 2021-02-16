@@ -501,35 +501,69 @@
 	else
 		return 0
 
-// Show a message to all mobs and objects in sight of this atom
-// Use for objects performing visible actions
-// message is output to anyone who can see, e.g. "The [src] does something!"
-// blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/self_message, var/blind_message)
+/**
+  * Generate a visible message from this atom
+  *
+  * Show a message to all player mobs who sees this atom
+  *
+  * Show a message to the src mob (if the src is a mob)
+  *
+  * Use for atoms performing visible actions
+  *
+  * message is output to anyone who can see, e.g. "The [src] does something!"
+  *
+  * Vars:
+  * * self_message (optional) is what the src mob sees e.g. "You do something!"
+  * * blind_message (optional) is what blind people will hear e.g. "You hear something!"
+  * * vision_distance (optional) define how many tiles away the message can be seen.
+  * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
+  * * target (optional) is the other mob involved with the visible message. For example, the attacker in many combat messages.
+  * * target_message (optional) is what the target mob will see e.g. "[src] does something to you!"
+  * * omni (optional) if TRUE, will show to users no matter what.
+  */
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, ignored_mobs, mob/target, target_message, omni = FALSE)
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+	var/list/hearers = get_hearers_in_view(vision_distance, src) //caches the hearers and then removes ignored mobs.
+	if(!length(hearers))
+		return
+	hearers -= ignored_mobs
 
-	//VOREStation Edit
-	var/list/see
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		see = B.get_mobs_and_objs_in_belly()
-	else
-		see = get_mobs_and_objs_in_view_fast(get_turf(src),world.view,remote_ghosts = FALSE)
-	//VOREStation Edit End
-
-	var/list/seeing_mobs = see["mobs"]
-	var/list/seeing_objs = see["objs"]
-
-	for(var/obj in seeing_objs)
-		var/obj/O = obj
-		O.show_message(message, 1, blind_message, 2)
-	for(var/mob in seeing_mobs)
-		var/mob/M = mob
-		if(self_message && (M == src))
-			M.show_message( self_message, 1, blind_message, 2)
-		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
-			M.show_message(message, 1, blind_message, 2)
-		else if(blind_message)
-			M.show_message(blind_message, 2)
+	if(target_message && target && istype(target) && target.client)
+		hearers -= target
+		if(omni)
+			target.show_message(target_message)
+		else
+			//This entire if/else chain could be in two lines but isn't for readibilties sake.
+			var/msg = target_message
+			if(target.see_invisible<invisibility) //if src is invisible to us,
+				msg = blind_message
+			//the light object is dark and not invisible to us, darkness does not matter if you're directly next to the target
+			else if(T.lighting_object && T.lighting_object.invisibility <= target.see_invisible && T.is_softly_lit() && !in_range(T,target))
+				msg = blind_message
+			if(msg)
+				target.show_message(msg, MSG_VISUAL,blind_message, MSG_AUDIBLE)
+	if(self_message)
+		hearers -= src
+	for(var/mob/M in hearers)
+		if(!M.client)
+			continue
+		if(omni)
+			M.show_message(message)
+			continue
+		//This entire if/else chain could be in two lines but isn't for readibilties sake.
+		var/msg = message
+		//CITADEL EDIT, required for vore code to remove (T != loc && T != src)) as a check
+		if(M.see_invisible<invisibility) //if src is invisible to us,
+			msg = blind_message
+		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit() && !in_range(T,M)) //the light object is dark and not invisible to us, darkness does not matter if you're directly next to the target
+			msg = blind_message
+		else if(SEND_SIGNAL(M, COMSIG_MOB_GET_VISIBLE_MESSAGE, src, message, vision_distance, ignored_mobs) & COMPONENT_NO_VISIBLE_MESSAGE)
+			msg = blind_message
+		if(!msg)
+			continue
+		M.show_message(msg, MSG_VISUAL,blind_message, MSG_AUDIBLE)
 
 // Show a message to all mobs and objects in earshot of this atom
 // Use for objects performing audible actions

@@ -11,6 +11,11 @@
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
 	var/last_move = NONE
+	var/verb_say = "says"
+	var/verb_ask = "asks"
+	var/verb_exclaim = "exclaims"
+	var/verb_whisper = "whispers"
+	var/verb_yell = "yells"
 	/// Which direction we're drifting
 	var/inertia_dir = NONE
 	/// Only set while drifting, last location we were while drifting

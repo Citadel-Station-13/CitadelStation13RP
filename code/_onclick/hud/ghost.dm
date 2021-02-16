@@ -69,7 +69,7 @@
 /obj/screen/ghost/pai/Click()
 	..()
 	var/mob/observer/dead/G = usr
-	G.paialert()
+	G.register_pai()
 
 /obj/screen/ghost/up
 	name = "Move Upwards"

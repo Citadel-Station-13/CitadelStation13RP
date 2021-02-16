@@ -8,7 +8,7 @@
 */
 
 /datum/paiCandidate/proc/savefile_path(mob/user)
-	return "data/player_saves/[copytext(user.ckey, 1, 2)]/[user.ckey]/pai.sav"
+	return "data/player_saves/[user.ckey[1]]/[user.ckey]/pai.sav"
 
 /datum/paiCandidate/proc/savefile_save(mob/user)
 	if(IsGuestKey(user.key))
@@ -17,12 +17,12 @@
 	var/savefile/F = new /savefile(src.savefile_path(user))
 
 
-	F["name"] << src.name
-	F["description"] << src.description
-	F["role"] << src.role
-	F["comments"] << src.comments
+	WRITE_FILE(F["name"], name)
+	WRITE_FILE(F["description"], description)
+	WRITE_FILE(F["role"], role)
+	WRITE_FILE(F["comments"], comments)
 
-	F["version"] << 1
+	WRITE_FILE(F["version"], 1)
 
 	return 1
 
@@ -31,7 +31,7 @@
 // returns 1 if loaded (or file was incompatible)
 // returns 0 if savefile did not exist
 
-/datum/paiCandidate/proc/savefile_load(mob/user, var/silent = 1)
+/datum/paiCandidate/proc/savefile_load(mob/user, silent = TRUE)
 	if (IsGuestKey(user.key))
 		return 0
 
@@ -42,7 +42,8 @@
 
 	var/savefile/F = new /savefile(path)
 
-	if(!F) return //Not everyone has a pai savefile.
+	if(!F)
+		return //Not everyone has a pai savefile.
 
 	var/version = null
 	F["version"] >> version

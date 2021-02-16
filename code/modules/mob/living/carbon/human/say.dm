@@ -123,20 +123,6 @@
    for it but just ignore it.
 */
 
-/mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
-	var/verb = "says"
-	var/ending = copytext_char(message, length(message))
-
-	if(speaking)
-		verb = speaking.get_spoken_verb(ending)
-	else
-		if(ending == "!")
-			verb=pick("exclaims","shouts","yells")
-		else if(ending == "?")
-			verb="asks"
-
-	return verb
-
 /mob/living/carbon/human/handle_speech_problems(var/list/message_data)
 	if(silent || (sdisabilities & MUTE))
 		message_data[1] = ""
