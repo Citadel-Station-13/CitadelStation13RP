@@ -1343,7 +1343,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters
 	name = "Dormitories"
 	icon_state = "Sleep"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
