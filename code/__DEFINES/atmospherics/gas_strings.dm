@@ -25,6 +25,8 @@
 #define GAS_STRING_FIRNIR					"co2=4.9;TEMP=570"
 /// Snow turfs
 #define GAS_STRING_TURF_SNOW "o2=25.3;101.2;TEMP=213.15"
+/// Nerada8 (Penumbra)
+#define GAS_STRING_TURF_NERADA8 "o2=41.96;co2=5.72;n2=143.05;TEMP=234"
 
 // Atmospherics primary gas tanks
 /// Atmospherics N2O gas tank

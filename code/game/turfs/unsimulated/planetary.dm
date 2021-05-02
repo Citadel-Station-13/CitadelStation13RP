@@ -61,6 +61,14 @@
 	blocks_air = 0
 	initial_gas_mix = GAS_STRING_STP_HOT
 
+/turf/unsimulated/wall/planetary/penumbra
+	initial_gas_mix = GAS_STRING_TURF_NERADA8
+	/*oxygen = 0.22
+	nitrogen = 0.75
+	carbon_dioxide = 0.03
+	temperature = 234
+	blocks_air = 1*/
+
 /turf/unsimulated/wall/planetary/virgo3b
 	name = "facility wall"
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."

@@ -20,5 +20,9 @@ map tether
 endmap
 
 map triumph
+	disabled
+endmap
+
+map penumbra
 	default
 endmap

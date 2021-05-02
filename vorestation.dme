@@ -11,7 +11,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\triumph.dm"
+#include "_maps\penumbra.dm"
 #include "_maps\map_files\generic\reservation_base_level.dmm"
 #include "code\_compile_options.dm"
 #include "code\_macros.dm"
@@ -3423,7 +3423,7 @@
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
-#include "maps\nsv_triumph\triumph.dm"
+#include "maps\penumbra\penumbra.dm"
 #include "maps\submaps\_healpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"

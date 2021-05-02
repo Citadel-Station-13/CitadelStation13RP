@@ -1,0 +1,34 @@
+{
+   "map_name":"Penumbra",
+   "map_path":"map_files/penumbra",
+   "map_file":[
+        "penumbra_station01.dmm",
+        "penumbra_station02.dmm",
+        "penumbra_station03.dmm"
+   ],
+   "traits":[
+      {
+        "Up":1,
+        "Station":true,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/simulated/floor/outdoors/rocks/nerada8"
+      },
+      {
+        "Up":1,
+        "Down":-1,
+        "Station":true,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/simulated/open"
+      },
+      {
+        "Down":-1,
+        "Station":true,
+        "Linkage":null,
+        "Gravity":true,
+        "Baseturf":"/turf/simulated/open"
+      }
+   ],
+   "minetype":"none"
+}

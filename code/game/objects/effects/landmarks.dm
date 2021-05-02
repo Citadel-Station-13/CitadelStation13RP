@@ -114,6 +114,183 @@
 
 	return 1
 
+//Roundstart job landmarks for mapping. Why the fuck weren't these here to begin with and why is this so aids.
+/obj/effect/landmark/default
+	name = "FUCK"
+	delete_me = 1
+
+/obj/effect/landmark/default/New()
+	latejoin += loc // Register this turf as fallback latejoin.
+	..()
+
+/obj/effect/landmark/late
+	name = "JoinLate"
+
+/obj/effect/landmark/late/lategateway
+	name = "JoinLateGateway"
+
+/obj/effect/landmark/late/lateelevator
+	name = "JoinLateElevator"
+
+/obj/effect/landmark/late/latecryo
+	name = "JoinLateCryo"
+
+/obj/effect/landmark/late/latecyborg
+	name = "JoinLateCyborg"
+
+/obj/effect/landmark/late/lateobserver
+	name = "Observer-Start"
+
+/obj/effect/landmark/holdingfacility
+	name = "Holding Facility"
+
+/obj/effect/landmark/monkey
+	name = "monkey"
+
+/obj/effect/landmark/prison
+	name = "prisonwarp"
+
+/obj/effect/landmark/thunderdome
+	name = "tdomeobserve"
+
+/obj/effect/landmark/thunderdome/one
+	name = "tdome1"
+
+/obj/effect/landmark/thunderdome/two
+	name = "tdome2"
+
+/obj/effect/landmark/thunderdome/admin
+	name = "tdomeadmin"
+
+/obj/effect/landmark/antags/blob
+	name = "blobstart"
+
+/obj/effect/landmark/antags/xeno
+	name = "xeno_spawn"
+
+/obj/effect/landmark/endgame
+	name = "endgame_exit"
+
+/obj/effect/landmark/endgameexit
+	name = "bluespacerift"
+
+/obj/effect/landmark/start/jobs/heads/captain
+	name = "Facility Director"
+
+/obj/effect/landmark/start/jobs/heads/hop
+	name = "Head of Personnel"
+
+/obj/effect/landmark/start/jobs/heads/hos
+	name = "Head of Security"
+
+/obj/effect/landmark/start/jobs/heads/ce
+	name = "Chief Engineer"
+
+/obj/effect/landmark/start/jobs/heads/rd
+	name = "Research Director"
+
+/obj/effect/landmark/start/jobs/heads/cmo
+	name = "Chief Medical Officer"
+
+/obj/effect/landmark/start/jobs/secretary
+	name = "Command Secretary"
+
+/obj/effect/landmark/start/jobs/engineer
+	name = "Station Engineer"
+
+/obj/effect/landmark/start/jobs/atmostech
+	name = "Atmospheric Technician"
+
+/obj/effect/landmark/start/jobs/doctor
+	name = "Medical Doctor"
+
+/obj/effect/landmark/start/jobs/geneticist
+	name = "Geneticist"
+
+/obj/effect/landmark/start/jobs/psyche
+	name = "Psychiatrist"
+
+/obj/effect/landmark/start/jobs/chemist
+	name = "Chemist"
+
+/obj/effect/landmark/start/jobs/paramed
+	name = "Paramedic"
+
+/obj/effect/landmark/start/jobs/fieldmed
+	name = "Field Medic"
+
+/obj/effect/landmark/start/jobs/scientist
+	name = "Scientist"
+
+/obj/effect/landmark/start/jobs/robo
+	name = "Roboticist"
+
+/obj/effect/landmark/start/jobs/xenobio
+	name = "Xenobiologist"
+
+/obj/effect/landmark/start/jobs/explorer
+	name = "Explorer"
+
+/obj/effect/landmark/start/jobs/pathfinder
+	name = "Pathfinder"
+
+/obj/effect/landmark/start/jobs/heads/QM //Let me believe
+	name = "Quartermaster"
+
+/obj/effect/landmark/start/jobs/cargotech
+	name = "Cargo Technician"
+
+/obj/effect/landmark/start/jobs/miner
+	name = "Shaft Miner"
+
+/obj/effect/landmark/start/jobs/bartender
+	name = "Bartender"
+
+/obj/effect/landmark/start/jobs/botanist
+	name = "Botanist"
+
+/obj/effect/landmark/start/jobs/chef
+	name = "Chef"
+
+/obj/effect/landmark/start/jobs/janitor
+	name = "Janitor"
+
+/obj/effect/landmark/start/jobs/librarian
+	name = "Librarian"
+
+/obj/effect/landmark/start/jobs/lawyer
+	name = "Lawyer"
+
+/obj/effect/landmark/start/jobs/chaplain
+	name = "Chaplain"
+
+/obj/effect/landmark/start/jobs/pilot
+	name = "Pilot"
+
+/obj/effect/landmark/start/jobs/visitor
+	name = "Visitor"
+
+/obj/effect/landmark/start/jobs/intern
+	name = "Intern"
+
+/obj/effect/landmark/start/jobs/warden
+	name = "Warden"
+
+/obj/effect/landmark/start/jobs/detective
+	name = "Detective"
+
+/obj/effect/landmark/start/jobs/secoff
+	name = "Security Officer"
+
+/obj/effect/landmark/start/jobs/ai
+	name = "AI"
+
+/obj/effect/landmark/start/jobs/cyborg
+	name = "Cyborg"
+
+/obj/effect/landmark/start/jobs/pai
+	name = "pAI"
+
 /obj/effect/landmark/virtual_reality
 	name = "virtual_reality"
 	icon = 'icons/mob/screen1.dmi'
