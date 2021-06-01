@@ -459,3 +459,10 @@
 	trans_to(T, total_volume, multiplier, copy)
 	if (total_volume <= 0)
 		qdel(src)
+
+/datum/reagents/proc/isolate_reagent(reagent)
+	for(var/A in reagent_list)
+		var/datum/reagent/R = A
+		if(R.id != reagent)
+			del_reagent(R.id)
+			update_total()

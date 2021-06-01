@@ -74,8 +74,8 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 	// TODO GLOB.stat_set_event.unregister(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
-/obj/machinery/computer/ship/proc/viewing_overmap(mob/user)
-	return (WEAKREF(user) in viewers)
+/obj/machinery/computer/ship/proc/viewing_overmap(mob/usr)
+	return (WEAKREF(usr) in viewers)
 
 /obj/machinery/computer/ship/CouldNotUseTopic(mob/user)
 	. = ..()

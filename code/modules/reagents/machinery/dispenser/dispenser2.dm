@@ -1,7 +1,9 @@
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
+	desc = "Automagically fabricates chemicals from electricity."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "dispenser"
+	clicksound = "switch"
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
 
@@ -25,7 +27,7 @@
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
-	. += "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more."
+	to_chat(user, "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more.")
 
 /obj/machinery/chemical_dispenser/proc/add_cartridge(obj/item/reagent_containers/chem_disp_cartridge/C, mob/user)
 	if(!istype(C))
@@ -54,7 +56,11 @@
 
 	C.forceMove(src)
 	cartridges[C.label] = C
+<<<<<<< HEAD:code/modules/reagents/dispenser/dispenser2.dm
+	cartridges = sortAssoc(cartridges)
+=======
 	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
+>>>>>>> citrp/master:code/modules/reagents/machinery/dispenser/dispenser2.dm
 	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(label)
@@ -106,8 +112,11 @@
 		user.drop_from_inventory(RC)
 		RC.forceMove(src)
 		to_chat(user, "<span class='notice'>You set \the [RC] on \the [src].</span>")
+<<<<<<< HEAD:code/modules/reagents/dispenser/dispenser2.dm
+=======
 		SStgui.update_uis(src) // update all UIs attached to src
 
+>>>>>>> citrp/master:code/modules/reagents/machinery/dispenser/dispenser2.dm
 	else
 		return ..()
 
@@ -142,7 +151,6 @@
 		chemicals.Add(list(list("title" = label, "id" = label, "amount" = C.reagents.total_volume))) // list in a list because Byond merges the first list...
 	data["chemicals"] = chemicals
 	return data
-
 /obj/machinery/chemical_dispenser/ui_act(action, params)
 	if(..())
 		return TRUE

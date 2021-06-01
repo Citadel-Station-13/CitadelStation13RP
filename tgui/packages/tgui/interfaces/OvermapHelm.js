@@ -211,7 +211,7 @@ const OvermapNavComputer = (props, context) => {
         </Flex.Item>
       </Flex>
       <Section mt={1} scrollable height="130px">
-        <Table>
+        <Table>z
           <Table.Row header>
             <Table.Cell>Name</Table.Cell>
             <Table.Cell>Coordinates</Table.Cell>

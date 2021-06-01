@@ -29,7 +29,7 @@ export const GasPump = (props, context) => {
                 value={last_power_draw}
                 minValue={0}
                 maxValue={max_power_draw}
-                color={last_power_draw < max_power_draw - 5 
+                color={last_power_draw < max_power_draw - 5
                   ? 'good' : 'average'}>
                 {last_power_draw + " W"}
               </ProgressBar>
