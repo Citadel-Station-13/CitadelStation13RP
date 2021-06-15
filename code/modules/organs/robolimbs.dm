@@ -752,3 +752,12 @@ END OF CITADEL CHANGES */
 
 /obj/item/disk/limb/antares
 	company = "Antares Robotics"
+
+/datum/robolimb/adherent
+	company = "NULL DATA."                            // Shown when selecting the limb.
+	desc = "NULL DATA." // Seen when examining a limb.
+	icon = 'icons/mob/human_races/r_adherent.dmi'       // Icon base to draw from.
+	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_TESHARI)
+	unavailable_at_chargen = TRUE                            // If set, not available at chargen.
+	unavailable_to_build = TRUE						 // If set, can't be constructed.
+	suggested_species = SPECIES_ADHERENT						 //If it should make the torso a species

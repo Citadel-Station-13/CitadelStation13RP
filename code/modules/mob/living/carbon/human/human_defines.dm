@@ -31,6 +31,8 @@
 
 	var/skin_state = SKIN_NORMAL
 
+	var/s_base = ""
+
 	//ears, tails, wings and custom species.
 	var/datum/sprite_accessory/ears/ear_style = null
 	var/r_ears = 30

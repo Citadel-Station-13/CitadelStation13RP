@@ -374,3 +374,9 @@
 		to_chat(src, "<span class='critical'>Your regeneration is interrupted!</span>")
 		nutrition -= 75
 		active_regen = FALSE
+
+/mob/living/carbon/human/proc/get_charge(var/mob/living/carbon/human/H)
+	return H.nutrition
+
+/mob/living/carbon/human/proc/spend_charge(var/spent, var/mob/living/carbon/human/H)
+	H.nutrition = H.nutrition - spent

@@ -29,6 +29,7 @@
 #define HAS_EYE_COLOR     (1 << 4) // Eye colour selectable in chargen. (RGB)
 #define HAS_HAIR_COLOR    (1 << 5) // Hair colour selectable in chargen. (RGB)
 #define RADIATION_GLOWS   (1 << 6) // Radiation causes this character to glow.
+#define BASE_SKIN_COLOR   (1 << 7) // Sets default skin colors based on icons.
 
 
 // Languages.
@@ -59,6 +60,7 @@
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_SQUEAKISH "Squeakish"
 #define LANGUAGE_VERNAL "Vernal"
+#define LANGUAGE_ADHERENT          "Protocol"
 
 //Languages from _vr file
 #define LANGUAGE_SLAVIC "Pan-Slavic"

@@ -240,9 +240,15 @@
 #define BP_TORSO  "torso"
 #define BP_GROIN  "groin"
 #define BP_ALL list(BP_GROIN, BP_TORSO, BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG)
-
+#define BP_FLOAT  "floatation disc"
+#define BP_JETS  "maneuvering jets"
+#define BP_COOLING_FINS  "cooling fins"
 #define SYNTH_BLOOD_COLOUR "#030303"
 #define SYNTH_FLESH_COLOUR "#575757"
+#define BP_IS_BRITTLE(org)  ((org) && ((org).status & ORGAN_BRITTLE))
+#define BP_IS_CRYSTAL(org)  ((org) && ((org).status & ORGAN_CRYSTAL))
+#define BP_IS_ROBOTIC(org)  ((org) && ((org).status & ORGAN_ROBOT))
+#define BP_IS_ASSISTED(org) ((org) && ((org).status & ORGAN_ASSISTED))
 
 #define MOB_PULL_NONE 0
 #define MOB_PULL_SMALLER 1
@@ -285,6 +291,7 @@
 #define SPECIES_DIONA			"Diona"
 #define SPECIES_VOX				"Vox"
 #define SPECIES_ZADDAT			"Zaddat"
+#define SPECIES_ADHERENT		"Adherent"
 
 // Monkey and alien monkeys.
 #define SPECIES_MONKEY			"Monkey"

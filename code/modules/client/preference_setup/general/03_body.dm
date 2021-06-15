@@ -45,6 +45,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.preview_icon = null
 	S["bgstate"]			>> pref.bgstate
 	S["body_descriptors"]	>> pref.body_descriptors
+	S["s_base"]				>> pref.s_base
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
 	S["species"]			<< pref.species
@@ -80,6 +81,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["synth_markings"]		<< pref.synth_markings
 	S["bgstate"]			<< pref.bgstate
 	S["body_descriptors"]	<< pref.body_descriptors
+	S["s_base"]				<< pref.s_base
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
 	if(!pref.species || !(pref.species in GLOB.playable_species))
@@ -205,6 +207,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	return
 
+
 /datum/category_item/player_setup_item/general/body/content(var/mob/user)
 	. = list()
 	if(!pref.preview_icon)
@@ -219,6 +222,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 	if(has_flag(mob_species, HAS_SKIN_TONE))
 		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
+	if(has_flag(mob_species, BASE_SKIN_COLOR))
+		. += "Base Colour: <a href='?src=\ref[src];base_skin=1'>[pref.s_base]</a><br>"
 	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
 	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
 	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
@@ -581,6 +586,14 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			pref.r_skin = hex2num(copytext(new_skin, 2, 4))
 			pref.g_skin = hex2num(copytext(new_skin, 4, 6))
 			pref.b_skin = hex2num(copytext(new_skin, 6, 8))
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["base_skin"])
+		if(!has_flag(mob_species, BASE_SKIN_COLOR))
+			return TOPIC_NOACTION
+		var/new_s_base = input(user, "Choose your character's base colour:", "Character preference") as null|anything in mob_species.base_skin_colours
+		if(new_s_base && CanUseTopic(user))
+			pref.s_base = new_s_base
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["facial_style"])
@@ -956,6 +969,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		dat += "</br><b>Immune to most poisons.</b>"
 	if(current_species.appearance_flags & HAS_SKIN_TONE)
 		dat += "</br><b>Has a variety of skin tones.</b>"
+	if(current_species.appearance_flags & BASE_SKIN_COLOR)
+		dat += "</br><b>Has a small number of base skin colors.</b>"
 	if(current_species.appearance_flags & HAS_SKIN_COLOR)
 		dat += "</br><b>Has a variety of skin colours.</b>"
 	if(current_species.appearance_flags & HAS_EYE_COLOR)

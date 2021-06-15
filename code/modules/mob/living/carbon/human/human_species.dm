@@ -266,3 +266,6 @@
 			if(!gloves)
 				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather, slot_wear_suit)
 				H.update_inv_gloves()
+
+/mob/living/carbon/human/adherent/New(var/new_loc)
+	..(new_loc, SPECIES_ADHERENT)

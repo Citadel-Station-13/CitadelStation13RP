@@ -53,6 +53,8 @@
 #define ORGAN_ROBOT    2 // Fully robotic, no organic parts
 #define ORGAN_LIFELIKE 3 // Robotic, made to appear organic
 #define ORGAN_NANOFORM 4 // VOREStation Add - Fully nanoswarm organ
+#define ORGAN_BRITTLE  5 // The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
+#define ORGAN_CRYSTAL  6 // The organ does not suffer laser damage, but shatters on droplimb.
 
 //Germs and infections.
 #define GERM_LEVEL_AMBIENT  110 // Maximum germ level you can reach by standing still.		//CITADEL CHANGE - Restored back to 110. Using no gloves on surgery WILL give a high risk of infection now.

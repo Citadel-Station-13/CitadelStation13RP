@@ -194,7 +194,7 @@
 	. = ..()
 	if (!istype(AM, /atom/movable) || AM.anchored)
 		//VOREStation Edit - object-specific proc for running into things
-		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying)
+		if(((confused || is_blind()) && stat == CONSCIOUS && prob(50) && m_intent=="run") || flying && !SPECIES_ADHERENT)
 			AM.stumble_into(src)
 		//VOREStation Edit End
 		/* VOREStation Removal - See above

@@ -56,6 +56,7 @@
 #define DNA_UI_WING2_G     37
 #define DNA_UI_WING2_B     38
 #define DNA_UI_LENGTH      38
+#define DNA_BASE_COLOR	   39
 
 #define DNA_SE_LENGTH 49 // original was UI+11
 // For later:
@@ -112,7 +113,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	var/list/body_markings = list()
 	var/list/body_descriptors = null
 	var/list/genetic_modifiers = list() // Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
-
+	var/s_base = ""
 // Make a copy of this strand.
 // USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
 /datum/dna/proc/Clone()
@@ -125,6 +126,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.base_species=base_species //VOREStation Edit
 	new_dna.species_traits=species_traits.Copy() //VOREStation Edit
 	new_dna.blood_color=blood_color //VOREStation Edit
+	new_dna.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -262,7 +264,9 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
 
 	body_markings.Cut()
+	s_base = character.s_base
 	for(var/obj/item/organ/external/E in character.organs)
+		E.s_base = s_base
 		if(E.markings.len)
 			body_markings[E.organ_tag] = E.markings.Copy()
 

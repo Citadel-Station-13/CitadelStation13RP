@@ -199,6 +199,11 @@
 	if(flying)
 		return TRUE
 
+	for(var/obj/item/organ/internal/powered/jets/jet in internal_organs)
+		if(!jet.is_broken() && jet.active)
+			inertia_dir = 0
+			return TRUE
+
 	return ..()
 
 /mob/living/carbon/human/Process_Spaceslipping(var/prob_slip = 5)

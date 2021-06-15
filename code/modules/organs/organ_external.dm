@@ -78,7 +78,7 @@
 
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
-	
+
 	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
 	var/syringe_infection_queued
 

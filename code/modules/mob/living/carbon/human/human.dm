@@ -52,6 +52,7 @@
 	if(dna)
 		dna.ready_dna(src)
 		dna.real_name = real_name
+		dna.s_base = s_base
 		sync_organ_dna()
 
 /mob/living/carbon/human/Destroy()
