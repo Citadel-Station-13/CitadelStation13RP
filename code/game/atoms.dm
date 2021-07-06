@@ -18,6 +18,8 @@
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
+	var/bubble_icon = "normal" ///what icon the atom uses for speechbubbles
+	var/atom_say_verb = "says"
 	var/fluorescent // Shows up under a UV light.
 
 	var/list/atom_colours	 //used to store the different colors on an atom
@@ -753,3 +755,27 @@
 
 /atom/proc/is_incorporeal()
 	return FALSE
+
+/atom/proc/atom_say(message, var/datum/language/speaking = null)
+	if(!message)
+		return
+	var/italics = 0
+	var/list/speech_bubble_hearers = list()
+	var/speech_bubble_test = say_test(message)
+	var/image/speech_bubble = image('icons/mob/talk_vr.dmi',src,"h[speech_bubble_test]")
+	speech_bubble.layer = layer
+	speech_bubble.plane = plane
+	for(var/mob/M in get_mobs_in_view(7, src))
+		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
+		if(M.client)
+			speech_bubble_hearers += M.client
+	if(length(speech_bubble_hearers))
+		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
+		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/animate_speech_bubble, speech_bubble, speech_bubble_hearers , 30)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+
+
+/atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
+	return

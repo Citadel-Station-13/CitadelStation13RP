@@ -72,6 +72,7 @@
 		if(check_mentioned(message) && is_preference_enabled(/datum/client_preference/check_mention))
 			message_to_send = "<font size='3'><b>[message_to_send]</b></font>"
 
+
 		on_hear_say(message_to_send)
 
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
@@ -123,6 +124,15 @@
 	input = replacetext_char(input, bold, "<b>$1</b>")
 	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
 	input = replacetext_char(input, underline, "<u>$1</u>")
+	return input
+
+/mob/proc/say_emphasis_strip(input)
+	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
+	input = replacetext_char(input, italics, "$1")
+	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
+	input = replacetext_char(input, bold, "$1")
+	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
+	input = replacetext_char(input, underline, "$1")
 	return input
 
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")

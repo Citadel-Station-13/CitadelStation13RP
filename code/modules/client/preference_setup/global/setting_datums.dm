@@ -275,6 +275,12 @@ var/list/_client_preferences_by_type
 		var/datum/plane_holder/PH = preference_mob.plane_holder
 		PH.set_vis(VIS_STATUS, enabled)
 
+/datum/client_preference/overhead_chat
+	description = "Overhead Chat"
+	key = "OVERHEAD_CHAT"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+	enabled_by_default = TRUE
 
 /********************
 * Staff Preferences *

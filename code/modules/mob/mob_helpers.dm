@@ -177,32 +177,7 @@ proc/getsensorlevel(A)
 	return zone
 
 
-/proc/stars(n, pr)
-	if (pr == null)
-		pr = 25
-	if (pr < 0)
-		return null
-	else
-		if (pr >= 100)
-			return n
-	var/te = n
-	var/t = ""
-	n = length(n)
-	var/p = null
-	p = 1
-	var/intag = 0
-	while(p <= n)
-		var/char = copytext(te, p, p + 1)
-		if (char == "<") //let's try to not break tags
-			intag = !intag
-		if (intag || char == " " || prob(pr))
-			t = text("[][]", t, char)
-		else
-			t = text("[]*", t)
-		if (char == ">")
-			intag = !intag
-		p++
-	return t
+
 
 proc/slur(phrase)
 	phrase = html_decode(phrase)
@@ -705,3 +680,41 @@ var/global/image/backplane
 
 /mob/proc/can_see_reagents()
 	return stat == DEAD || issilicon(src) //Dead guys and silicons can always see reagents
+
+
+/proc/stars(n, pr = 25, re_encode = 1)
+	if (pr < 0)
+		return null
+	else if (pr >= 100)
+		return n
+
+	var/intag = 0
+	var/block = list()
+	. = list()
+	for(var/i = 1, i <= length_char(n), i++)
+		var/char = copytext_char(n, i, i+1)
+		if(!intag && (char == "<"))
+			intag = 1
+			. += stars_no_html(JOINTEXT(block), pr, re_encode) //stars added here
+			block = list()
+		block += char
+		if(intag && (char == ">"))
+			intag = 0
+			. += block //We don't mess up html tags with stars
+			block = list()
+	. += (intag ? block : stars_no_html(JOINTEXT(block), pr, re_encode))
+	. = JOINTEXT(.)
+
+//Ingnores the possibility of breaking tags.
+/proc/stars_no_html(text, pr, re_encode)
+	text = html_decode(text) //We don't want to screw up escaped characters
+	. = list()
+	for(var/i = 1, i <= length_char(text), i++)
+		var/char = copytext_char(text, i, i+1)
+		if(char == " " || prob(pr))
+			. += char
+		else
+			. += "*"
+	. = JOINTEXT(.)
+	if(re_encode)
+		. = html_encode(.)

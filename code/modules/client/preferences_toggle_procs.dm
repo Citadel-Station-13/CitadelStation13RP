@@ -306,6 +306,20 @@
 	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/status_indicators)) ? "see" : "not see"] status indicators.")
 
 	feedback_add_details("admin_verb","TStatusIndicators")
+
+/client/verb/toggle_overhead_chat()
+	set name = "Toggle Overhead Chat"
+	set category = "Preferences"
+	set desc = "Enable/Disable seeing overhead chat messages."
+
+	var/pref_path = /datum/client_preference/overhead_chat
+	toggle_preference(pref_path)
+	SScharacter_setup.queue_preferences_save(prefs)
+
+	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/overhead_chat)) ? "see" : "not see"] overhead chat messages..")
+
+	feedback_add_details("admin_verb","TOHChat")
+
 //Toggles for Staff
 //Developers
 

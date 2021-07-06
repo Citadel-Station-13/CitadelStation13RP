@@ -26,6 +26,17 @@
 	if(message)
 		var/obj/item/text_to_speech/O = src
 		audible_message("[icon2html(thing = O, target = world)] \The [O.name] states, \"[message]\"")
+		src.animatechatmsg(message, usr)
+
+/obj/item/text_to_speech/proc/animatechatmsg(var/message, /mob/usr, var/datum/language/speaking = null)
+	usr.say_overhead(message)
+	var/list/speech_bubble_hearers = list()
+	var/italics = 0
+	for(var/mob/M in get_mobs_in_view(7, src))
+		if(M.client)
+			speech_bubble_hearers += M.client
+	if(length(speech_bubble_hearers))
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
 
 /obj/item/text_to_speech/AltClick(mob/user) // QOL Change
 	attack_self(user)

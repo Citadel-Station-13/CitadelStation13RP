@@ -1,6 +1,15 @@
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
+/mob/proc/say_overhead(var/message, var/datum/language/speaking = null)
+	var/list/speech_bubble_hearers = list()
+	var/italics = 0
+	for(var/mob/M in get_mobs_in_view(7, src))
+		if(M.client)
+			speech_bubble_hearers += M.client
+	if(length(speech_bubble_hearers))
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+
 /mob/proc/whisper_wrapper()
 	var/message = input("","whisper (text)") as text|null
 	if(message)
@@ -126,7 +135,7 @@
 
 	return get_turf(src)
 
-/mob/proc/say_test(var/text)
+/proc/say_test(var/text)
 	var/ending = copytext_char(text, length_char(text))
 	if (ending == "?")
 		return "1"
@@ -164,7 +173,7 @@
 			var/alert_result = alert(src, "You dont know the langauge you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
 			if(alert_result == "Yes")
 				return GLOB.all_languages[LANGUAGE_GIBBERISH]
-			else 
+			else
 				if(isliving(src))
 					var/mob/living/caller = src
 					return GLOB.all_languages[caller.default_language]
