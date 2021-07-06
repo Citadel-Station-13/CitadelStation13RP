@@ -21,3 +21,7 @@
 //LAVALAND
 #define LAVALAND_EQUIPMENT_EFFECT_PRESSURE 50 //what pressure you have to be under to increase the effect of equipment meant for lavaland
 #define ATMOSPHERE_ID_LAVALAND			/datum/atmosphere/planet/lavaland
+
+// Boreas
+
+#define ATMOSPHERE_ID_BOREAS			/datum/atmosphere/planet/boreas

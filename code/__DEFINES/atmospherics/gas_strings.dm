@@ -24,7 +24,9 @@
 /// Firnir
 #define GAS_STRING_FIRNIR					"co2=4.9;TEMP=570"
 /// Snow turfs
-#define GAS_STRING_TURF_SNOW "o2=25.3;101.2;TEMP=213.15"
+#define GAS_STRING_TURF_SNOW 				"o2=25.3;101.2;TEMP=213.15"
+//boreas
+#define GAS_STRING_TURF_BOREAS				"o2-100;TEMP=160"
 
 // Atmospherics primary gas tanks
 /// Atmospherics N2O gas tank

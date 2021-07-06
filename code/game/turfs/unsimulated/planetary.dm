@@ -72,3 +72,9 @@
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	TRIUMPH_SET_ATMOS
+
+/turf/unsimulated/wall/planetary/boreas
+	name = "facility wall"
+	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly unknown semi-biological entities."
+	alpha = 0xFF
+	BOREAS_SET_ATMOS

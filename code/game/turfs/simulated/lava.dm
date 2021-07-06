@@ -89,3 +89,14 @@
 	if(!is_safe() && !L.hovering)
 		return FALSE
 	return ..()
+
+
+/turf/simulated/floor/lava/phoron
+	name = "liquid phoron"
+	desc = "A pool of molten phoron."
+	icon = 'icons/turf/flooring/lava.dmi'
+	description_info = "Liquid phoron is an extremely dangerous form of the usually gaseous state of phoron, as it only forms under extreme heat and pressure."
+	icon_state = "plava"
+	light_range = 5
+	light_power = 0.6
+	light_color = LIGHT_COLOR_PLAVA

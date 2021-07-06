@@ -65,3 +65,28 @@
 	icon_state = "ice"
 	desc = "Looks slippery."
 	movement_cost = 4
+
+/turf/simulated/floor/outdoors/snow/path
+	name = "path"
+	icon_state = "Snow Path-H"
+	desc = "A plowed pathway."
+
+/turf/simulated/floor/outdoors/snow/path/vvert
+	name = "path"
+	icon_state = "Snow Path-V"
+
+/turf/simulated/floor/outdoors/snow/path/threeway
+	name = "path"
+	icon_state = "Snow Path-3"
+
+/turf/simulated/floor/outdoors/snow/path/fourway
+	name = "path"
+	icon_state = "Snow Path-4"
+
+/turf/simulated/floor/outdoors/snow/path/end
+	name = "path"
+	icon_state = "Snow Path-E"
+
+/turf/simulated/floor/outdoors/snow/path/turn
+	name = "path"
+	icon_state = "Path-L"
