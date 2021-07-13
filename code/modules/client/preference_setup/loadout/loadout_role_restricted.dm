@@ -10,7 +10,7 @@
 //*Single Departments
 //Security
 /datum/gear/restricted/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 
 /datum/gear/restricted/security/eyes
 	slot = slot_glasses
@@ -35,7 +35,7 @@
 
 //Medical
 /datum/gear/restricted/medical
-	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Talon Doctor")
 
 /datum/gear/restricted/medical/eyes
 	slot = slot_glasses
@@ -60,7 +60,7 @@
 
 //Engineering
 /datum/gear/restricted/engineering
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
 
 /datum/gear/restricted/engineering/eyes
 	slot = slot_glasses
@@ -85,7 +85,7 @@
 
 //Command
 /datum/gear/restricted/command
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary")
+	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Talon Captain")
 
 /datum/gear/restricted/command/eyes
 	slot = slot_glasses
