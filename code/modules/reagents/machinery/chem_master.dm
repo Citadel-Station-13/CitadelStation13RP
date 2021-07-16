@@ -14,6 +14,7 @@
 	var/condi = 0
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
+	var/bottleamount = 2//Default value for the amount of multiple bottles to create, because you dont want 10 bottles most of the time
 	var/list/bottle_styles
 	var/bottlesprite = 1
 	var/pillsprite = 1
@@ -237,7 +238,7 @@
 				if("create_bottle_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, bottleamount, 5)
 				if("change_bottle_style")
 					var/list/choices = list()
 					for(var/i = 1 to MAX_BOTTLE_SPRITE)
