@@ -38,7 +38,7 @@
 
 /obj/item/mining_scanner/proc/ScanTurf(atom/target, mob/user, exact_amount = FALSE, exact_ores = FALSE)
 	var/list/metals = list()
-	for(var/turf/simulated/T in range(scanrange, get_turf(user)))
+	for(var/turf/T in range(scanrange, get_turf(user)))
 
 		if(!T.has_resources)
 			continue

@@ -98,3 +98,29 @@
 #define rustg_sql_connected(handle) call(RUST_G, "sql_connected")(handle)
 #define rustg_sql_disconnect_pool(handle) call(RUST_G, "sql_disconnect_pool")(handle)
 #define rustg_sql_check_query(job_id) call(RUST_G, "sql_check_query")("[job_id]")
+
+/proc/noise_test(seed, _x, _y, zoom = 50, drift = 0)
+	var/list/total = list()
+	for(var/y in _y to 1 step -1)
+		var/list/built = list()
+		for(var/x in 1 to _x)
+			built += round(rust_g_noise(seed, x, y, zoom, drift), 0.001)
+		built = built.Join(" ")
+		total += built
+	to_chat(world, "[total.Join("<br>")]")
+
+/proc/noisemap_test(seed, _x, _y, zoom = 50, drift = 0, threshold)
+	var/list/total = list()
+	for(var/y in _y to 1 step -1)
+		var/list/built = list()
+		for(var/x in 1 to _x)
+			built += rust_g_noise(seed, x, y, zoom, drift) > threshold? "T" : "_"
+		built = built.Join("")
+		total += built
+	to_chat(world, "[total.Join("<br>")]")
+
+/proc/rust_g_noise(seed, x, y, zoom = 50, drift = 0)
+	return _rust_g_noise(seed, (x + rand(-drift, drift)) / zoom, (y + rand(-drift, drift)) / zoom)
+
+/proc/_rust_g_noise(seed, x, y)
+	return text2num(rustg_noise_get_at_coordinates("[seed]", "[x]", "[y]"))

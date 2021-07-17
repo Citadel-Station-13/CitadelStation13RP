@@ -92,64 +92,28 @@
 		var/turf/simulated/T = get_turf(src)
 		T.ex_act(2.0)
 
-	//Dig out the tasty ores.
-	if(resource_field.len)
-		var/turf/simulated/harvesting = pick(resource_field)
-
-		while(resource_field.len && !harvesting.resources)
-			harvesting.has_resources = 0
-			harvesting.resources = null
+	var/remaining = max(1, harvest_speed)
+	while(length(resource_field) && remaining)
+		var/turf/harvesting = pick(resource_field)
+		while(harvesting.excavate_random_underground_ore(src) && remaining && has_space())
+			remaining--
+		if(!length(harvesting.get_underground_ores()))
 			resource_field -= harvesting
-			if(resource_field.len) // runtime protection
-				harvesting = pick(resource_field)
-			else
-				harvesting = null
+		if(!has_space())
+			active = FALSE
+			need_player_check = TRUE
+			system_error("Insufficient storage space.")
+			update_icon()
+			break
 
-		if(!harvesting) return
-
-		var/total_harvest = harvest_speed //Ore harvest-per-tick.
-		var/found_resource = 0 //If this doesn't get set, the area is depleted and the drill errors out.
-
-		for(var/metal in GLOB.ore_types)
-
-			if(contents.len >= capacity)
-				system_error("Insufficient storage space.")
-				active = 0
-				need_player_check = 1
-				update_icon()
-				return
-
-			if(contents.len + total_harvest >= capacity)
-				total_harvest = capacity - contents.len
-
-			if(total_harvest <= 0) break
-			if(harvesting.resources[metal])
-
-				found_resource  = 1
-
-				var/create_ore = 0
-				if(harvesting.resources[metal] >= total_harvest)
-					harvesting.resources[metal] -= total_harvest
-					create_ore = total_harvest
-					total_harvest = 0
-				else
-					total_harvest -= harvesting.resources[metal]
-					create_ore = harvesting.resources[metal]
-					harvesting.resources[metal] = 0
-
-				for(var/i=1, i <= create_ore, i++)
-					var/oretype = GLOB.ore_types[metal]
-					new oretype(src)
-
-		if(!found_resource)	// If a drill can't see an advanced material, it will destroy it while going through.
-			harvesting.has_resources = 0
-			harvesting.resources = null
-			resource_field -= harvesting
-	else
-		active = 0
-		need_player_check = 1
+	if(!length(resource_field))
+		active = FALSE
+		need_player_check = TRUE
 		update_icon()
 		system_error("Resources depleted.")
+
+/obj/machinery/mining/drill/proc/has_space()
+	return contents.len < capacity
 
 /obj/machinery/mining/drill/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
@@ -286,8 +250,8 @@
 	for(var/iy = 0,iy < 5, iy++)
 		for(var/ix = 0, ix < 5, ix++)
 			mine_turf = locate(tx + ix, ty + iy, T.z)
-			if(!istype(mine_turf, /turf/space/))
-				if(mine_turf && mine_turf.has_resources)
+			if(!istype(mine_turf, /turf/space))
+				if(length(mine_turf.get_underground_ores()))
 					resource_field += mine_turf
 
 	if(!resource_field.len)
