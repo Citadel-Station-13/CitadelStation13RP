@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;atom - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="atom.html#var">Var Details</a> - <a href="atom.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="atom.html">atom</a><aside> inherits /<a href="datum.html">datum</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/observer_listener/atom/observer.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;observer_listener&#x2F;atom&#x2F;observer.dm 3"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="atom.html#var/flags">flags</a></th><td>Atom flags</td></tr>
+            <tr><th><a href="atom.html#var/fluorescent">fluorescent</a></th><td>what icon the atom uses for speechbubbles</td></tr>
+            <tr><th><a href="atom.html#var/interaction_flags_atom">interaction_flags_atom</a></th><td>Intearaction flags</td></tr>
+            <tr><th><a href="atom.html#var/managed_overlays">managed_overlays</a></th><td>overlays managed by <a href="atom.html#proc/update_overlays" title="/atom">update_overlays</a> to prevent removing overlays that weren't added by the same proc</td></tr>
+            <tr><th><a href="atom.html#var/managed_vis_overlays">managed_vis_overlays</a></th><td>vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays</td></tr>
+            <tr><th><a href="atom.html#var/orbiters">orbiters</a></th><td>The orbiter comopnent if we're being orbited.</td></tr>
+            <tr><th><a href="atom.html#var/original_atom">original_atom</a></th><td>Chemistry.</td></tr>
+            <tr><th><a href="atom.html#var/reagents">reagents</a></th><td>Chemistry.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="atom.html#proc/CanAllowThrough">CanAllowThrough</a></th><td>Returns true or false to allow the mover to move through src</td></tr>
+            <tr><th><a href="atom.html#proc/CanPass">CanPass</a></th><td>Can the mover object pass this atom, while heading for the target turf</td></tr>
+            <tr><th><a href="atom.html#proc/CheckExit">CheckExit</a></th><td>Check if an atom can exit us in movement.</td></tr>
+            <tr><th><a href="atom.html#proc/ConflictElementCount">ConflictElementCount</a></th><td>Counts number of conflicts on something that have a conflict checking element.</td></tr>
+            <tr><th><a href="atom.html#proc/Destroy">Destroy</a></th><td>Top level of the destroy chain for most atoms</td></tr>
+            <tr><th><a href="atom.html#proc/Entered">Entered</a></th><td>An atom has entered this atom's contents</td></tr>
+            <tr><th><a href="atom.html#proc/Exit">Exit</a></th><td>An atom is attempting to exit this atom's contents</td></tr>
+            <tr><th><a href="atom.html#proc/Exited">Exited</a></th><td>An atom has exited this atom's contents</td></tr>
+            <tr><th><a href="atom.html#proc/_contents">_contents</a></th><td>Wrapper to return a copy of contents, as SDQL2 can't tell an internal list from a normal list.</td></tr>
+            <tr><th><a href="atom.html#proc/add_overlay">add_overlay</a></th><td>Adds specific overlay(s) to the atom.
+It is designed so any of the types allowed to be added to /atom/overlays can be added here too. More details below.</td></tr>
+            <tr><th><a href="atom.html#proc/attack_hand">attack_hand</a></th><td>Return TRUE to cancel other attack hand effects that respect it.</td></tr>
+            <tr><th><a href="atom.html#proc/contents_ui_distance">contents_ui_distance</a></th><td>public</td></tr>
+            <tr><th><a href="atom.html#proc/copy_overlays">copy_overlays</a></th><td>Copy the overlays from another atom, either replacing all of ours or appending to our existing overlays.
+Note: This copies only the normal overlays, not the &quot;priority&quot; overlays.</td></tr>
+            <tr><th><a href="atom.html#proc/cut_overlay">cut_overlay</a></th><td>Removes specific overlay(s) from the atom.  Usually does not remove them from &quot;priority&quot; overlays.</td></tr>
+            <tr><th><a href="atom.html#proc/cut_overlays">cut_overlays</a></th><td>Cut all of atom's normal overlays.  Usually leaves &quot;priority&quot; overlays untouched.</td></tr>
+            <tr><th><a href="atom.html#proc/get_alarm_area">get_alarm_area</a></th><td>Assisting procs</td></tr>
+            <tr><th><a href="atom.html#proc/get_examine_string">get_examine_string</a></th><td>Generate the full examine string of this atom (including icon for goonchat)</td></tr>
+            <tr><th><a href="atom.html#proc/has_gravity">has_gravity</a></th><td>Returns true if this atom has gravity for the passed in turf</td></tr>
+            <tr><th><a href="atom.html#proc/setDir">setDir</a></th><td>Hook for running code when a dir change occurs</td></tr>
+            <tr><th><a href="atom.html#proc/singuloCanEat">singuloCanEat</a></th><td>Nar-Sie Act/Pull</td></tr>
+            <tr><th><a href="atom.html#proc/update_icon">update_icon</a></th><td>Updates the icon of the atom</td></tr>
+            <tr><th><a href="atom.html#proc/update_icon_state">update_icon_state</a></th><td>Updates the icon state of the atom</td></tr>
+            <tr><th><a href="atom.html#proc/update_overlays">update_overlays</a></th><td>Updates the overlays of the atom</td></tr>
+            <tr><th><a href="atom.html#proc/vv_get_dropdown">vv_get_dropdown</a></th><td>Return the markup to for the dropdown list for the VV panel for this atom</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/flags"><aside class="declaration">var </aside>flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 6"/></a></h3>
+        <p>Atom flags</p><h3 id="var/fluorescent"><aside class="declaration">var </aside>fluorescent
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 23"/></a></h3>
+        <p>what icon the atom uses for speechbubbles</p><h3 id="var/interaction_flags_atom"><aside class="declaration">var </aside>interaction_flags_atom
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 8"/></a></h3>
+        <p>Intearaction flags</p><h3 id="var/managed_overlays"><aside class="declaration">var </aside>managed_overlays
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 38"/></a></h3>
+        <p>overlays managed by <a href="atom.html#proc/update_overlays" title="/atom">update_overlays</a> to prevent removing overlays that weren't added by the same proc</p><h3 id="var/managed_vis_overlays"><aside class="declaration">var </aside>managed_vis_overlays
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 36"/></a></h3>
+        <p>vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays</p><h3 id="var/orbiters"><aside class="declaration">var </aside>orbiters
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/component.html">component</a>/orbiter</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 41"/></a></h3>
+        <p>The orbiter comopnent if we're being orbited.</p><h3 id="var/original_atom"><aside class="declaration">var </aside>original_atom
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 50"/></a></h3>
+        <p>Chemistry.</p><h3 id="var/reagents"><aside class="declaration">var </aside>reagents
+            <aside>&ndash; /<a href="datum.html">datum</a>/reagents</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 43"/></a></h3>
+        <p>Chemistry.</p><h2 id="proc">Proc Details</h2><h3 id="proc/CanAllowThrough"><aside class="declaration">proc </aside>CanAllowThrough<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/mover, /<a href="turf.html">turf</a>/target) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_movement.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_movement.dm 48"/></a></aside>
+        </h3>
+        <p>Returns true or false to allow the mover to move through src</p><h3 id="proc/CanPass"><aside class="declaration">proc </aside>CanPass<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/mover, /<a href="turf.html">turf</a>/target) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_movement.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_movement.dm 37"/></a></aside>
+        </h3>
+        <p>Can the mover object pass this atom, while heading for the target turf</p><h3 id="proc/CheckExit"><aside class="declaration">proc </aside>CheckExit<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/AM, /<a href="atom.html">atom</a>/newLoc) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_movement.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_movement.dm 33"/></a></aside>
+        </h3>
+        <p>Check if an atom can exit us in movement.</p><h3 id="proc/ConflictElementCount"><aside class="declaration">proc </aside>ConflictElementCount<aside>(id) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/datums/elements/conflict_checking.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;elements&#x2F;conflict_checking.dm 30"/></a></aside>
+        </h3>
+        <p>Counts number of conflicts on something that have a conflict checking element.</p><h3 id="proc/Destroy"><aside class="parent"><a title="/datum" href="datum.html#proc/Destroy">&uarr;</a></aside>Destroy<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L125">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 125"/></a></aside>
+        </h3>
+        <p>Top level of the destroy chain for most atoms</p>
+<p>Cleans up the following:</p>
+<ul>
+<li>Removes alternate apperances from huds that see them</li>
+<li>qdels the reagent holder from atoms if it exists</li>
+<li>clears the orbiters list</li>
+<li>clears overlays and priority overlays</li>
+<li>clears the light object</li>
+</ul><h3 id="proc/Entered"><aside class="declaration">proc </aside>Entered<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/AM, /<a href="atom.html">atom</a>/oldLoc) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_movement.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_movement.dm 6"/></a></aside>
+        </h3>
+        <p>An atom has entered this atom's contents</p>
+<p>Default behaviour is to send the [COMSIG_ATOM_ENTERED]</p><h3 id="proc/Exit"><aside class="declaration">proc </aside>Exit<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/AM, /<a href="atom.html">atom</a>/newLoc) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_movement.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_movement.dm 17"/></a></aside>
+        </h3>
+        <p>An atom is attempting to exit this atom's contents</p>
+<p>Default behaviour is to send the [COMSIG_ATOM_EXIT]</p>
+<p>Return value should be set to FALSE if the moving atom is unable to leave,
+otherwise leave value the result of the parent call</p><h3 id="proc/Exited"><aside class="declaration">proc </aside>Exited<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/AM, /<a href="atom.html">atom</a>/newLoc) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_movement.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_movement.dm 27"/></a></aside>
+        </h3>
+        <p>An atom has exited this atom's contents</p>
+<p>Default behaviour is to send the [COMSIG_ATOM_EXITED]</p><h3 id="proc/_contents"><aside class="declaration">proc </aside>_contents<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/admin/verbs/SDQL2/SDQL_2_wrappers.dm#L251">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;SDQL2&#x2F;SDQL_2_wrappers.dm 251"/></a></aside>
+        </h3>
+        <p>Wrapper to return a copy of contents, as SDQL2 can't tell an internal list from a normal list.</p><h3 id="proc/add_overlay"><aside class="declaration">proc </aside>add_overlay<aside>(/list/overlays, priority) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/overlays.dm#L174">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;overlays.dm 174"/></a></aside>
+        </h3>
+        <p>Adds specific overlay(s) to the atom.
+It is designed so any of the types allowed to be added to /atom/overlays can be added here too. More details below.</p>
+<p>@param overlays The overlay(s) to add.  These may be
+- A string: In which case it is treated as an icon_state of the atom's icon.
+- An icon: It is treated as an icon.
+- An atom: Its own overlays are compiled and then it's appearance is added. (Meaning its current apperance is frozen).
+- An image: Image's apperance is added (i.e. subsequently editing the image will not edit the overlay)
+- A type path: Added to overlays as is.  Does whatever it is BYOND does when you add paths to overlays.
+- Or a list containing any of the above.
+@param priority The overlays are added to the &quot;priority&quot; list istead of the normal one.</p><h3 id="proc/attack_hand"><aside class="declaration">proc </aside>attack_hand<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_onclick/other_mobs.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_onclick&#x2F;other_mobs.dm 32"/></a></aside>
+        </h3>
+        <p>Return TRUE to cancel other attack hand effects that respect it.</p><h3 id="proc/contents_ui_distance"><aside class="declaration">proc </aside>contents_ui_distance<aside>(src_object, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states.dm#L106">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states.dm 106"/></a></aside>
+        </h3>
+        <p>public</p>
+<p>Check the distance for a living mob.
+Really only used for checks outside the context of a mob.
+Otherwise, use shared_living_ui_distance().</p>
+<p>required src_object The object which owns the UI.
+required user mob The mob who opened/is using the UI.</p>
+<p>return UI_state The state of the UI.</p><h3 id="proc/copy_overlays"><aside class="declaration">proc </aside>copy_overlays<aside>(/<a href="atom.html">atom</a>/other, cut_old) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/overlays.dm#L206">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;overlays.dm 206"/></a></aside>
+        </h3>
+        <p>Copy the overlays from another atom, either replacing all of ours or appending to our existing overlays.
+Note: This copies only the normal overlays, not the &quot;priority&quot; overlays.</p>
+<p>@param other The atom to copy overlays from.
+@param cut_old If true, all of our overlays will be <em>replaced</em> by the other's. If other is null, that means cutting all ours.</p><h3 id="proc/cut_overlay"><aside class="declaration">proc </aside>cut_overlay<aside>(/list/overlays, priority) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/overlays.dm#L143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;overlays.dm 143"/></a></aside>
+        </h3>
+        <p>Removes specific overlay(s) from the atom.  Usually does not remove them from &quot;priority&quot; overlays.</p>
+<p>@param overlays The overlays to removed, type can be anything that is allowed for add_overlay().
+@param priority If true, also will remove them from the &quot;priority&quot; overlays.</p><h3 id="proc/cut_overlays"><aside class="declaration">proc </aside>cut_overlays<aside>(priority) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/overlays.dm#L120">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;overlays.dm 120"/></a></aside>
+        </h3>
+        <p>Cut all of atom's normal overlays.  Usually leaves &quot;priority&quot; overlays untouched.</p>
+<p>@param priority If true, also will cut priority overlays.</p><h3 id="proc/get_alarm_area"><aside class="declaration">proc </aside>get_alarm_area<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/alarm/alarm.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;alarm&#x2F;alarm.dm 100"/></a></aside>
+        </h3>
+        <p>Assisting procs</p><h3 id="proc/get_examine_string"><aside class="declaration">proc </aside>get_examine_string<aside>(/<a href="mob.html">mob</a>/user, thats) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L259">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 259"/></a></aside>
+        </h3>
+        <p>Generate the full examine string of this atom (including icon for goonchat)</p><h3 id="proc/has_gravity"><aside class="declaration">proc </aside>has_gravity<aside>(/<a href="turf.html">turf</a>/T) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L737">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 737"/></a></aside>
+        </h3>
+        <p>Returns true if this atom has gravity for the passed in turf</p>
+<p>Sends signals COMSIG_ATOM_HAS_GRAVITY and COMSIG_TURF_HAS_GRAVITY, both can force gravity with
+the forced gravity var</p>
+<p>Gravity situations:</p>
+<ul>
+<li>No gravity if you're not in a turf</li>
+<li>No gravity if this atom is in is a space turf</li>
+<li>Gravity if the area it's in always has gravity</li>
+<li>Gravity if there's a gravity generator on the z level</li>
+<li>Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY</li>
+<li>otherwise no gravity</li>
+</ul><h3 id="proc/setDir"><aside class="declaration">proc </aside>setDir<aside>(newdir) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 6"/></a></aside>
+        </h3>
+        <p>Hook for running code when a dir change occurs</p>
+<p>Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)</p><h3 id="proc/singuloCanEat"><aside class="declaration">proc </aside>singuloCanEat<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/power/singularity/act.dm#L149">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;singularity&#x2F;act.dm 149"/></a></aside>
+        </h3>
+        <p>Nar-Sie Act/Pull</p><h3 id="proc/update_icon"><aside class="declaration">proc </aside>update_icon<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L287">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 287"/></a></aside>
+        </h3>
+        <p>Updates the icon of the atom</p><h3 id="proc/update_icon_state"><aside class="declaration">proc </aside>update_icon_state<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L313">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 313"/></a></aside>
+        </h3>
+        <p>Updates the icon state of the atom</p><h3 id="proc/update_overlays"><aside class="declaration">proc </aside>update_overlays<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms.dm#L316">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms.dm 316"/></a></aside>
+        </h3>
+        <p>Updates the overlays of the atom</p><h3 id="proc/vv_get_dropdown">vv_get_dropdown<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atom_vv.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atom_vv.dm 27"/></a></aside>
+        </h3>
+        <p>Return the markup to for the dropdown list for the VV panel for this atom</p>
+<p>Override in subtypes to add custom VV handling in the VV panel</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

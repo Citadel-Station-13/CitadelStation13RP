@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;song - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/song.html#var">Var Details</a> - <a href="datum/song.html#proc">Proc Details</a></header>
+<main>
+<h1>Untitled <aside>/<a href="datum.html">datum</a>/<a href="datum/song.html">song</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 5"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/song.html#var/allowed_instrument_ids">allowed_instrument_ids</a></th><td>What instruments our built in picker can use. The picker won't show unless this is longer than one.</td></tr>
+            <tr><th><a href="datum/song.html#var/cached_exponential_dropoff">cached_exponential_dropoff</a></th><td>Do not directly set, use update_sustain()</td></tr>
+            <tr><th><a href="datum/song.html#var/cached_legacy_dir">cached_legacy_dir</a></th><td>Cached legacy dir for legacy instruments</td></tr>
+            <tr><th><a href="datum/song.html#var/cached_legacy_ext">cached_legacy_ext</a></th><td>Cached legacy ext for legacy instruments</td></tr>
+            <tr><th><a href="datum/song.html#var/cached_linear_dropoff">cached_linear_dropoff</a></th><td>/////// DO NOT DIRECTLY SET THESE!
+Do not directly set, use update_sustain()</td></tr>
+            <tr><th><a href="datum/song.html#var/cached_samples">cached_samples</a></th><td>Cached list of samples, referenced directly from the instrument for synthesized instruments</td></tr>
+            <tr><th><a href="datum/song.html#var/channels_idle">channels_idle</a></th><td>List of channels that aren't being used, as text. This is to prevent unnecessary freeing and reallocations from SSsounds/SSinstruments.</td></tr>
+            <tr><th><a href="datum/song.html#var/channels_playing">channels_playing</a></th><td>Channel as text = current volume percentage but it's 0 to 100 instead of 0 to 1.</td></tr>
+            <tr><th><a href="datum/song.html#var/compiled_chords">compiled_chords</a></th><td>Playing variables
+Only used in synthesized playback - The chords we compiled. Non assoc list of lists:
+list(list(key1, key2, key3..., tempo_divisor), list(key1, key2..., tempo_divisor), ...)
+tempo_divisor always exists
+if key1 (and so if there's no keys) doesn't exist it's a rest
+Compilation happens when we start playing and is cleared after we finish playing.</td></tr>
+            <tr><th><a href="datum/song.html#var/debug_mode">debug_mode</a></th><td>If this is enabled, some things won't be strictly cleared when they usually are (liked compiled_chords on play stop)</td></tr>
+            <tr><th><a href="datum/song.html#var/editing">editing</a></th><td>Are we currently editing?</td></tr>
+            <tr><th><a href="datum/song.html#var/full_sustain_held_note">full_sustain_held_note</a></th><td>Should we not decay our last played note?</td></tr>
+            <tr><th><a href="datum/song.html#var/hearing_mobs">hearing_mobs</a></th><td>The list of mobs that can hear us</td></tr>
+            <tr><th><a href="datum/song.html#var/help">help</a></th><td>Is the help screen open?</td></tr>
+            <tr><th><a href="datum/song.html#var/last_channel_played">last_channel_played</a></th><td>Last channel to play. text.</td></tr>
+            <tr><th><a href="datum/song.html#var/last_hearcheck">last_hearcheck</a></th><td>Last world.time we checked for who can hear us</td></tr>
+            <tr><th><a href="datum/song.html#var/last_process_decay">last_process_decay</a></th><td>Last time we processed decay</td></tr>
+            <tr><th><a href="datum/song.html#var/legacy">legacy</a></th><td>Are we operating in legacy mode (so if the instrument is a legacy instrument)</td></tr>
+            <tr><th><a href="datum/song.html#var/lines">lines</a></th><td>Our song lines</td></tr>
+            <tr><th><a href="datum/song.html#var/max_repeats">max_repeats</a></th><td>Maximum times we can repeat</td></tr>
+            <tr><th><a href="datum/song.html#var/max_sound_channels">max_sound_channels</a></th><td>Max sound channels to occupy</td></tr>
+            <tr><th><a href="datum/song.html#var/max_volume">max_volume</a></th><td>Max volume</td></tr>
+            <tr><th><a href="datum/song.html#var/min_volume">min_volume</a></th><td>Min volume - This is so someone doesn't decide it's funny to set it to 0 and play invisible songs.</td></tr>
+            <tr><th><a href="datum/song.html#var/name">name</a></th><td>Name of the song</td></tr>
+            <tr><th><a href="datum/song.html#var/note_shift">note_shift</a></th><td>////////// !!FUN!! - Only works in synthesized mode! /////////////////
+Note numbers to shift.</td></tr>
+            <tr><th><a href="datum/song.html#var/octave_min">octave_min</a></th><td>DO NOT TOUCH THESE</td></tr>
+            <tr><th><a href="datum/song.html#var/parent">parent</a></th><td>The atom we're attached to/playing from</td></tr>
+            <tr><th><a href="datum/song.html#var/playing">playing</a></th><td>Are we currently playing?</td></tr>
+            <tr><th><a href="datum/song.html#var/repeat">repeat</a></th><td>Repeats left</td></tr>
+            <tr><th><a href="datum/song.html#var/sustain_dropoff_volume">sustain_dropoff_volume</a></th><td>When a note is considered dead if it is below this in volume</td></tr>
+            <tr><th><a href="datum/song.html#var/sustain_exponential_dropoff">sustain_exponential_dropoff</a></th><td>Exponential sustain dropoff rate per decisecond</td></tr>
+            <tr><th><a href="datum/song.html#var/sustain_linear_duration">sustain_linear_duration</a></th><td>Total duration of linear sustain for 100 volume note to get to SUSTAIN_DROPOFF</td></tr>
+            <tr><th><a href="datum/song.html#var/sustain_mode">sustain_mode</a></th><td>The kind of sustain we're using</td></tr>
+            <tr><th><a href="datum/song.html#var/tempo">tempo</a></th><td>delay between notes in deciseconds</td></tr>
+            <tr><th><a href="datum/song.html#var/using_instrument">using_instrument</a></th><td>///////// Cached instrument variables /////////////
+Instrument we are currently using</td></tr>
+            <tr><th><a href="datum/song.html#var/using_sound_channels">using_sound_channels</a></th><td>Current channels, so we can save a length() call.</td></tr>
+            <tr><th><a href="datum/song.html#var/volume">volume</a></th><td>Our volume</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/song.html#proc/compile_lines">compile_lines</a></th><td>C-Db2-A-A4/2,A-B#4-C/3,/4,A,A-B-C as an example</td></tr>
+            <tr><th><a href="datum/song.html#proc/do_play_lines">do_play_lines</a></th><td>THIS IS A BLOCKING CALL.</td></tr>
+            <tr><th><a href="datum/song.html#proc/do_play_lines_legacy">do_play_lines_legacy</a></th><td>Playing legacy instruments - None of the &quot;advanced&quot; like sound reservations and decay are invoked.</td></tr>
+            <tr><th><a href="datum/song.html#proc/set_instrument">set_instrument</a></th><td>I can either be a datum, id, or path (if the instrument has no id).</td></tr>
+            <tr><th><a href="datum/song.html#proc/start_playing">start_playing</a></th><td>THIS IS A BLOCKING CALL.</td></tr>
+            <tr><th><a href="datum/song.html#proc/updateDialog">updateDialog</a></th><td>Updates the window for our user. Override in subtypes.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/allowed_instrument_ids"><aside class="declaration">var </aside>allowed_instrument_ids
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 39"/></a></h3>
+        <p>What instruments our built in picker can use. The picker won't show unless this is longer than one.</p><h3 id="var/cached_exponential_dropoff"><aside class="declaration">var </aside>cached_exponential_dropoff
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L113">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 113"/></a></h3>
+        <p>Do not directly set, use update_sustain()</p><h3 id="var/cached_legacy_dir"><aside class="declaration">var </aside>cached_legacy_dir
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 47"/></a></h3>
+        <p>Cached legacy dir for legacy instruments</p><h3 id="var/cached_legacy_ext"><aside class="declaration">var </aside>cached_legacy_ext
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 45"/></a></h3>
+        <p>Cached legacy ext for legacy instruments</p><h3 id="var/cached_linear_dropoff"><aside class="declaration">var </aside>cached_linear_dropoff
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L111">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 111"/></a></h3>
+        <p>/////// DO NOT DIRECTLY SET THESE!
+Do not directly set, use update_sustain()</p><h3 id="var/cached_samples"><aside class="declaration">var </aside>cached_samples
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 49"/></a></h3>
+        <p>Cached list of samples, referenced directly from the instrument for synthesized instruments</p><h3 id="var/channels_idle"><aside class="declaration">var </aside>channels_idle
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 66"/></a></h3>
+        <p>List of channels that aren't being used, as text. This is to prevent unnecessary freeing and reallocations from SSsounds/SSinstruments.</p><h3 id="var/channels_playing"><aside class="declaration">var </aside>channels_playing
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 64"/></a></h3>
+        <p>Channel as text = current volume percentage but it's 0 to 100 instead of 0 to 1.</p><h3 id="var/compiled_chords"><aside class="declaration">var </aside>compiled_chords
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 62"/></a></h3>
+        <p>Playing variables
+Only used in synthesized playback - The chords we compiled. Non assoc list of lists:
+list(list(key1, key2, key3..., tempo_divisor), list(key1, key2..., tempo_divisor), ...)
+tempo_divisor always exists
+if key1 (and so if there's no keys) doesn't exist it's a rest
+Compilation happens when we start playing and is cleared after we finish playing.</p><h3 id="var/debug_mode"><aside class="declaration">var </aside>debug_mode
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 74"/></a></h3>
+        <p>If this is enabled, some things won't be strictly cleared when they usually are (liked compiled_chords on play stop)</p><h3 id="var/editing"><aside class="declaration">var </aside>editing
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 22"/></a></h3>
+        <p>Are we currently editing?</p><h3 id="var/full_sustain_held_note"><aside class="declaration">var </aside>full_sustain_held_note
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 84"/></a></h3>
+        <p>Should we not decay our last played note?</p><h3 id="var/hearing_mobs"><aside class="declaration">var </aside>hearing_mobs
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 72"/></a></h3>
+        <p>The list of mobs that can hear us</p><h3 id="var/help"><aside class="declaration">var </aside>help
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 24"/></a></h3>
+        <p>Is the help screen open?</p><h3 id="var/last_channel_played"><aside class="declaration">var </aside>last_channel_played
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 82"/></a></h3>
+        <p>Last channel to play. text.</p><h3 id="var/last_hearcheck"><aside class="declaration">var </aside>last_hearcheck
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L70">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 70"/></a></h3>
+        <p>Last world.time we checked for who can hear us</p><h3 id="var/last_process_decay"><aside class="declaration">var </aside>last_process_decay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 76"/></a></h3>
+        <p>Last time we processed decay</p><h3 id="var/legacy"><aside class="declaration">var </aside>legacy
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 51"/></a></h3>
+        <p>Are we operating in legacy mode (so if the instrument is a legacy instrument)</p><h3 id="var/lines"><aside class="declaration">var </aside>lines
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 13"/></a></h3>
+        <p>Our song lines</p><h3 id="var/max_repeats"><aside class="declaration">var </aside>max_repeats
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 29"/></a></h3>
+        <p>Maximum times we can repeat</p><h3 id="var/max_sound_channels"><aside class="declaration">var </aside>max_sound_channels
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 78"/></a></h3>
+        <p>Max sound channels to occupy</p><h3 id="var/max_volume"><aside class="declaration">var </aside>max_volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 34"/></a></h3>
+        <p>Max volume</p><h3 id="var/min_volume"><aside class="declaration">var </aside>min_volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 36"/></a></h3>
+        <p>Min volume - This is so someone doesn't decide it's funny to set it to 0 and play invisible songs.</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 7"/></a></h3>
+        <p>Name of the song</p><h3 id="var/note_shift"><aside class="declaration">var </aside>note_shift
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L97">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 97"/></a></h3>
+        <p>////////// !!FUN!! - Only works in synthesized mode! /////////////////
+Note numbers to shift.</p><h3 id="var/octave_min"><aside class="declaration">var </aside>octave_min
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 87"/></a></h3>
+        <p>DO NOT TOUCH THESE</p><h3 id="var/parent"><aside class="declaration">var </aside>parent
+            <aside>&ndash; /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 10"/></a></h3>
+        <p>The atom we're attached to/playing from</p><h3 id="var/playing"><aside class="declaration">var </aside>playing
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 19"/></a></h3>
+        <p>Are we currently playing?</p><h3 id="var/repeat"><aside class="declaration">var </aside>repeat
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 27"/></a></h3>
+        <p>Repeats left</p><h3 id="var/sustain_dropoff_volume"><aside class="declaration">var </aside>sustain_dropoff_volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 104"/></a></h3>
+        <p>When a note is considered dead if it is below this in volume</p><h3 id="var/sustain_exponential_dropoff"><aside class="declaration">var </aside>sustain_exponential_dropoff
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 108"/></a></h3>
+        <p>Exponential sustain dropoff rate per decisecond</p><h3 id="var/sustain_linear_duration"><aside class="declaration">var </aside>sustain_linear_duration
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L106">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 106"/></a></h3>
+        <p>Total duration of linear sustain for 100 volume note to get to SUSTAIN_DROPOFF</p><h3 id="var/sustain_mode"><aside class="declaration">var </aside>sustain_mode
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L102">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 102"/></a></h3>
+        <p>The kind of sustain we're using</p><h3 id="var/tempo"><aside class="declaration">var </aside>tempo
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 16"/></a></h3>
+        <p>delay between notes in deciseconds</p><h3 id="var/using_instrument"><aside class="declaration">var </aside>using_instrument
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/instrument.html">instrument</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 43"/></a></h3>
+        <p>///////// Cached instrument variables /////////////
+Instrument we are currently using</p><h3 id="var/using_sound_channels"><aside class="declaration">var </aside>using_sound_channels
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 80"/></a></h3>
+        <p>Current channels, so we can save a length() call.</p><h3 id="var/volume"><aside class="declaration">var </aside>volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 32"/></a></h3>
+        <p>Our volume</p><h2 id="proc">Proc Details</h2><h3 id="proc/compile_lines"><aside class="declaration">proc </aside>compile_lines<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/play_synthesized.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;play_synthesized.dm 24"/></a></aside>
+        </h3>
+        <p>C-Db2-A-A4/2,A-B#4-C/3,/4,A,A-B-C as an example</p><h3 id="proc/do_play_lines"><aside class="declaration">proc </aside>do_play_lines<aside>(user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L200">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 200"/></a></aside>
+        </h3>
+        <p>THIS IS A BLOCKING CALL.</p><h3 id="proc/do_play_lines_legacy"><aside class="declaration">proc </aside>do_play_lines_legacy<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/play_legacy.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;play_legacy.dm 2"/></a></aside>
+        </h3>
+        <p>Playing legacy instruments - None of the &quot;advanced&quot; like sound reservations and decay are invoked.</p><h3 id="proc/set_instrument"><aside class="declaration">proc </aside>set_instrument<aside>(/<a href="datum.html">datum</a>/<a href="datum/instrument.html">instrument</a>/I) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 150"/></a></aside>
+        </h3>
+        <p>I can either be a datum, id, or path (if the instrument has no id).</p><h3 id="proc/start_playing"><aside class="declaration">proc </aside>start_playing<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L173">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 173"/></a></aside>
+        </h3>
+        <p>THIS IS A BLOCKING CALL.</p><h3 id="proc/updateDialog"><aside class="declaration">proc </aside>updateDialog<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/songs/_song.dm#L223">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;songs&#x2F;_song.dm 223"/></a></aside>
+        </h3>
+        <p>Updates the window for our user. Override in subtypes.</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

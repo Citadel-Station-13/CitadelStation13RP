@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;projectile - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/projectile.html#var">Var Details</a> - <a href="obj/item/projectile.html#proc">Proc Details</a></header>
+<main>
+<h1>projectile <aside>/<a href="obj/item.html">obj/item</a>/<a href="obj/item/projectile.html">projectile</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 4"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/projectile.html#var/antimagic_charges_used">antimagic_charges_used</a></th><td>Antimagic charges to use, if any</td></tr>
+            <tr><th><a href="obj/item/projectile.html#var/antimagic_check">antimagic_check</a></th><td>Should we check for antimagic effects?</td></tr>
+            <tr><th><a href="obj/item/projectile.html#var/antimagic_damage_factor">antimagic_damage_factor</a></th><td>Multiplier for damage if antimagic is on the target</td></tr>
+            <tr><th><a href="obj/item/projectile.html#var/holy">holy</a></th><td>If this projectile is holy. Silver bullets, etc. Currently no effects.</td></tr>
+            <tr><th><a href="obj/item/projectile.html#var/range">range</a></th><td>TG PROJECTILE SYTSEM</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/projectile.html#proc/get_final_damage">get_final_damage</a></th><td>Probably isn't needed but saves me the time and I can regex this later:
+Gets the final <code>damage</code> that should be used on something</td></tr>
+            <tr><th><a href="obj/item/projectile.html#proc/run_damage_vulnerability">run_damage_vulnerability</a></th><td>Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+May or may not be called before/after armor calculations.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/antimagic_charges_used"><aside class="declaration">var </aside>antimagic_charges_used
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 129"/></a></h3>
+        <p>Antimagic charges to use, if any</p><h3 id="var/antimagic_check"><aside class="declaration">var </aside>antimagic_check
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 127"/></a></h3>
+        <p>Should we check for antimagic effects?</p><h3 id="var/antimagic_damage_factor"><aside class="declaration">var </aside>antimagic_damage_factor
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L131">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 131"/></a></h3>
+        <p>Multiplier for damage if antimagic is on the target</p><h3 id="var/holy"><aside class="declaration">var </aside>holy
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 123"/></a></h3>
+        <p>If this projectile is holy. Silver bullets, etc. Currently no effects.</p><h3 id="var/range"><aside class="declaration">var </aside>range
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 16"/></a></h3>
+        <p>TG PROJECTILE SYTSEM</p><h2 id="proc">Proc Details</h2><h3 id="proc/get_final_damage"><aside class="declaration">proc </aside>get_final_damage<aside>(/<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L785">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 785"/></a></aside>
+        </h3>
+        <p>Probably isn't needed but saves me the time and I can regex this later:
+Gets the final <code>damage</code> that should be used on something</p><h3 id="proc/run_damage_vulnerability"><aside class="declaration">proc </aside>run_damage_vulnerability<aside>(/<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/projectile.dm#L769">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;projectile.dm 769"/></a></aside>
+        </h3>
+        <p>Standard proc to determine damage when impacting something. This does not affect the special damage variables/effect variables, only damage and damtype.
+May or may not be called before/after armor calculations.</p>
+<p>@params</p>
+<ul>
+<li>target The atom hit</li>
+</ul>
+<p>@return Damage to apply to target.</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

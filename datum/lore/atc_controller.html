@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;lore&#x2F;atc_controller - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/lore/atc_controller.html#var">Var Details</a> - <a href="datum/lore/atc_controller.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/lore/atc_controller.html">lore/atc_controller</a>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 6"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/delay_max">delay_max</a></th><td>Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/delay_min">delay_min</a></th><td>How long between ATC traffic</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/ertchannel">ertchannel</a></th><td>A block of frequencies so we can have them be static instead of being random for each call</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/force_chatter_type">force_chatter_type</a></th><td>Force a specific type of messages</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/initial_delay">initial_delay</a></th><td>How long to wait before sending the first message of the shift.</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/next_message">next_message</a></th><td>When the next message should happen in world.time - Making it default to min value</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#var/squelched">squelched</a></th><td>If ATC is squelched currently</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#proc/process">process</a></th><td>HEY! if we have listiners for ssticker go use that instead of this snowflake.</td></tr>
+            <tr><th><a href="datum/lore/atc_controller.html#proc/random_convo">random_convo</a></th><td>Next level optimzation for this: datumize the convo (see main holopads/holodisk!)</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/delay_max"><aside class="declaration">var </aside>delay_max
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 11"/></a></h3>
+        <p>Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift</p><h3 id="var/delay_min"><aside class="declaration">var </aside>delay_min
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 9"/></a></h3>
+        <p>How long between ATC traffic</p><h3 id="var/ertchannel"><aside class="declaration">var </aside>ertchannel
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 24"/></a></h3>
+        <p>A block of frequencies so we can have them be static instead of being random for each call</p><h3 id="var/force_chatter_type"><aside class="declaration">var </aside>force_chatter_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 19"/></a></h3>
+        <p>Force a specific type of messages</p><h3 id="var/initial_delay"><aside class="declaration">var </aside>initial_delay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 14"/></a></h3>
+        <p>How long to wait before sending the first message of the shift.</p><h3 id="var/next_message"><aside class="declaration">var </aside>next_message
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 16"/></a></h3>
+        <p>When the next message should happen in world.time - Making it default to min value</p><h3 id="var/squelched"><aside class="declaration">var </aside>squelched
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 21"/></a></h3>
+        <p>If ATC is squelched currently</p><h2 id="proc">Proc Details</h2><h3 id="proc/process"><aside class="parent"><a title="/datum" href="datum.html#proc/process">&uarr;</a></aside>process<aside>(delta_time) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 46"/></a></aside>
+        </h3>
+        <p>HEY! if we have listiners for ssticker go use that instead of this snowflake.</p><h3 id="proc/random_convo"><aside class="declaration">proc </aside>random_convo<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 75"/></a></aside>
+        </h3>
+        <p>Next level optimzation for this: datumize the convo (see main holopads/holodisk!)</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

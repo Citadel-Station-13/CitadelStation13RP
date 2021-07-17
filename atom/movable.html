@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;atom&#x2F;movable - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="atom/movable.html#var">Var Details</a> - <a href="atom/movable.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/(builtins)#L1">
+        <img src="git.png" width="16" height="16" title="(builtins) 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="atom/movable.html#var/buckle_prevents_pull">buckle_prevents_pull</a></th><td>Buckling prevents people from pulling the person buckled</td></tr>
+            <tr><th><a href="atom/movable.html#var/buckle_require_restraints">buckle_require_restraints</a></th><td>Can only buckle restrained people to this, like pipes.</td></tr>
+            <tr><th><a href="atom/movable.html#var/can_buckle">can_buckle</a></th><td>Can mobs be buckled to this atom.</td></tr>
+            <tr><th><a href="atom/movable.html#var/default_glide_size">default_glide_size</a></th><td>Our default glide_size.</td></tr>
+            <tr><th><a href="atom/movable.html#var/generic_canpass">generic_canpass</a></th><td>If false makes <a href="atom.html#proc/CanPass" title="/atom">CanPass</a> call <a href="atom/movable.html#proc/CanPassThrough" title="/atom/movable">CanPassThrough</a> on this type instead of using default behaviour</td></tr>
+            <tr><th><a href="atom/movable.html#var/inertia_dir">inertia_dir</a></th><td>Which direction we're drifting</td></tr>
+            <tr><th><a href="atom/movable.html#var/inertia_last_loc">inertia_last_loc</a></th><td>Only set while drifting, last location we were while drifting</td></tr>
+            <tr><th><a href="atom/movable.html#var/inertia_move_delay">inertia_move_delay</a></th><td>Delay between each drifting move.</td></tr>
+            <tr><th><a href="atom/movable.html#var/inertia_moving">inertia_moving</a></th><td>If we're moving from no-grav drifting</td></tr>
+            <tr><th><a href="atom/movable.html#var/inertia_next_move">inertia_next_move</a></th><td>Next world.time we should move from no-grav drifting</td></tr>
+            <tr><th><a href="atom/movable.html#var/last_move">last_move</a></th><td>Direction of our last move.</td></tr>
+            <tr><th><a href="atom/movable.html#var/max_buckled_mobs">max_buckled_mobs</a></th><td>How many people can be buckled to us at once.</td></tr>
+            <tr><th><a href="atom/movable.html#var/movement_type">movement_type</a></th><td>Movement types, see __DEFINES/flags/movement.dm</td></tr>
+            <tr><th><a href="atom/movable.html#var/moving_diagonally">moving_diagonally</a></th><td>0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move</td></tr>
+            <tr><th><a href="atom/movable.html#var/moving_from_pull">moving_from_pull</a></th><td>attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.</td></tr>
+            <tr><th><a href="atom/movable.html#var/orbit_target">orbit_target</a></th><td>Reference to atom being orbited</td></tr>
+            <tr><th><a href="atom/movable.html#var/orbiting">orbiting</a></th><td>The orbiter component of the thing we're orbiting.</td></tr>
+            <tr><th><a href="atom/movable.html#var/pulling">pulling</a></th><td>Whatever we're pulling.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="atom/movable.html#proc/CanPassThrough">CanPassThrough</a></th><td>Returns true or false to allow src to move through the blocker, mover has final say</td></tr>
+            <tr><th><a href="atom/movable.html#proc/GetAccess">GetAccess</a></th><td>obj/item/proc/GetAccess()</td></tr>
+            <tr><th><a href="atom/movable.html#proc/Process_Spacemove">Process_Spacemove</a></th><td>Called whenever an object moves and by mobs when they attempt to move themselves through space
+And when an object or action applies a force on src, see <a href="atom/movable.html#proc/newtonian_move" title="/atom/movable">newtonian_move</a></td></tr>
+            <tr><th><a href="atom/movable.html#proc/can_be_pulled">can_be_pulled</a></th><td>Checks if we can be pulled by something/someone.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/check_pulling">check_pulling</a></th><td>Checks if a pull is valid. If it ain't, stop pulling.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/doLocationTransitForceMove">doLocationTransitForceMove</a></th><td>Wrapper for forceMove when we're called by a recursing locationTransitForceMove().</td></tr>
+            <tr><th><a href="atom/movable.html#proc/getLocationTransitForceMoveTargets">getLocationTransitForceMoveTargets</a></th><td>Gets the atoms that we'd pull along with a locationTransitForceMove</td></tr>
+            <tr><th><a href="atom/movable.html#proc/locationTransitForceMove">locationTransitForceMove</a></th><td>forceMove but it brings along pulling/buckled stuff
+recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
+Probably needs a better way of handling this in the future.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/move_pulled_towards">move_pulled_towards</a></th><td>Attempts to move our pulled atom/movable onto the target.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/newtonian_move">newtonian_move</a></th><td>Only moves the object if it's under no gravity</td></tr>
+            <tr><th><a href="atom/movable.html#proc/on_move_pulled">on_move_pulled</a></th><td>Hook for stuff to do when we move a pulled atom/movable.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/reset_glide_size">reset_glide_size</a></th><td>Sets our glide size back to our standard glide size.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/set_glide_size">set_glide_size</a></th><td>Sets our glide size</td></tr>
+            <tr><th><a href="atom/movable.html#proc/set_movement_type">set_movement_type</a></th><td>Sets our movement type.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/start_pulling">start_pulling</a></th><td>Attempts to start pulling an object.</td></tr>
+            <tr><th><a href="atom/movable.html#proc/stop_pulling">stop_pulling</a></th><td>Stops pulling. Returns the object we &quot;dropped&quot; from our pull.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/buckle_prevents_pull"><aside class="declaration">var </aside>buckle_prevents_pull
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/objects/buckling.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;buckling.dm 3"/></a></h3>
+        <p>Buckling prevents people from pulling the person buckled</p><h3 id="var/buckle_require_restraints"><aside class="declaration">var </aside>buckle_require_restraints
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/objects/buckling.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;buckling.dm 7"/></a></h3>
+        <p>Can only buckle restrained people to this, like pipes.</p><h3 id="var/can_buckle"><aside class="declaration">var </aside>can_buckle
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/objects/buckling.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;buckling.dm 5"/></a></h3>
+        <p>Can mobs be buckled to this atom.</p><h3 id="var/default_glide_size"><aside class="declaration">var </aside>default_glide_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 29"/></a></h3>
+        <p>Our default glide_size.</p><h3 id="var/generic_canpass"><aside class="declaration">var </aside>generic_canpass
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 7"/></a></h3>
+        <p>If false makes <a href="atom.html#proc/CanPass" title="/atom">CanPass</a> call <a href="atom/movable.html#proc/CanPassThrough" title="/atom/movable">CanPassThrough</a> on this type instead of using default behaviour</p><h3 id="var/inertia_dir"><aside class="declaration">var </aside>inertia_dir
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 15"/></a></h3>
+        <p>Which direction we're drifting</p><h3 id="var/inertia_last_loc"><aside class="declaration">var </aside>inertia_last_loc
+            <aside>&ndash; /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 17"/></a></h3>
+        <p>Only set while drifting, last location we were while drifting</p><h3 id="var/inertia_move_delay"><aside class="declaration">var </aside>inertia_move_delay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 23"/></a></h3>
+        <p>Delay between each drifting move.</p><h3 id="var/inertia_moving"><aside class="declaration">var </aside>inertia_moving
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 19"/></a></h3>
+        <p>If we're moving from no-grav drifting</p><h3 id="var/inertia_next_move"><aside class="declaration">var </aside>inertia_next_move
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 21"/></a></h3>
+        <p>Next world.time we should move from no-grav drifting</p><h3 id="var/last_move"><aside class="declaration">var </aside>last_move
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 13"/></a></h3>
+        <p>Direction of our last move.</p><h3 id="var/max_buckled_mobs"><aside class="declaration">var </aside>max_buckled_mobs
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/objects/buckling.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;buckling.dm 9"/></a></h3>
+        <p>How many people can be buckled to us at once.</p><h3 id="var/movement_type"><aside class="declaration">var </aside>movement_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 25"/></a></h3>
+        <p>Movement types, see __DEFINES/flags/movement.dm</p><h3 id="var/moving_diagonally"><aside class="declaration">var </aside>moving_diagonally
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 9"/></a></h3>
+        <p>0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move</p><h3 id="var/moving_from_pull"><aside class="declaration">var </aside>moving_from_pull
+            <aside>&ndash; /<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 11"/></a></h3>
+        <p>attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.</p><h3 id="var/orbit_target"><aside class="declaration">var </aside>orbit_target
+            <aside>&ndash; /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 59"/></a></h3>
+        <p>Reference to atom being orbited</p><h3 id="var/orbiting"><aside class="declaration">var </aside>orbiting
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/component.html">component</a>/orbiter</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 27"/></a></h3>
+        <p>The orbiter component of the thing we're orbiting.</p><h3 id="var/pulling"><aside class="declaration">var </aside>pulling
+            <aside>&ndash; /<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 5"/></a></h3>
+        <p>Whatever we're pulling.</p><h2 id="proc">Proc Details</h2><h3 id="proc/CanPassThrough"><aside class="declaration">proc </aside>CanPassThrough<aside>(/<a href="atom.html">atom</a>/blocker, /<a href="turf.html">turf</a>/target, blocker_opinion) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L358">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 358"/></a></aside>
+        </h3>
+        <p>Returns true or false to allow src to move through the blocker, mover has final say</p><h3 id="proc/GetAccess"><aside class="declaration">proc </aside>GetAccess<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/jobs/access.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;access.dm 22"/></a></aside>
+        </h3>
+        <p>obj/item/proc/GetAccess()</p><h3 id="proc/Process_Spacemove"><aside class="declaration">proc </aside>Process_Spacemove<aside>(movement_dir) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L374">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 374"/></a></aside>
+        </h3>
+        <p>Called whenever an object moves and by mobs when they attempt to move themselves through space
+And when an object or action applies a force on src, see <a href="atom/movable.html#proc/newtonian_move" title="/atom/movable">newtonian_move</a></p>
+<p>Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting</p>
+<p>Mobs should return 1 if they should be able to move of their own volition, see <a href="client.html#proc/Move" title="/client">/client/Move</a></p>
+<p>Arguments:</p>
+<ul>
+<li>movement_dir - 0 when stopping or any dir when trying to move</li>
+</ul><h3 id="proc/can_be_pulled"><aside class="declaration">proc </aside>can_be_pulled<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_pulling.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_pulling.dm 86"/></a></aside>
+        </h3>
+        <p>Checks if we can be pulled by something/someone.</p><h3 id="proc/check_pulling"><aside class="declaration">proc </aside>check_pulling<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_pulling.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_pulling.dm 66"/></a></aside>
+        </h3>
+        <p>Checks if a pull is valid. If it ain't, stop pulling.</p><h3 id="proc/doLocationTransitForceMove"><aside class="declaration">proc </aside>doLocationTransitForceMove<aside>(/<a href="atom.html">atom</a>/destination) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L284">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 284"/></a></aside>
+        </h3>
+        <p>Wrapper for forceMove when we're called by a recursing locationTransitForceMove().</p><h3 id="proc/getLocationTransitForceMoveTargets"><aside class="declaration">proc </aside>getLocationTransitForceMoveTargets<aside>(/<a href="atom.html">atom</a>/destination, recurse_levels) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L263">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 263"/></a></aside>
+        </h3>
+        <p>Gets the atoms that we'd pull along with a locationTransitForceMove</p><h3 id="proc/locationTransitForceMove"><aside class="declaration">proc </aside>locationTransitForceMove<aside>(/<a href="atom.html">atom</a>/destination, recurse_levels) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L238">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 238"/></a></aside>
+        </h3>
+        <p>forceMove but it brings along pulling/buckled stuff
+recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
+Probably needs a better way of handling this in the future.</p><h3 id="proc/move_pulled_towards"><aside class="declaration">proc </aside>move_pulled_towards<aside>(/<a href="atom.html">atom</a>/A) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_pulling.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_pulling.dm 4"/></a></aside>
+        </h3>
+        <p>Attempts to move our pulled atom/movable onto the target.</p><h3 id="proc/newtonian_move"><aside class="declaration">proc </aside>newtonian_move<aside>(direction) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L393">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 393"/></a></aside>
+        </h3>
+        <p>Only moves the object if it's under no gravity</p><h3 id="proc/on_move_pulled"><aside class="declaration">proc </aside>on_move_pulled<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/moved) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_pulling.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_pulling.dm 100"/></a></aside>
+        </h3>
+        <p>Hook for stuff to do when we move a pulled atom/movable.</p><h3 id="proc/reset_glide_size"><aside class="declaration">proc </aside>reset_glide_size<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L416">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 416"/></a></aside>
+        </h3>
+        <p>Sets our glide size back to our standard glide size.</p><h3 id="proc/set_glide_size"><aside class="declaration">proc </aside>set_glide_size<aside>(new_glide_size) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_movement.dm#L408">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_movement.dm 408"/></a></aside>
+        </h3>
+        <p>Sets our glide size</p><h3 id="proc/set_movement_type"><aside class="declaration">proc </aside>set_movement_type<aside>(new_movetype) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable.dm#L318">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable.dm 318"/></a></aside>
+        </h3>
+        <p>Sets our movement type.</p><h3 id="proc/start_pulling"><aside class="declaration">proc </aside>start_pulling<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/AM, suppress_message) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_pulling.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_pulling.dm 25"/></a></aside>
+        </h3>
+        <p>Attempts to start pulling an object.</p><h3 id="proc/stop_pulling"><aside class="declaration">proc </aside>stop_pulling<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/atoms_movable_pulling.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;atoms_movable_pulling.dm 56"/></a></aside>
+        </h3>
+        <p>Stops pulling. Returns the object we &quot;dropped&quot; from our pull.</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

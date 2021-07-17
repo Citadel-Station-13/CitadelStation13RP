@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;modules&#x2F;shuttles&#x2F;upgrade_guide.md - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>&amp;quot;Landmark&amp;quot; Shuttles Conversion <aside>code/modules/shuttles/upgrade_guide.md</aside> 
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/shuttles/upgrade_guide.md">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttles&#x2F;upgrade_guide.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><p>This guide helps with updating maps and shuttle datums from the old &quot;area&quot; based system to the &quot;landmark&quot; based system.</p>
+<h2 id="summary">Summary</h2>
+<p>The old shuttle datum worked with areas (<code>/area</code>).  You are probably familiar with every shuttle having a few cookie-cutter shaped areas it travels between.
+When the shuttle &quot;moved&quot; it was translated from its current area to the destination area. The areas had to be <em>exactly</em> the same shape so
+that each turf in the origin area got translated to the equivalent  place at the target.<br />
+Since <em>all possible</em> destinations had to have a dedicated area (and areas in BYOND can't overlap) this means it is impossible for two shuttles to travel to the same spot, even at different times.</p>
+<p>In the new system shuttle destinations are represented by &quot;landmark&quot; objects (<code>/obj/effect/shuttle_landmark</code>).
+When a shuttle is &quot;moved&quot; it is translated from its current landmark to the destination landmark, with each turf keeping its same position <em>relative</em> to the landmarks.
+In other words, whatever a turf's x/y/z offsets are from the origin landmark,  it will be moved to the same x/y/z offset from the destination landmark.</p>
+<h2 id="landmark-objects">Landmark Objects</h2>
+<p>Shuttle destinations are represented by <code>/obj/effect/shuttle_landmark</code> objects on the map.</p>
+<ul>
+<li><code>name</code> - Pretty name of the nav point, used on overmap and in messages and console UI.</li>
+<li><code>landmark_tag</code> - Globally unique ID, used by everything else to refer to this landmark.</li>
+<li><code>docking_controller</code> - ID of the controller on the dock side (initialize to id_tag, becomes reference).  Leave null if not applicable.</li>
+<li><code>base_area</code> - Type path of the <code>/area</code> that should be here when a shuttle is <em>not</em> present.</li>
+<li><code>base_turf</code> - Type path of the <code>/turf</code> that should be here when a shuttle is <em>not</em> present.</li>
+<li><code>shuttle_restricted</code> - If not null, only the named shuttle is allowed to use this landmark. (TODO: Overmap functionality)</li>
+<li><code>flags</code> - Bitfield - defaults to <code>SLANDMARK_FLAG_AUTOSET</code>, can be any combination of:
+<ul>
+<li><code>SLANDMARK_FLAG_AUTOSET</code> (1) - If set, will initialize base_area and base_turf to same as where it was spawned at.</li>
+<li><code>SLANDMARK_FLAG_ZERO_G</code>  (2) - If set, Zero-G shuttles moved here will lose gravity unless the area has ambient gravity.</li>
+</ul>
+</li>
+<li><code>special_dock_targets</code> - Used to configure shuttles with multiple docking controllers on the shuttle.  Map of shuttle <code>name</code> -&gt; <code>id_tag</code> of the docking controller it should use for this landmark. (Think of a shuttle with airlocks on both sides, each with their own controller.   This would tell it which side to use.)</li>
+</ul>
+<h2 id="shuttle-types">Shuttle Types</h2><h3 id="ferry-shuttles">Ferry Shuttles</h3>
+<p>These shuttles go back and forth between two locations (normally called &quot;station&quot; and &quot;offsite&quot;).
+Examples: Mining shuttle, Arrivals Shuttle, etc.</p>
+<p>Old Type Path: <code>/datum/shuttle/ferry</code><br />
+New Type Path: <code>/datum/shuttle/autodock/ferry</code></p>
+<h5 id="new-vars">New Vars:</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td>shuttle_area</td><td><code>/area</code> typepath(s)</td><td>Yes</td><td>Can be a single path or list of paths.</td></tr>
+</tbody></table>
+<h5 id="replaced-vars">Replaced vars:</h5><table><thead><tr><th align="center">Old</th><th align="center">New</th><th align="center">Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td align="center">area_station</td><td align="center">landmark_station</td><td align="center">Yes</td><td>Tag of the landmark for the &quot;station&quot; location.</td></tr>
+<tr><td align="center">area_offsite</td><td align="center">landmark_offsite</td><td align="center">Yes</td><td>Tag of the landmark for the &quot;offsite&quot; location.</td></tr>
+<tr><td align="center">area_transition</td><td align="center">landmark_transition</td><td align="center">No</td><td>Tag of the landmark for the &quot;transition&quot; location used during long_jump()</td></tr>
+<tr><td align="center">dock_target_station</td><td align="center">On landmark</td><td align="center">No</td><td><code>id_tag</code> docking controller <em>on the dock</em> has been moved to the <code>docking_controller</code> var on the landmark_station landmark obj.</td></tr>
+<tr><td align="center">dock_target_offsite</td><td align="center">On landmark</td><td align="center">No</td><td><code>id_tag</code> docking controller <em>on the dock</em> has been moved to the <code>docking_controller</code> var on the landmark_offsite landmark obj.</td></tr>
+</tbody></table>
+<h3 id="multi-shuttles">Multi Shuttles</h3>
+<p>These shuttles go between a list of configured locations, one of which is its starting location.
+Examples: Skipjack, Syndicate Shuttle</p>
+<p>Old Type Path: <code>/datum/shuttle/multi_shuttle</code><br />
+New Type Path: <code>/datum/shuttle/autodock/multi</code></p>
+<h5 id="new-vars">New Vars:</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td>shuttle_area</td><td><code>/area</code> typepath(s)</td><td>Yes</td><td>Can be a single path or list of paths.</td></tr>
+</tbody></table>
+<h5 id="replaced-vars">Replaced vars:</h5><table><thead><tr><th align="center">Old</th><th align="center">New</th><th align="center">Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td align="center">origin</td><td align="center">current_location</td><td align="center">Yes</td><td>Tag of the landmark where the shuttle is at startup.</td></tr>
+<tr><td align="center">interim</td><td align="center">landmark_transition</td><td align="center">No</td><td>Tag of the landmark for the &quot;transition&quot; location used during long_jump()</td></tr>
+<tr><td align="center">start_location</td><td align="center">N/A</td><td align="center">No</td><td>No longer necessary, automatically determined from the value of <code>origin</code></td></tr>
+<tr><td align="center">destinations</td><td align="center">destination_tags</td><td align="center">Yes</td><td>List of destinations the shuttle can travel to. Used to be associative list of <em>name</em> -&gt; <em>area typepath</em>, now is normal list of landmark tag ids.  Name is now read from the landmark obj.</td></tr>
+<tr><td align="center">destination_dock_targets</td><td align="center">On landmarks</td><td align="center">No</td><td>Used to be associative list of <em>name</em> -&gt; <em>id_tag</em> for which docking controller <em>on the dock</em> to use at each destination.  This is now specified by the <code>docking_controller</code> var on each landmark obj.</td></tr>
+</tbody></table>
+<h3 id="web-shuttles">Web Shuttles</h3>
+<p>These shuttles travel along a network of locations connected by routes.  Instead of being able to travel to any of its destinations, it can only travel to destinations connected by a route to its current location.  Added by Polaris as an upgrade to Multi Shuttles.
+Note: While cool, it is likely that the upcoming &quot;overmap&quot; shuttles will be even cooler, and may eventually replace some web shuttles.
+Examples:  Southern Cross' Ninja Shuttle, Tether's Excursion Shuttle</p>
+<p>Old Type Path: <code>/datum/shuttle/web_shuttle</code><br />
+New Type Path: <code>/datum/shuttle/autodock/web_shuttle</code></p>
+<h5 id="new-vars">New Vars:</h5><table><thead><tr><th>Name</th><th>Type</th><th>Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td>shuttle_area</td><td><code>/area</code> typepath(s)</td><td>Yes</td><td>Can be a single path or list of paths.</td></tr>
+</tbody></table>
+<h5 id="replaced-vars">Replaced vars:</h5><table><thead><tr><th align="center">Old</th><th align="center">New</th><th align="center">Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td align="center">current_area</td><td align="center">current_location</td><td align="center">Yes</td><td>Tag of the landmark where the shuttle is at startup.</td></tr>
+</tbody></table>
+<h4 id="web-destination-configuration">Web Destination Configuration (<code>/datum/shuttle_destination</code>)</h4>
+<p>The network of routes for each web shuttle is configured by defining datums.   These are mostly unchanged but use landmarks instead of areas now.</p>
+<h5 id="replaced-vars">Replaced vars:</h5><table><thead><tr><th align="center">Old</th><th align="center">New</th><th align="center">Required?</th><th>Info</th></tr></thead><tbody>
+<tr><td align="center">my_area</td><td align="center">my_landmark</td><td align="center">Yes</td><td>Tag of the landmark associated with this destination.</td></tr>
+<tr><td align="center">preferred_interim_area</td><td align="center">preferred_interim_tag</td><td align="center">No</td><td>Tag of the landmark for the &quot;transition&quot; location used during long_jump()</td></tr>
+<tr><td align="center">dock_target</td><td align="center">On landmark</td><td align="center">No</td><td><code>id_tag</code> docking controller <em>on the dock</em> has been moved to the <code>docking_controller</code> var on the my_landmark landmark obj.</td></tr>
+</tbody></table>
+<h3 id="misc-shuttle-types">Misc Shuttle Types</h3>
+<p>Other shuttle types that are either unused or unchanged in particular.</p>
+<h4 id="escape-pods">Escape Pods</h4>
+<p>Special case of ferry shuttles that use escape pod berth controllers.
+Type path changed from <code>/datum/shuttle/ferry/escape_pod</code> to  <code>/datum/shuttle/autodock/ferry/escape_pod</code>
+Follow same instructions as for other ferry shuttles.</p>
+<h4 id="multidock-ferry-shuttles">Multidock Ferry Shuttles</h4>
+<p><code>/datum/shuttle/ferry/multidock</code> was a variant of ferry shuttles that could use a different docking port at each location.
+Obsolete since is now natively supported by all dockable shuttles.</p></td></tr></table></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

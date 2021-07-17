@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;area - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="area.html#var">Var Details</a> - <a href="area.html#proc">Proc Details</a></header>
+<main>
+<h1>Unknown <aside>/<a href="area.html">area</a></aside><aside> inherits /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 3"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="area.html#var/minimap_color">minimap_color</a></th><td>Color on minimaps, if it's null (which is default) it makes one at random.</td></tr>
+            <tr><th><a href="area.html#var/unique">unique</a></th><td>If false, loading multiple maps with this area type will create multiple instances.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="area.html#proc/Destroy">Destroy</a></th><td>Destroy an area and clean it up</td></tr>
+            <tr><th><a href="area.html#proc/Exited">Exited</a></th><td>Called when an atom exits an area</td></tr>
+            <tr><th><a href="area.html#proc/New">New</a></th><td>Called when an area loads</td></tr>
+            <tr><th><a href="area.html#proc/reg_in_areas_in_z">reg_in_areas_in_z</a></th><td>Register this area as belonging to a z level</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/minimap_color"><aside class="declaration">var </aside>minimap_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 59"/></a></h3>
+        <p>Color on minimaps, if it's null (which is default) it makes one at random.</p><h3 id="var/unique"><aside class="declaration">var </aside>unique
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 54"/></a></h3>
+        <p>If false, loading multiple maps with this area type will create multiple instances.</p><h2 id="proc">Proc Details</h2><h3 id="proc/Destroy"><aside class="parent"><a title="/atom" href="atom.html#proc/Destroy">&uarr;</a></aside>Destroy<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas.dm#L140">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 140"/></a></aside>
+        </h3>
+        <p>Destroy an area and clean it up</p>
+<p>Removes the area from GLOB.areas_by_type and also stops it processing on SSobj</p>
+<p>This is despite the fact that no code appears to put it on SSobj, but
+who am I to argue with old coders</p><h3 id="proc/Exited"><aside class="parent"><a title="/atom" href="atom.html#proc/Exited">&uarr;</a></aside>Exited<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/M) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas_movement.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas_movement.dm 53"/></a></aside>
+        </h3>
+        <p>Called when an atom exits an area</p>
+<p>Sends signals COMSIG_AREA_EXITED and COMSIG_EXIT_AREA (to the atom)</p><h3 id="proc/New">New<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 64"/></a></aside>
+        </h3>
+        <p>Called when an area loads</p>
+<p>Adds the item to the GLOB.areas_by_type list based on area type</p><h3 id="proc/reg_in_areas_in_z"><aside class="declaration">proc </aside>reg_in_areas_in_z<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/area/areas.dm#L120">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 120"/></a></aside>
+        </h3>
+        <p>Register this area as belonging to a z level</p>
+<p>Ensures the item is added to the SSmapping.areas_in_z list for this z</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

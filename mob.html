@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob.html#var">Var Details</a> - <a href="mob.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="mob.html">mob</a><aside> inherits /<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_onclick/hud/alert.dm#L452">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_onclick&#x2F;hud&#x2F;alert.dm 452"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob.html#var/focus">focus</a></th><td>What receives our keyboard inputs, defaulting to src.</td></tr>
+            <tr><th><a href="mob.html#var/is_shifted">is_shifted</a></th><td>Player pixel shifting, if TRUE, we need to reset on move.</td></tr>
+            <tr><th><a href="mob.html#var/last_turn">last_turn</a></th><td>Last world.time we turned in our spot without moving (see: facing directions)</td></tr>
+            <tr><th><a href="mob.html#var/m_intent">m_intent</a></th><td>How are we intending to move? Walk/run/etc.</td></tr>
+            <tr><th><a href="mob.html#var/move_delay">move_delay</a></th><td>Next world.time we will be able to move.</td></tr>
+            <tr><th><a href="mob.html#var/tgui_open_uis">tgui_open_uis</a></th><td>global</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob.html#proc/Process_Spacemove">Process_Spacemove</a></th><td>Process_Spacemove
+Called by /client/Move()
+For moving in space
+Return 1 for movement 0 for none</td></tr>
+            <tr><th><a href="mob.html#proc/SelfMove">SelfMove</a></th><td>end</td></tr>
+            <tr><th><a href="mob.html#proc/allow_examine">allow_examine</a></th><td>Returns whether or not we should be allowed to examine a target</td></tr>
+            <tr><th><a href="mob.html#proc/anti_magic_check">anti_magic_check</a></th><td>Checks for anti magic sources.</td></tr>
+            <tr><th><a href="mob.html#proc/canface">canface</a></th><td>Returns true if a mob can turn to face things</td></tr>
+            <tr><th><a href="mob.html#proc/eastface">eastface</a></th><td>Hidden verb to turn east</td></tr>
+            <tr><th><a href="mob.html#proc/get_effective_size">get_effective_size</a></th><td>Get the effective size of a mob.
+Currently this is based only on size_multiplier for micro/macro stuff,
+but in the future we may also incorporate the &quot;mob_size&quot;, so that
+a macro mouse is still only effectively &quot;normal&quot; or a micro dragon is still large etc.</td></tr>
+            <tr><th><a href="mob.html#proc/me_verb_subtle">me_verb_subtle</a></th><td>SUBTLE COMMAND</td></tr>
+            <tr><th><a href="mob.html#proc/movement_delay">movement_delay</a></th><td>until movespeed modifiers are done - silicons</td></tr>
+            <tr><th><a href="mob.html#proc/northface">northface</a></th><td>Hidden verb to turn north</td></tr>
+            <tr><th><a href="mob.html#proc/reset_perspective">reset_perspective</a></th><td>Reset the attached clients perspective (viewpoint)</td></tr>
+            <tr><th><a href="mob.html#proc/return_to_menu">return_to_menu</a></th><td>Alias for respawn</td></tr>
+            <tr><th><a href="mob.html#proc/shared_ui_interaction">shared_ui_interaction</a></th><td>public</td></tr>
+            <tr><th><a href="mob.html#proc/southface">southface</a></th><td>Hidden verb to turn south</td></tr>
+            <tr><th><a href="mob.html#proc/subtler_anti_ghost">subtler_anti_ghost</a></th><td>SHIT COPYPASTE CODE FOR SUBTLER ANTI GHOST</td></tr>
+            <tr><th><a href="mob.html#proc/toggle_move_intent">toggle_move_intent</a></th><td>Toggle the move intent of the mob</td></tr>
+            <tr><th><a href="mob.html#proc/westface">westface</a></th><td>Hidden verb to turn west</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/focus"><aside class="declaration">var </aside>focus
+            <aside>&ndash; /<a href="datum.html">datum</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/keybindings/focus.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;keybindings&#x2F;focus.dm 5"/></a></h3>
+        <p>What receives our keyboard inputs, defaulting to src.</p><h3 id="var/is_shifted"><aside class="declaration">var </aside>is_shifted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_defines.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_defines.dm 104"/></a></h3>
+        <p>Player pixel shifting, if TRUE, we need to reset on move.</p><h3 id="var/last_turn"><aside class="declaration">var </aside>last_turn
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_defines.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_defines.dm 18"/></a></h3>
+        <p>Last world.time we turned in our spot without moving (see: facing directions)</p><h3 id="var/m_intent"><aside class="declaration">var </aside>m_intent
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_defines.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_defines.dm 10"/></a></h3>
+        <p>How are we intending to move? Walk/run/etc.</p><h3 id="var/move_delay"><aside class="declaration">var </aside>move_delay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_defines.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_defines.dm 16"/></a></h3>
+        <p>Next world.time we will be able to move.</p><h3 id="var/tgui_open_uis"><aside class="declaration">var </aside>tgui_open_uis
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/external.dm#L125">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;external.dm 125"/></a></h3>
+        <p>global</p>
+<p>Tracks open UIs for a user.</p><h2 id="proc">Proc Details</h2><h3 id="proc/Process_Spacemove"><aside class="parent"><a title="/atom/movable" href="atom/movable.html#proc/Process_Spacemove">&uarr;</a></aside>Process_Spacemove<aside>(direction) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L397">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 397"/></a></aside>
+        </h3>
+        <p>Process_Spacemove
+Called by /client/Move()
+For moving in space
+Return 1 for movement 0 for none</p><h3 id="proc/SelfMove"><aside class="declaration">proc </aside>SelfMove<aside>(/<a href="turf.html">turf</a>/n, direct) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L319">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 319"/></a></aside>
+        </h3>
+        <p>end</p><h3 id="proc/allow_examine"><aside class="declaration">proc </aside>allow_examine<aside>(/<a href="atom.html">atom</a>/A) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob.dm#L1240">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob.dm 1240"/></a></aside>
+        </h3>
+        <p>Returns whether or not we should be allowed to examine a target</p><h3 id="proc/anti_magic_check"><aside class="declaration">proc </aside>anti_magic_check<aside>(magic, holy, chargecost, self) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob.dm#L1220">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob.dm 1220"/></a></aside>
+        </h3>
+        <p>Checks for anti magic sources.</p>
+<p>@params</p>
+<ul>
+<li>magic - wizard-type magic</li>
+<li>holy - cult-type magic, stuff chaplains/nullrods/similar should be countering</li>
+<li>chargecost - charges to remove from antimagic if applicable/not a permanent source</li>
+<li>self - check if the antimagic is ourselves</li>
+</ul>
+<p>@return The datum source of the antimagic</p><h3 id="proc/canface"><aside class="declaration">proc </aside>canface<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L489">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 489"/></a></aside>
+        </h3>
+        <p>Returns true if a mob can turn to face things</p>
+<p>Conditions:</p>
+<ul>
+<li>client.last_turn &gt; world.time</li>
+<li>not dead or unconcious</li>
+<li>not anchored</li>
+<li>no transform not set</li>
+<li>we are not restrained</li>
+</ul><h3 id="proc/eastface"><aside class="declaration">verb </aside>eastface<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L501">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 501"/></a></aside>
+        </h3>
+        <p>Hidden verb to turn east</p><h3 id="proc/get_effective_size"><aside class="declaration">proc </aside>get_effective_size<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/vore/resizing/resize_vr.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vore&#x2F;resizing&#x2F;resize_vr.dm 54"/></a></aside>
+        </h3>
+        <p>Get the effective size of a mob.
+Currently this is based only on size_multiplier for micro/macro stuff,
+but in the future we may also incorporate the &quot;mob_size&quot;, so that
+a macro mouse is still only effectively &quot;normal&quot; or a micro dragon is still large etc.</p><h3 id="proc/me_verb_subtle"><aside class="declaration">verb </aside>me_verb_subtle<aside>(message) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/say_vr.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;say_vr.dm 5"/></a></aside>
+        </h3>
+        <p>SUBTLE COMMAND</p><h3 id="proc/movement_delay"><aside class="declaration">proc </aside>movement_delay<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 54"/></a></aside>
+        </h3>
+        <p>until movespeed modifiers are done - silicons</p><h3 id="proc/northface"><aside class="declaration">verb </aside>northface<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L519">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 519"/></a></aside>
+        </h3>
+        <p>Hidden verb to turn north</p><h3 id="proc/reset_perspective"><aside class="declaration">proc </aside>reset_perspective<aside>(/<a href="atom.html">atom</a>/A) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob.dm 87"/></a></aside>
+        </h3>
+        <p>Reset the attached clients perspective (viewpoint)</p>
+<p>reset_perspective() set eye to common default : mob on turf, loc otherwise
+reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)</p><h3 id="proc/return_to_menu"><aside class="declaration">verb </aside>return_to_menu<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob.dm#L402">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob.dm 402"/></a></aside>
+        </h3>
+        <p>Alias for respawn</p><h3 id="proc/shared_ui_interaction"><aside class="declaration">proc </aside>shared_ui_interaction<aside>(src_object) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states.dm 62"/></a></aside>
+        </h3>
+        <p>public</p>
+<p>Standard interaction/sanity checks. Different mob types may have overrides.</p>
+<p>return UI_state The state of the UI.</p><h3 id="proc/southface"><aside class="declaration">verb </aside>southface<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L528">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 528"/></a></aside>
+        </h3>
+        <p>Hidden verb to turn south</p><h3 id="proc/subtler_anti_ghost"><aside class="declaration">verb </aside>subtler_anti_ghost<aside>(message) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/say_vr.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;say_vr.dm 67"/></a></aside>
+        </h3>
+        <p>SHIT COPYPASTE CODE FOR SUBTLER ANTI GHOST</p><h3 id="proc/toggle_move_intent"><aside class="declaration">proc </aside>toggle_move_intent<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/living/living_movement.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_movement.dm 27"/></a></aside>
+        </h3>
+        <p>Toggle the move intent of the mob</p>
+<p>triggers an update the move intent hud as well</p><h3 id="proc/westface"><aside class="declaration">verb </aside>westface<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_movement.dm#L510">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_movement.dm 510"/></a></aside>
+        </h3>
+        <p>Hidden verb to turn west</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

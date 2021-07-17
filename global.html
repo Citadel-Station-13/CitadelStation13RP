@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>(global) - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="global.html#var">Var Details</a> - <a href="global.html#proc">Proc Details</a></header>
+<main>
+<h1>(global)
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/(unknown)">
+        <img src="git.png" width="16" height="16" title="(unknown)"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="global.html#var/BLOOD_VOLUME_SAFE">BLOOD_VOLUME_SAFE</a></th><td>BLOOD SYSTEM</td></tr>
+            <tr><th><a href="global.html#var/Failsafe">Failsafe</a></th><td>Failsafe</td></tr>
+            <tr><th><a href="global.html#var/Master">Master</a></th><td>StonedMC</td></tr>
+            <tr><th><a href="global.html#var/SSchat">SSchat</a></th><td>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</td></tr>
+            <tr><th><a href="global.html#var/SSpersist">SSpersist</a></th><td>Paid Leave Subsystem
+For tracking how much department PTO time players have accured</td></tr>
+            <tr><th><a href="global.html#var/SStgui">SStgui</a></th><td>tgui subsystem</td></tr>
+            <tr><th><a href="global.html#var/SStimer">SStimer</a></th><td></td></tr>
+            <tr><th><a href="global.html#var/SStranscore">SStranscore</a></th><td>Mind/body data storage system
+for the resleeving tech</td></tr>
+            <tr><th><a href="global.html#var/access_cent_general">access_cent_general</a></th><td>Central Command</td></tr>
+            <tr><th><a href="global.html#var/access_security">access_security</a></th><td>Station access</td></tr>
+            <tr><th><a href="global.html#var/access_syndicate">access_syndicate</a></th><td>Antag access</td></tr>
+            <tr><th><a href="global.html#var/access_synth">access_synth</a></th><td>Misc</td></tr>
+            <tr><th><a href="global.html#var/ear_styles_list">ear_styles_list</a></th><td>VOREStation global lists</td></tr>
+            <tr><th><a href="global.html#var/gurgled_overlays">gurgled_overlays</a></th><td>////// Auto-Emotes //////
+Prey Loop Refresh/hack /
+////// Sound Selections //////
+////// Exit Early ///////
+Early Non-Mode Handling 
+//////// DM_HOLD ////////
+/////// DM_DIGEST ///////
+/////// DM_ABSORB ///////
+/////// DM_UNABSORB ///////
+/////// DM_DRAIN ///////
+/////// DM_SHRINK ///////
+/////// DM_GROW ///////
+/////// DM_SIZE_STEAL ///////
+//////// DM_HEAL ////////
+////// DM_TRANSFORM //////
+////// Make any noise //////</td></tr>
+            <tr><th><a href="global.html#var/infomorph_software_by_key">infomorph_software_by_key</a></th><td>SOFTWARE DOWNLOADS</td></tr>
+            <tr><th><a href="global.html#var/latejoin_talon">latejoin_talon</a></th><td>Spawning and despawning</td></tr>
+            <tr><th><a href="global.html#var/lobby_image">lobby_image</a></th><td>var/atom/movable/lobby_image = new /atom/movable{icon = 'icons/misc/title.dmi'; icon_state = lobby_image_state; screen_loc = &quot;1,1&quot;; name = &quot;Polaris&quot;}</td></tr>
+            <tr><th><a href="global.html#var/marker_beacon_colors">marker_beacon_colors</a></th><td>Marker Beacons</td></tr>
+            <tr><th><a href="global.html#var/photo_count">photo_count</a></th><td>photo</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="global.html#proc/Broadcast_Message">Broadcast_Message</a></th><td>Here is the big, bad function that broadcasts a message given the appropriate
+parameters.</td></tr>
+            <tr><th><a href="global.html#proc/CreateBans">CreateBans</a></th><td>DEBUG</td></tr>
+            <tr><th><a href="global.html#proc/HasAbove">HasAbove</a></th><td>&lt; What the map edge should be formed with. (null = world.turf)</td></tr>
+            <tr><th><a href="global.html#proc/IsAdminGhost">IsAdminGhost</a></th><td>Returns true if the user should have admin AI level access</td></tr>
+            <tr><th><a href="global.html#proc/_addtimer">_addtimer</a></th><td>Create a new timer and insert it in the queue.
+You should not call this directly, and should instead use the addtimer macro, which includes source information.</td></tr>
+            <tr><th><a href="global.html#proc/_turf_in_offset">_turf_in_offset</a></th><td>Locating turfs</td></tr>
+            <tr><th><a href="global.html#proc/add_keybinding">add_keybinding</a></th><td>Adds an instanced keybinding to the global tracker</td></tr>
+            <tr><th><a href="global.html#proc/animate_aura">animate_aura</a></th><td>Animate a 'halo' around an object.</td></tr>
+            <tr><th><a href="global.html#proc/area_is_occupied">area_is_occupied</a></th><td>Checks if any living humans are in a given area.</td></tr>
+            <tr><th><a href="global.html#proc/build_composite_icon">build_composite_icon</a></th><td>VSTATION SPECIFIC</td></tr>
+            <tr><th><a href="global.html#proc/callHook">callHook</a></th><td>@file hooks.dm
+Implements hooks, a simple way to run code on pre-defined events.</td></tr>
+            <tr><th><a href="global.html#proc/check_zone">check_zone</a></th><td>Returns true if the AI has silicon control with those flags</td></tr>
+            <tr><th><a href="global.html#proc/deltimer">deltimer</a></th><td>Delete a timer</td></tr>
+            <tr><th><a href="global.html#proc/findNullRod">findNullRod</a></th><td>Construct Spells</td></tr>
+            <tr><th><a href="global.html#proc/gas_id2path">gas_id2path</a></th><td>Converts a gas ID to typepath</td></tr>
+            <tr><th><a href="global.html#proc/generate_asset_name">generate_asset_name</a></th><td>Generate a filename for this asset
+The same asset will always lead to the same asset name
+(Generated names do not include file extention.)</td></tr>
+            <tr><th><a href="global.html#proc/getOPressureDifferential">getOPressureDifferential</a></th><td>Gets the highest and lowest pressures from the tiles in cardinal directions
+around us, then checks the difference.</td></tr>
+            <tr><th><a href="global.html#proc/get_allowed_instrument_ids">get_allowed_instrument_ids</a></th><td>Get all non admin_only instruments.</td></tr>
+            <tr><th><a href="global.html#proc/get_random_uplink_items">get_random_uplink_items</a></th><td>Support procs</td></tr>
+            <tr><th><a href="global.html#proc/get_wound_type">get_wound_type</a></th><td>WOUND DEFINITIONS</td></tr>
+            <tr><th><a href="global.html#proc/icon2base64">icon2base64</a></th><td>Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
+exporting it as text, and then parsing the base64 from that.
+(This relies on byond automatically storing icons in savefiles as base64)</td></tr>
+            <tr><th><a href="global.html#proc/init_keybindings">init_keybindings</a></th><td>Creates and sorts all the keybinding datums</td></tr>
+            <tr><th><a href="global.html#proc/is_area_occupied">is_area_occupied</a></th><td>Checks if any living humans are in a given area!</td></tr>
+            <tr><th><a href="global.html#proc/is_special_character">is_special_character</a></th><td>ADMIN HELPER PROCS</td></tr>
+            <tr><th><a href="global.html#proc/json_deserialize_datum">json_deserialize_datum</a></th><td>Convert a list of json to datum</td></tr>
+            <tr><th><a href="global.html#proc/json_serialize_datum">json_serialize_datum</a></th><td>Convert a datum into a json blob</td></tr>
+            <tr><th><a href="global.html#proc/lavaland_environment_check">lavaland_environment_check</a></th><td>This is here for now</td></tr>
+            <tr><th><a href="global.html#proc/log_access_in">log_access_in</a></th><td>&lt;VStation_specific&gt;</td></tr>
+            <tr><th><a href="global.html#proc/log_attack">log_attack</a></th><td>&lt;/VStation_specific&gt;</td></tr>
+            <tr><th><a href="global.html#proc/log_debug">log_debug</a></th><td>VSTATION SPECIFIC LOGGING.</td></tr>
+            <tr><th><a href="global.html#proc/log_error">log_error</a></th><td>DEPRICATED. USE log_runtime(text) INSTEAD.</td></tr>
+            <tr><th><a href="global.html#proc/log_tgui">log_tgui</a></th><td>Appends a tgui-related log entry. All arguments are optional.</td></tr>
+            <tr><th><a href="global.html#proc/make_datum_reference_lists">make_datum_reference_lists</a></th><td>Initial Building</td></tr>
+            <tr><th><a href="global.html#proc/md5asfile">md5asfile</a></th><td>Save file as an external file then md5 it.
+Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.</td></tr>
+            <tr><th><a href="global.html#proc/md5filepath">md5filepath</a></th><td>Returns the md5 of a file at a given path.</td></tr>
+            <tr><th><a href="global.html#proc/message_to_html">message_to_html</a></th><td>Message-related procs</td></tr>
+            <tr><th><a href="global.html#proc/onstation_weapon_locked">onstation_weapon_locked</a></th><td>Checks for facility weapon safety interlocks. Returns TRUE if weapons should lock.</td></tr>
+            <tr><th><a href="global.html#proc/persist_nif_data">persist_nif_data</a></th><td>Persist any NIF data that needs to be persisted. It's stored in a list to make it more malleable
+towards future shenanigans such as upgradable NIFs or different types or things of that nature,
+without invoking the need for a bunch of different save file variables.</td></tr>
+            <tr><th><a href="global.html#proc/prep_for_persist">prep_for_persist</a></th><td>Prep for save: returns a preferences object if we're ready and allowed to save this mob.</td></tr>
+            <tr><th><a href="global.html#proc/print_dir">print_dir</a></th><td>VSTATION LOGGING HELPERS</td></tr>
+            <tr><th><a href="global.html#proc/resolve_excess_nutrition">resolve_excess_nutrition</a></th><td>Resolve any surplus/deficit in nutrition's effet on weight all at once.
+Normally this would slowly apply during the round; once we get to the end
+we need to apply it all at once.</td></tr>
+            <tr><th><a href="global.html#proc/rgb_construct_color_matrix">rgb_construct_color_matrix</a></th><td>Assembles a color matrix, defaulting to identity</td></tr>
+            <tr><th><a href="global.html#proc/sanitize_filename">sanitize_filename</a></th><td>have to rewrite this sanitize code :djoy:</td></tr>
+            <tr><th><a href="global.html#proc/strip_improper">strip_improper</a></th><td>Strip out the special beyond characters for \proper and \improper
+from text that will be sent to the browser.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_Topic">tgui_Topic</a></th><td>Middleware for /client/Topic.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_alert">tgui_alert</a></th><td>Creates a TGUI alert window and returns the user's response.</td></tr>
+            <tr><th><a href="global.html#proc/tgui_alert_async">tgui_alert_async</a></th><td>Creates an asynchronous TGUI alert window with an associated callback.</td></tr>
+            <tr><th><a href="global.html#proc/timeleft">timeleft</a></th><td>Get the remaining deciseconds on a timer</td></tr>
+            <tr><th><a href="global.html#proc/to_chat">to_chat</a></th><td>Sends the message to the recipient (target).</td></tr>
+            <tr><th><a href="global.html#proc/to_chat_immediate">to_chat_immediate</a></th><td>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</td></tr>
+            <tr><th><a href="global.html#proc/url2htmlloader">url2htmlloader</a></th><td>Return html to load a url.
+for use inside of browse() calls to html assets that might be loaded on a cdn.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/BLOOD_VOLUME_SAFE"><aside class="declaration">var </aside>BLOOD_VOLUME_SAFE
+            <aside>&ndash; /const</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/organs/blood.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;blood.dm 5"/></a></h3>
+        <p>BLOOD SYSTEM</p><h3 id="var/Failsafe"><aside class="declaration">var </aside>Failsafe
+            <aside>&ndash; /<a href="datum.html">datum</a>/controller/failsafe</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/failsafe.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;failsafe.dm 7"/></a></h3>
+        <p>Failsafe</p>
+<p>Pretty much pokes the MC to make sure it's still alive.</p><h3 id="var/Master"><aside class="declaration">var </aside>Master
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/controller/master</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/master.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;master.dm 11"/></a></h3>
+        <p>StonedMC</p>
+<p>Designed to properly split up a given tick among subsystems
+Note: if you read parts of this code and think &quot;why is it doing it that way&quot;
+Odds are, there is a reason</p><h3 id="var/SSchat"><aside class="declaration">var </aside>SSchat
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/chat</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/chat.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;chat.dm 6"/></a></h3>
+        <p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/SSpersist"><aside class="declaration">var </aside>SSpersist
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/persist</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/persist_vr.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;persist_vr.dm 6"/></a></h3>
+        <p>Paid Leave Subsystem
+For tracking how much department PTO time players have accured</p><h3 id="var/SStgui"><aside class="declaration">var </aside>SStgui
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/tgui.html">tgui</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/tgui.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;tgui.dm 10"/></a></h3>
+        <p>tgui subsystem</p>
+<p>Contains all tgui state and subsystem code.</p>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="var/SStimer"><aside class="declaration">var </aside>SStimer
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/timer.html">timer</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/timer.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;timer.dm 28"/></a></h3>
+        <h1 id="timer-subsystem">Timer Subsystem</h1>
+<p>Handles creation, callbacks, and destruction of timed events.</p>
+<p>It is important to understand the buckets used in the timer subsystem are just a series of circular doubly-linked
+lists. The object at a given index in bucket_list is a /datum/timedevent, the head of a circular list, which has prev
+and next references for the respective elements in that bucket's circular list.</p><h3 id="var/SStranscore"><aside class="declaration">var </aside>SStranscore
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/transcore</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/transcore_vr.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;transcore_vr.dm 9"/></a></h3>
+        <p>Mind/body data storage system
+for the resleeving tech</p><h3 id="var/access_cent_general"><aside class="declaration">var </aside>access_cent_general
+            <aside>&ndash; /const</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/jobs/access_datum.dm#L429">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;access_datum.dm 429"/></a></h3>
+        <p>Central Command</p><h3 id="var/access_security"><aside class="declaration">var </aside>access_security
+            <aside>&ndash; /const</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/jobs/access_datum.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;access_datum.dm 13"/></a></h3>
+        <p>Station access</p><h3 id="var/access_syndicate"><aside class="declaration">var </aside>access_syndicate
+            <aside>&ndash; /const</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/jobs/access_datum.dm#L486">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;access_datum.dm 486"/></a></h3>
+        <p>Antag access</p><h3 id="var/access_synth"><aside class="declaration">var </aside>access_synth
+            <aside>&ndash; /const</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/jobs/access_datum.dm#L494">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;jobs&#x2F;access_datum.dm 494"/></a></h3>
+        <p>Misc</p><h3 id="var/ear_styles_list"><aside class="declaration">var </aside>ear_styles_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/global_lists.dm#L219">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;global_lists.dm 219"/></a></h3>
+        <p>VOREStation global lists</p><h3 id="var/gurgled_overlays"><aside class="declaration">var </aside>gurgled_overlays
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/vore/eating/contaminate_vr.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vore&#x2F;eating&#x2F;contaminate_vr.dm 1"/></a></h3>
+        <p>////// Auto-Emotes //////
+Prey Loop Refresh/hack /
+////// Sound Selections //////
+////// Exit Early ///////
+Early Non-Mode Handling 
+//////// DM_HOLD ////////
+/////// DM_DIGEST ///////
+/////// DM_ABSORB ///////
+/////// DM_UNABSORB ///////
+/////// DM_DRAIN ///////
+/////// DM_SHRINK ///////
+/////// DM_GROW ///////
+/////// DM_SIZE_STEAL ///////
+//////// DM_HEAL ////////
+////// DM_TRANSFORM //////
+////// Make any noise //////</p><h3 id="var/infomorph_software_by_key"><aside class="declaration">var </aside>infomorph_software_by_key
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/resleeving/infomorph.dm#L440">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;resleeving&#x2F;infomorph.dm 440"/></a></h3>
+        <p>SOFTWARE DOWNLOADS</p><h3 id="var/latejoin_talon"><aside class="declaration">var </aside>latejoin_talon
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/maps/talon/talon.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;maps&#x2F;talon&#x2F;talon.dm 3"/></a></h3>
+        <p>Spawning and despawning</p><h3 id="var/lobby_image"><aside class="declaration">var </aside>lobby_image
+            <aside>&ndash; /obj/effect</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/new_player/login.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;new_player&#x2F;login.dm 3"/></a></h3>
+        <p>var/atom/movable/lobby_image = new /atom/movable{icon = 'icons/misc/title.dmi'; icon_state = lobby_image_state; screen_loc = &quot;1,1&quot;; name = &quot;Polaris&quot;}</p><h3 id="var/marker_beacon_colors"><aside class="declaration">var </aside>marker_beacon_colors
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/objects/items/stacks/marker_beacons.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;stacks&#x2F;marker_beacons.dm 2"/></a></h3>
+        <p>Marker Beacons</p><h3 id="var/photo_count"><aside class="declaration">var </aside>photo_count
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/paperwork/photography.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;photography.dm 24"/></a></h3>
+        <p>photo</p><h2 id="proc">Proc Details</h2><h3 id="proc/Broadcast_Message"><aside class="declaration">proc </aside>Broadcast_Message<aside>(/<a href="datum.html">datum</a>/radio_frequency/connection, /<a href="mob.html">mob</a>/M, vmask, vmessage, /<a href="obj/item.html">obj/item</a>/radio/radio, message, name, job, realname, vname, data, compression, /list/level, freq, verbage, /<a href="datum.html">datum</a>/language/speaking, /list/forced_radios) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/machinery/telecomms/broadcaster.dm#L338">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;telecomms&#x2F;broadcaster.dm 338"/></a></aside>
+        </h3>
+        <p>Here is the big, bad function that broadcasts a message given the appropriate
+parameters.</p>
+<p>@param connection:
+The datum generated in radio.dm, stored in signal.data[&quot;connection&quot;].</p>
+<p>@param M:
+Reference to the mob/speaker, stored in signal.data[&quot;mob&quot;]</p>
+<p>@param vmask:
+Boolean value if the mob is &quot;hiding&quot; its identity via voice mask, stored in
+signal.data[&quot;vmask&quot;]</p>
+<p>@param vmessage:
+If specified, will display this as the message; such as &quot;chimpering&quot;
+for monkies if the mob is not understood. Stored in signal.data[&quot;vmessage&quot;].</p>
+<p>@param radio:
+Reference to the radio broadcasting the message, stored in signal.data[&quot;radio&quot;]</p>
+<p>@param message:
+The actual string message to display to mobs who understood mob M. Stored in
+signal.data[&quot;message&quot;]</p>
+<p>@param name:
+The name to display when a mob receives the message. signal.data[&quot;name&quot;]</p>
+<p>@param job:
+The name job to display for the AI when it receives the message. signal.data[&quot;job&quot;]</p>
+<p>@param realname:
+The &quot;real&quot; name associated with the mob. signal.data[&quot;realname&quot;]</p>
+<p>@param vname:
+If specified, will use this name when mob M is not understood. signal.data[&quot;vname&quot;]</p>
+<p>@param data:
+If specified:
+1 -- Will only broadcast to intercoms
+2 -- Will only broadcast to intercoms and station-bounced radios
+3 -- Broadcast to syndicate frequency
+4 -- AI can't track down this person. Useful for imitation broadcasts where you can't find the actual mob</p>
+<p>@param compression:
+If 0, the signal is audible
+If nonzero, the signal may be partially inaudible or just complete gibberish.</p>
+<p>@param level:
+The list of Z levels that the sending radio is broadcasting to. Having 0 in the list broadcasts on all levels</p>
+<p>@param freq
+The frequency of the signal</p><h3 id="proc/CreateBans"><aside class="declaration">proc </aside>CreateBans<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/admin/NewBan.dm#L196">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;NewBan.dm 196"/></a></aside>
+        </h3>
+        <p>DEBUG</p><h3 id="proc/HasAbove"><aside class="declaration">proc </aside>HasAbove<aside>(z) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/multiz/_stubs.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;multiz&#x2F;_stubs.dm 12"/></a></aside>
+        </h3>
+        <p>&lt; What the map edge should be formed with. (null = world.turf)</p><h3 id="proc/IsAdminGhost"><aside class="declaration">proc </aside>IsAdminGhost<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_helpers.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 91"/></a></aside>
+        </h3>
+        <p>Returns true if the user should have admin AI level access</p><h3 id="proc/_addtimer"><aside class="declaration">proc </aside>_addtimer<aside>(/<a href="datum.html">datum</a>/callback/callback, wait, flags, file, line) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/timer.dm#L657">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;timer.dm 657"/></a></aside>
+        </h3>
+        <p>Create a new timer and insert it in the queue.
+You should not call this directly, and should instead use the addtimer macro, which includes source information.</p>
+<p>Arguments:</p>
+<ul>
+<li>callback the callback to call on timer finish</li>
+<li>wait deciseconds to run the timer for</li>
+<li>flags flags for this timer, see: code__DEFINES\subsystems.dm</li>
+</ul><h3 id="proc/_turf_in_offset"><aside class="declaration">proc </aside>_turf_in_offset<aside>(s, x, y, z) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/admin/verbs/SDQL2/SDQL_2_wrappers.dm#L226">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;SDQL2&#x2F;SDQL_2_wrappers.dm 226"/></a></aside>
+        </h3>
+        <p>Locating turfs</p><h3 id="proc/add_keybinding"><aside class="declaration">proc </aside>add_keybinding<aside>(/<a href="datum.html">datum</a>/keybinding/instance) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/lists/keybindings.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybindings.dm 11"/></a></aside>
+        </h3>
+        <p>Adds an instanced keybinding to the global tracker</p><h3 id="proc/animate_aura"><aside class="declaration">proc </aside>animate_aura<aside>(/<a href="atom.html">atom</a>/A, simple_icons, color, anim_duration, offset, loops, grow_to, pixel_scale) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/icons.dm#L1308">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 1308"/></a></aside>
+        </h3>
+        <p>Animate a 'halo' around an object.</p>
+<p>This proc is not exactly cheap. You'd be well advised to set up many-loops rather than call this super-often. getCompoundIcon is
+mostly to blame for this. If Byond ever implements a way to get something's icon more 'gently' than this, do that instead.</p>
+<ul>
+<li>A - This is the atom to put the halo on</li>
+<li>simple_icons - If set to TRUE, will just perform a very basic icon and icon_state steal. DO USE when possible.</li>
+<li>color - This is the color for the halo</li>
+<li>anim_duration - This decides how fast (or slow) the animation plays</li>
+<li>offset - Mysterious variable that determines size of the halo's gap from icon</li>
+<li>loops - How many times the animation loops</li>
+<li>grow_to - Relative to the size of the icon, how big the halo grows while fading (don't use negatives for inward halos, use &lt; 1)</li>
+<li>pixel_scale - If you'd like the halo to use pixel scale or the default 'fuzzy' scale</li>
+</ul><h3 id="proc/area_is_occupied"><aside class="declaration">proc </aside>area_is_occupied<aside>(/<a href="area.html">area</a>/myarea) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/game.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 49"/></a></aside>
+        </h3>
+        <p>Checks if any living humans are in a given area.</p><h3 id="proc/build_composite_icon"><aside class="declaration">proc </aside>build_composite_icon<aside>(/<a href="atom.html">atom</a>/A) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/icons.dm#L1248">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 1248"/></a></aside>
+        </h3>
+        <p>VSTATION SPECIFIC</p><h3 id="proc/callHook"><aside class="declaration">proc </aside>callHook<aside>(hook, /list/args) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/hooks.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;hooks.dm 26"/></a></aside>
+        </h3>
+        <p>@file hooks.dm
+Implements hooks, a simple way to run code on pre-defined events.</p>
+<ul>
+<li>
+<p>@page hooks Code hooks</p>
+</li>
+<li>
+<p>@section hooks Hooks</p>
+</li>
+<li>
+<p>A hook is defined under /hook in the type tree.</p>
+</li>
+<li>
+<p>To add some code to be called by the hook, define a proc under the type, as so:</p>
+</li>
+<li>
+<p>@code
+/hook/foo/proc/bar()
+if(1)
+return 1 //Sucessful
+else
+return 0 //Error, or runtime.</p>
+</li>
+<li>
+<p>@endcode</p>
+</li>
+<li>
+<p>All hooks must return nonzero on success, as runtimes will force return null.</p>
+</li>
+</ul>
+<p>Calls a hook, executing every piece of code that's attached to it.
+@param hook	Identifier of the hook to call.
+@returns		1 if all hooked code runs successfully, 0 otherwise.</p><h3 id="proc/check_zone"><aside class="declaration">proc </aside>check_zone<aside>(zone) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/mob/mob_helpers.dm#L116">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;mob_helpers.dm 116"/></a></aside>
+        </h3>
+        <p>Returns true if the AI has silicon control with those flags</p><h3 id="proc/deltimer"><aside class="declaration">proc </aside>deltimer<aside>(id) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/timer.dm#L706">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;timer.dm 706"/></a></aside>
+        </h3>
+        <p>Delete a timer</p>
+<p>Arguments:</p>
+<ul>
+<li>id a timerid or a /datum/timedevent</li>
+</ul><h3 id="proc/findNullRod"><aside class="declaration">proc </aside>findNullRod<aside>(/<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/game/gamemodes/cult/construct_spells.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;gamemodes&#x2F;cult&#x2F;construct_spells.dm 4"/></a></aside>
+        </h3>
+        <p>Construct Spells</p><h3 id="proc/gas_id2path"><aside class="declaration">proc </aside>gas_id2path<aside>(id) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 7"/></a></aside>
+        </h3>
+        <p>Converts a gas ID to typepath</p><h3 id="proc/generate_asset_name"><aside class="declaration">proc </aside>generate_asset_name<aside>(file) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/icons.dm#L1122">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 1122"/></a></aside>
+        </h3>
+        <p>Generate a filename for this asset
+The same asset will always lead to the same asset name
+(Generated names do not include file extention.)</p><h3 id="proc/getOPressureDifferential"><aside class="declaration">proc </aside>getOPressureDifferential<aside>(/<a href="turf.html">turf</a>/loc) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/game.dm#L559">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;game.dm 559"/></a></aside>
+        </h3>
+        <p>Gets the highest and lowest pressures from the tiles in cardinal directions
+around us, then checks the difference.</p><h3 id="proc/get_allowed_instrument_ids"><aside class="declaration">proc </aside>get_allowed_instrument_ids<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/instruments/instrument_data/_instrument_data.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;instruments&#x2F;instrument_data&#x2F;_instrument_data.dm 16"/></a></aside>
+        </h3>
+        <p>Get all non admin_only instruments.</p><h3 id="proc/get_random_uplink_items"><aside class="declaration">proc </aside>get_random_uplink_items<aside>(/<a href="obj/item.html">obj/item</a>/uplink/U, remaining_TC, loc) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/datums/uplink/uplink_items.dm#L168">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;uplink&#x2F;uplink_items.dm 168"/></a></aside>
+        </h3>
+        <p>Support procs</p><h3 id="proc/get_wound_type"><aside class="declaration">proc </aside>get_wound_type<aside>(type, damage) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/organs/wound.dm#L226">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;wound.dm 226"/></a></aside>
+        </h3>
+        <p>WOUND DEFINITIONS</p><h3 id="proc/icon2base64"><aside class="declaration">proc </aside>icon2base64<aside>(/icon/icon) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/icons.dm#L1130">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 1130"/></a></aside>
+        </h3>
+        <p>Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
+exporting it as text, and then parsing the base64 from that.
+(This relies on byond automatically storing icons in savefiles as base64)</p><h3 id="proc/init_keybindings"><aside class="declaration">proc </aside>init_keybindings<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/lists/keybindings.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;keybindings.dm 2"/></a></aside>
+        </h3>
+        <p>Creates and sorts all the keybinding datums</p><h3 id="proc/is_area_occupied"><aside class="declaration">proc </aside>is_area_occupied<aside>(/<a href="area.html">area</a>/myarea) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/events.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;events.dm 18"/></a></aside>
+        </h3>
+        <p>Checks if any living humans are in a given area!</p><h3 id="proc/is_special_character"><aside class="declaration">proc </aside>is_special_character<aside>(character) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/admin/admin.dm#L997">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;admin.dm 997"/></a></aside>
+        </h3>
+        <p>ADMIN HELPER PROCS</p><h3 id="proc/json_deserialize_datum"><aside class="declaration">proc </aside>json_deserialize_datum<aside>(/list/jsonlist, /list/options, target_type, strict_target_type) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/datums/datum.dm#L195">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;datum.dm 195"/></a></aside>
+        </h3>
+        <p>Convert a list of json to datum</p><h3 id="proc/json_serialize_datum"><aside class="declaration">proc </aside>json_serialize_datum<aside>(/<a href="datum.html">datum</a>/D, /list/options) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/datums/datum.dm#L186">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;datum.dm 186"/></a></aside>
+        </h3>
+        <p>Convert a datum into a json blob</p><h3 id="proc/lavaland_environment_check"><aside class="declaration">proc </aside>lavaland_environment_check<aside>(/<a href="turf.html">turf</a>/<a href="turf/simulated.html">simulated</a>/T) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/guns/energy/kinetic_accelerator.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;energy&#x2F;kinetic_accelerator.dm 4"/></a></aside>
+        </h3>
+        <p>This is here for now</p><h3 id="proc/log_access_in"><aside class="declaration">proc </aside>log_access_in<aside>(/<a href="client.html">client</a>/new_client) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/_logging.dm#L85">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 85"/></a></aside>
+        </h3>
+        <p>&lt;VStation_specific&gt;</p><h3 id="proc/log_attack"><aside class="declaration">proc </aside>log_attack<aside>(attacker, defender, message) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/_logging.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 96"/></a></aside>
+        </h3>
+        <p>&lt;/VStation_specific&gt;</p><h3 id="proc/log_debug"><aside class="declaration">proc </aside>log_debug<aside>(text) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/_logging.dm#L336">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 336"/></a></aside>
+        </h3>
+        <p>VSTATION SPECIFIC LOGGING.</p><h3 id="proc/log_error"><aside class="declaration">proc </aside>log_error<aside>(text) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/_logging.dm#L367">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 367"/></a></aside>
+        </h3>
+        <p>DEPRICATED. USE log_runtime(text) INSTEAD.</p><h3 id="proc/log_tgui"><aside class="declaration">proc </aside>log_tgui<aside>(user, message, context, /<a href="datum.html">datum</a>/<a href="datum/tgui_window.html">tgui_window</a>/window, /<a href="datum.html">datum</a>/src_object) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/_logging.dm#L193">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 193"/></a></aside>
+        </h3>
+        <p>Appends a tgui-related log entry. All arguments are optional.</p><h3 id="proc/make_datum_reference_lists"><aside class="declaration">proc </aside>make_datum_reference_lists<aside>() 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/global_lists.dm#L109">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;global_lists.dm 109"/></a></aside>
+        </h3>
+        <p>Initial Building</p><h3 id="proc/md5asfile"><aside class="declaration">proc </aside>md5asfile<aside>(file) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/files.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;files.dm 96"/></a></aside>
+        </h3>
+        <p>Save file as an external file then md5 it.
+Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.</p><h3 id="proc/md5filepath"><aside class="declaration">proc </aside>md5filepath<aside>(path) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/files.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;files.dm 91"/></a></aside>
+        </h3>
+        <p>Returns the md5 of a file at a given path.</p><h3 id="proc/message_to_html"><aside class="declaration">proc </aside>message_to_html<aside>(message) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgchat/message.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;message.dm 14"/></a></aside>
+        </h3>
+        <p>Message-related procs</p>
+<p>Message format (/list):</p>
+<ul>
+<li>type - Message type, must be one of defines in <code>code/__DEFINES/chat.dm</code></li>
+<li>text - Plain message text</li>
+<li>html - HTML message text</li>
+<li>Optional metadata, can be any key/value pair.</li>
+</ul>
+<p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p><h3 id="proc/onstation_weapon_locked"><aside class="declaration">proc </aside>onstation_weapon_locked<aside>(z) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/projectiles/pins.dm#L191">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;pins.dm 191"/></a></aside>
+        </h3>
+        <p>Checks for facility weapon safety interlocks. Returns TRUE if weapons should lock.</p><h3 id="proc/persist_nif_data"><aside class="declaration">proc </aside>persist_nif_data<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/H, /<a href="datum.html">datum</a>/<a href="datum/preferences.html">preferences</a>/prefs) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/vore/persist/persist_vr.dm#L226">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vore&#x2F;persist&#x2F;persist_vr.dm 226"/></a></aside>
+        </h3>
+        <p>Persist any NIF data that needs to be persisted. It's stored in a list to make it more malleable
+towards future shenanigans such as upgradable NIFs or different types or things of that nature,
+without invoking the need for a bunch of different save file variables.</p><h3 id="proc/prep_for_persist"><aside class="declaration">proc </aside>prep_for_persist<aside>(/<a href="mob.html">mob</a>/persister) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/vore/persist/persist_vr.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vore&#x2F;persist&#x2F;persist_vr.dm 41"/></a></aside>
+        </h3>
+        <p>Prep for save: returns a preferences object if we're ready and allowed to save this mob.</p><h3 id="proc/print_dir"><aside class="declaration">proc </aside>print_dir<aside>(dir) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/_logging.dm#L393">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;_logging.dm 393"/></a></aside>
+        </h3>
+        <p>VSTATION LOGGING HELPERS</p><h3 id="proc/resolve_excess_nutrition"><aside class="declaration">proc </aside>resolve_excess_nutrition<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/C) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/vore/persist/persist_vr.dm#L204">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vore&#x2F;persist&#x2F;persist_vr.dm 204"/></a></aside>
+        </h3>
+        <p>Resolve any surplus/deficit in nutrition's effet on weight all at once.
+Normally this would slowly apply during the round; once we get to the end
+we need to apply it all at once.</p><h3 id="proc/rgb_construct_color_matrix"><aside class="declaration">proc </aside>rgb_construct_color_matrix<aside>(rr, rg, rb, gr, gg, gb, br, bg, bb, cr, cg, cb) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/matrices/color.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;matrices&#x2F;color.dm 23"/></a></aside>
+        </h3>
+        <p>Assembles a color matrix, defaulting to identity</p><h3 id="proc/sanitize_filename"><aside class="declaration">proc </aside>sanitize_filename<aside>(t) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/text.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 54"/></a></aside>
+        </h3>
+        <p>have to rewrite this sanitize code :djoy:</p><h3 id="proc/strip_improper"><aside class="declaration">proc </aside>strip_improper<aside>(text) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/text.dm#L408">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;text.dm 408"/></a></aside>
+        </h3>
+        <p>Strip out the special beyond characters for \proper and \improper
+from text that will be sent to the browser.</p><h3 id="proc/tgui_Topic"><aside class="declaration">proc </aside>tgui_Topic<aside>(href_list) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/external.dm#L172">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;external.dm 172"/></a></aside>
+        </h3>
+        <p>Middleware for /client/Topic.</p>
+<p>return bool If TRUE, prevents propagation of the topic call.</p><h3 id="proc/tgui_alert"><aside class="declaration">proc </aside>tgui_alert<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, timeout) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/tgui_alert.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui_alert.dm 12"/></a></aside>
+        </h3>
+        <p>Creates a TGUI alert window and returns the user's response.</p>
+<p>This proc should be used to create alerts that the caller will wait for a response from.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The of the alert modal, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/tgui_alert_async"><aside class="declaration">proc </aside>tgui_alert_async<aside>(/<a href="mob.html">mob</a>/user, message, title, /list/buttons, /<a href="datum.html">datum</a>/callback/callback, timeout) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/tgui_alert.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;tgui_alert.dm 40"/></a></aside>
+        </h3>
+        <p>Creates an asynchronous TGUI alert window with an associated callback.</p>
+<p>This proc should be used to create alerts that invoke a callback with the user's chosen option.
+Arguments:</p>
+<ul>
+<li>user - The user to show the alert to.</li>
+<li>message - The content of the alert, shown in the body of the TGUI window.</li>
+<li>title - The of the alert modal, shown on the top of the TGUI window.</li>
+<li>buttons - The options that can be chosen by the user, each string is assigned a button on the UI.</li>
+<li>callback - The callback to be invoked when a choice is made.</li>
+<li>timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.</li>
+</ul><h3 id="proc/timeleft"><aside class="declaration">proc </aside>timeleft<aside>(id) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/subsystems/timer.dm#L727">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystems&#x2F;timer.dm 727"/></a></aside>
+        </h3>
+        <p>Get the remaining deciseconds on a timer</p>
+<p>Arguments:</p>
+<ul>
+<li>id a timerid or a /datum/timedevent</li>
+</ul><h3 id="proc/to_chat"><aside class="declaration">proc </aside>to_chat<aside>(target, html, type, text, avoid_highlighting, handle_whitespace, trailing_newline, confidential) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgchat/to_chat.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;to_chat.dm 56"/></a></aside>
+        </h3>
+        <p>Sends the message to the recipient (target).</p>
+<p>Recommended way to write to_chat calls:</p>
+<pre><code>to_chat(client,
+    type = MESSAGE_TYPE_INFO,
+    html = &quot;You have found &lt;strong&gt;[object]&lt;/strong&gt;&quot;)
+</code></pre><h3 id="proc/to_chat_immediate"><aside class="declaration">proc </aside>to_chat_immediate<aside>(target, html, type, text, avoid_highlighting, handle_whitespace, trailing_newline, confidential) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgchat/to_chat.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgchat&#x2F;to_chat.dm 10"/></a></aside>
+        </h3>
+        <p>Copyright (c) 2020 Aleksej Komarov
+SPDX-License-Identifier: MIT</p>
+<p>Circumvents the message queue and sends the message
+to the recipient (target) as soon as possible.</p><h3 id="proc/url2htmlloader"><aside class="declaration">proc </aside>url2htmlloader<aside>(url) 
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/type2type.dm#L293">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;type2type.dm 293"/></a></aside>
+        </h3>
+        <p>Return html to load a url.
+for use inside of browse() calls to html assets that might be loaded on a cdn.</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;global_vars - Citadel Station 13 - HRP</title>
+</head>
+<body>
+<header>
+    <a href="index.html">Citadel Station 13 - HRP</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/global_vars.html#var">Var Details</a></header>
+<main>
+<h1>Global Variables <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/global_vars.html">controller/global_vars</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/controllers/globals.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;globals.dm 3"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/admin_state">admin_state</a></th><td>tgui state: admin_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/all_observable_events">all_observable_events</a></th><td>Debug Support</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/always_state">always_state</a></th><td>tgui state: always_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/areas_by_type">areas_by_type</a></th><td>An association from typepath to area instance. Only includes areas with <code>unique</code> set.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/config_error_log">config_error_log</a></th><td>Config loading error/config validation errors</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/conscious_state">conscious_state</a></th><td>tgui state: conscious_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/contained_state">contained_state</a></th><td>tgui state: contained_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/deep_inventory_state">deep_inventory_state</a></th><td>tgui state: deep_inventory_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/default_state">default_state</a></th><td>tgui state: default_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/dummySave">dummySave</a></th><td>Save file used in icon2base64. Used for converting icons to base64.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/human_adjacent_state">human_adjacent_state</a></th><td>tgui state: human_adjacent_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/inventory_state">inventory_state</a></th><td>tgui state: inventory_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/log_directory">log_directory</a></th><td>Base directory at where logs are placed</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/lore_atc">lore_atc</a></th><td>Also, massive additions/refactors by Killian, because the original incarnation was full of holes
+Cleaned up to be less shit, again.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/loremaster">loremaster</a></th><td>Resolve to the instances
+repurposed for new fun stuff
+get the name
+Use the short name
+Pick a random prefix
+The value of the prefix is the mission type that prefix does
+Pick a random ship name
+Destination is where?
+do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
+or are we part of a pirate group
+are we actually system law/SDF? unlocks the SDF-specific events
+Are we part of the fleet?</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/meta_gas_by_flag">meta_gas_by_flag</a></th><td>Gases by gas flag</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/meta_gas_flags">meta_gas_flags</a></th><td>Gas flags by gas</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/meta_gas_id_lookup">meta_gas_id_lookup</a></th><td>Gas ID to typepath conversion lookup for optimal speed.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/meta_gas_molar_mass">meta_gas_molar_mass</a></th><td>Gas molar mass by gas</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/meta_gas_typecache_no_overlays">meta_gas_typecache_no_overlays</a></th><td>Typecache of gases with no overlays</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/nonreactive_gases">nonreactive_gases</a></th><td>List of gases that can't react amongst themselves. KEEP THIS UP TO DATE!</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/notcontained_state">notcontained_state</a></th><td>tgui state: notcontained_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/ntos_state">ntos_state</a></th><td>tgui state: ntos_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/observer_state">observer_state</a></th><td>tgui state: observer_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/physical_obscured_state">physical_obscured_state</a></th><td>tgui state: physical_obscured_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/physical_state">physical_state</a></th><td>tgui state: physical_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/picture_log_directory">picture_log_directory</a></th><td>Picture logging</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/round_id">round_id</a></th><td>Current round ID. If unset, logs will use the old timestamp-directory format.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/self_state">self_state</a></th><td>tgui state: self_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/sortedAreas">sortedAreas</a></th><td>used by jump-to-area etc. Updated by area/updateName()</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/subsystem_log">subsystem_log</a></th><td>datum/controller/subsystem logging in general</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/surgery_steps">surgery_steps</a></th><td>All surgery steps</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/trait_name_map">trait_name_map</a></th><td>value -&gt; trait name, generated on use from trait_by_type global</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/turf_changed_event">turf_changed_event</a></th><td>Shuttle Moved/Pre Move Handling</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/ui_modals">ui_modals</a></th><td>tgui modals</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_attack_log">world_attack_log</a></th><td>Attack logs/actions go in here</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_game_log">world_game_log</a></th><td>General game log for anything that doesn't fit elsewhere</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_href_log">world_href_log</a></th><td>Href logs go in here</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_map_error_log">world_map_error_log</a></th><td>Map error logging</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_qdel_log">world_qdel_log</a></th><td>qdel() performance logging</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_runtime_log">world_runtime_log</a></th><td>Runtimes go in here</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/z_state">z_state</a></th><td>tgui state: z_state</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/admin_state"><aside class="declaration">var </aside>admin_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/admin_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/admin.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;admin.dm 12"/></a></h3>
+        <p>tgui state: admin_state</p>
+<p>Checks that the user is an admin, end-of-story.</p><h3 id="var/all_observable_events"><aside class="declaration">var </aside>all_observable_events
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/all_observable_events</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/datums/observation/_debug.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;observation&#x2F;_debug.dm 4"/></a></h3>
+        <p>Debug Support</p><h3 id="var/always_state"><aside class="declaration">var </aside>always_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/always_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/always.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;always.dm 12"/></a></h3>
+        <p>tgui state: always_state</p>
+<p>Always grants the user UI_INTERACTIVE. Period.</p><h3 id="var/areas_by_type"><aside class="declaration">var </aside>areas_by_type
+            <aside>&ndash; /static/list/area</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/lists/mapping.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mapping.dm 37"/></a></h3>
+        <p>An association from typepath to area instance. Only includes areas with <code>unique</code> set.</p><h3 id="var/config_error_log"><aside class="declaration">var </aside>config_error_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 25"/></a></h3>
+        <p>Config loading error/config validation errors</p><h3 id="var/conscious_state"><aside class="declaration">var </aside>conscious_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/conscious_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/conscious.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;conscious.dm 12"/></a></h3>
+        <p>tgui state: conscious_state</p>
+<p>Only checks if the user is conscious.</p><h3 id="var/contained_state"><aside class="declaration">var </aside>contained_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/contained_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/contained.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;contained.dm 12"/></a></h3>
+        <p>tgui state: contained_state</p>
+<p>Checks that the user is inside the src_object.</p><h3 id="var/deep_inventory_state"><aside class="declaration">var </aside>deep_inventory_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/deep_inventory_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/deep_inventory.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;deep_inventory.dm 13"/></a></h3>
+        <p>tgui state: deep_inventory_state</p>
+<p>Checks that the src_object is in the user's deep
+(backpack, box, toolbox, etc) inventory.</p><h3 id="var/default_state"><aside class="declaration">var </aside>default_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/default</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/default.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;default.dm 13"/></a></h3>
+        <p>tgui state: default_state</p>
+<p>Checks a number of things -- mostly physical distance for humans
+and view for robots.</p><h3 id="var/dummySave"><aside class="declaration">var </aside>dummySave
+            <aside>&ndash; /static/savefile</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/__HELPERS/icons.dm#L1116">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;icons.dm 1116"/></a></h3>
+        <p>Save file used in icon2base64. Used for converting icons to base64.</p><h3 id="var/human_adjacent_state"><aside class="declaration">var </aside>human_adjacent_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/human_adjacent_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/human_adjacent.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;human_adjacent.dm 13"/></a></h3>
+        <p>tgui state: human_adjacent_state</p>
+<p>In addition to default checks, only allows interaction for a
+human adjacent user.</p><h3 id="var/inventory_state"><aside class="declaration">var </aside>inventory_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/inventory_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/inventory.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;inventory.dm 13"/></a></h3>
+        <p>tgui state: inventory_state</p>
+<p>Checks that the src_object is in the user's top-level
+(hand, ear, pocket, belt, etc) inventory.</p><h3 id="var/log_directory"><aside class="declaration">var </aside>log_directory
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 2"/></a></h3>
+        <p>Base directory at where logs are placed</p><h3 id="var/lore_atc"><aside class="declaration">var </aside>lore_atc
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/lore/atc_controller.html">lore/atc_controller</a></aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/air_traffic.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;air_traffic.dm 4"/></a></h3>
+        <p>Also, massive additions/refactors by Killian, because the original incarnation was full of holes
+Cleaned up to be less shit, again.</p><h3 id="var/loremaster"><aside class="declaration">var </aside>loremaster
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/lore/loremaster</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/busy_space/loremaster.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;busy_space&#x2F;loremaster.dm 3"/></a></h3>
+        <p>Resolve to the instances
+repurposed for new fun stuff
+get the name
+Use the short name
+Pick a random prefix
+The value of the prefix is the mission type that prefix does
+Pick a random ship name
+Destination is where?
+do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
+or are we part of a pirate group
+are we actually system law/SDF? unlocks the SDF-specific events
+Are we part of the fleet?</p>
+<p>Pick a random prefix
+Pick a random ship name
+Law abiding?
+Part of the syndicats?
+mostly here as a secondary check to ensure SDF don't interrogate other SDF
+Is this ship part of the fleet too?
+pull from a list of owner-specific flight ops, to allow an extra dash of flavor
+if our source has the complex_tasks flag, regenerate with a two-stage assignment</p><h3 id="var/meta_gas_by_flag"><aside class="declaration">var </aside>meta_gas_by_flag
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 24"/></a></h3>
+        <p>Gases by gas flag</p><h3 id="var/meta_gas_flags"><aside class="declaration">var </aside>meta_gas_flags
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 22"/></a></h3>
+        <p>Gas flags by gas</p><h3 id="var/meta_gas_id_lookup"><aside class="declaration">var </aside>meta_gas_id_lookup
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 20"/></a></h3>
+        <p>Gas ID to typepath conversion lookup for optimal speed.</p><h3 id="var/meta_gas_molar_mass"><aside class="declaration">var </aside>meta_gas_molar_mass
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 26"/></a></h3>
+        <p>Gas molar mass by gas</p><h3 id="var/meta_gas_typecache_no_overlays"><aside class="declaration">var </aside>meta_gas_typecache_no_overlays
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 28"/></a></h3>
+        <p>Typecache of gases with no overlays</p><h3 id="var/nonreactive_gases"><aside class="declaration">var </aside>nonreactive_gases
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/atmospherics/gasmixtures/gas_types.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;gasmixtures&#x2F;gas_types.dm 2"/></a></h3>
+        <p>List of gases that can't react amongst themselves. KEEP THIS UP TO DATE!</p><h3 id="var/notcontained_state"><aside class="declaration">var </aside>notcontained_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/notcontained_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/notcontained.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;notcontained.dm 13"/></a></h3>
+        <p>tgui state: notcontained_state</p>
+<p>Checks that the user is not inside src_object, and then makes the
+default checks.</p><h3 id="var/ntos_state"><aside class="declaration">var </aside>ntos_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/ntos</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/ntos.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;ntos.dm 9"/></a></h3>
+        <p>tgui state: ntos_state</p>
+<p>Checks a number of things -- mostly physical distance for humans and view for robots.
+This is basically the same as default, except instead of src_object, it uses the computer
+it's attached to.</p><h3 id="var/observer_state"><aside class="declaration">var </aside>observer_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/observer_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/observer.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;observer.dm 12"/></a></h3>
+        <p>tgui state: observer_state</p>
+<p>Checks that the user is an observer/ghost.</p><h3 id="var/physical_obscured_state"><aside class="declaration">var </aside>physical_obscured_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/physical_obscured_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/physical.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;physical.dm 38"/></a></h3>
+        <p>tgui state: physical_obscured_state</p>
+<p>Short-circuits the default state to only check physical distance, being in view doesn't matter</p><h3 id="var/physical_state"><aside class="declaration">var </aside>physical_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/physical</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/physical.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;physical.dm 12"/></a></h3>
+        <p>tgui state: physical_state</p>
+<p>Short-circuits the default state to only check physical distance.</p><h3 id="var/picture_log_directory"><aside class="declaration">var </aside>picture_log_directory
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 36"/></a></h3>
+        <p>Picture logging</p><h3 id="var/round_id"><aside class="declaration">var </aside>round_id
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 22"/></a></h3>
+        <p>Current round ID. If unset, logs will use the old timestamp-directory format.</p><h3 id="var/self_state"><aside class="declaration">var </aside>self_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/self_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/self.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;self.dm 12"/></a></h3>
+        <p>tgui state: self_state</p>
+<p>Only checks that the user and src_object are the same.</p><h3 id="var/sortedAreas"><aside class="declaration">var </aside>sortedAreas
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/lists/mapping.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mapping.dm 35"/></a></h3>
+        <p>used by jump-to-area etc. Updated by area/updateName()</p><h3 id="var/subsystem_log"><aside class="declaration">var </aside>subsystem_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 31"/></a></h3>
+        <p>datum/controller/subsystem logging in general</p><h3 id="var/surgery_steps"><aside class="declaration">var </aside>surgery_steps
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/lists/medical.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;medical.dm 2"/></a></h3>
+        <p>All surgery steps</p><h3 id="var/trait_name_map"><aside class="declaration">var </aside>trait_name_map
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/traits.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;traits.dm 112"/></a></h3>
+        <p>value -&gt; trait name, generated on use from trait_by_type global</p><h3 id="var/turf_changed_event"><aside class="declaration">var </aside>turf_changed_event
+            <aside>&ndash; /static/decl/observ/turf_changed</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/datums/observation/turf_changed.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;observation&#x2F;turf_changed.dm 12"/></a></h3>
+        <p>Shuttle Moved/Pre Move Handling</p><h3 id="var/ui_modals"><aside class="declaration">var </aside>ui_modals
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/modal.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;modal.dm 14"/></a></h3>
+        <p>tgui modals</p>
+<p>Allows creation of modals within tgui.
+Renamed from tgui_modal to ui_modal because WHY is it called a conflicting name with /tg/station tgui_alert tgui_modals :)</p><h3 id="var/world_attack_log"><aside class="declaration">var </aside>world_attack_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 16"/></a></h3>
+        <p>Attack logs/actions go in here</p><h3 id="var/world_game_log"><aside class="declaration">var </aside>world_game_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 5"/></a></h3>
+        <p>General game log for anything that doesn't fit elsewhere</p><h3 id="var/world_href_log"><aside class="declaration">var </aside>world_href_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 19"/></a></h3>
+        <p>Href logs go in here</p><h3 id="var/world_map_error_log"><aside class="declaration">var </aside>world_map_error_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 28"/></a></h3>
+        <p>Map error logging</p><h3 id="var/world_qdel_log"><aside class="declaration">var </aside>world_qdel_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 13"/></a></h3>
+        <p>qdel() performance logging</p><h3 id="var/world_runtime_log"><aside class="declaration">var </aside>world_runtime_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/_globalvars/logging.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 10"/></a></h3>
+        <p>Runtimes go in here</p><h3 id="var/z_state"><aside class="declaration">var </aside>z_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/z_state</aside>
+        
+    
+            <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/blob/62aaedfc7f9653041e5de269e620c490ec5b3a42/code/modules/tgui/states/zlevel.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;zlevel.dm 12"/></a></h3>
+        <p>tgui state: z_state</p>
+<p>Only checks that the Z-level of the user and src_object are the same.</p></main>
+<footer>
+    vorestation.dme
+    <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/tree/62aaedfc7f9653041e5de269e620c490ec5b3a42">62aaedf</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>
