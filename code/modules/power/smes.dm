@@ -1,6 +1,8 @@
 // the SMES
 // stores power
 
+GLOBAL_LIST_EMPTY(smeses)
+
 #define SMESRATE 0.03333		//translates Watt into Kilowattminutes with respect to machinery schedule_interval ~(2s*1W*1min/60s)
 #define SMESMAXCHARGELEVEL 250000
 #define SMESMAXOUTPUT 250000
@@ -76,6 +78,7 @@
 
 /obj/machinery/power/smes/Initialize(mapload, newdir)
 	. = ..()
+	GLOB.smeses += src
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/power/smes/LateInitialize()
@@ -99,6 +102,11 @@
 	update_icon()
 	if(!should_be_mapped)
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
+
+/obj/machinery/power/smes/Destroy()
+	GLOB.smeses -= src
+	return ..()
+
 
 /obj/machinery/power/smes/disconnect_terminal()
 	if(terminal)
@@ -242,11 +250,11 @@
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_hiddenprint(user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/power/smes/attack_hand(mob/user)
 	add_fingerprint(user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 
 /obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -310,6 +318,80 @@
 		return 0
 	return 1
 
+/obj/machinery/power/smes/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Smes", name)
+		ui.open()
+
+/obj/machinery/power/smes/ui_data()
+	var/list/data = list(
+		"capacity" = capacity,
+		"capacityPercent" = round(100.0*charge/capacity, 0.1),
+		"charge" = charge,
+		"inputAttempt" = input_attempt,
+		"inputting" = inputting,
+		"inputLevel" = input_level,
+		"inputLevel_text" = DisplayPower(input_level),
+		"inputLevelMax" = input_level_max,
+		"inputAvailable" = getTerminalPower(),
+		"outputAttempt" = output_attempt,
+		"outputting" = outputting,
+		"outputLevel" = round(output_level, 0.1),
+		"outputLevel_text" = DisplayPower(output_level),
+		"outputLevelMax" = round(output_level_max),
+		"outputUsed" = round(output_used, 0.1),
+	)
+	return data
+
+/obj/machinery/power/smes/ui_act(action, params)
+	if(..())
+		return TRUE
+	switch(action)
+		if("tryinput")
+			inputting(!input_attempt)
+			update_icon()
+			. = TRUE
+		if("tryoutput")
+			outputting(!output_attempt)
+			update_icon()
+			. = TRUE
+		if("input")
+			var/target = params["target"]
+			var/adjust = text2num(params["adjust"])
+			if(target == "min")
+				target = 0
+				. = TRUE
+			else if(target == "max")
+				target = input_level_max
+				. = TRUE
+			else if(adjust)
+				target = input_level + adjust
+				. = TRUE
+			else if(text2num(target) != null)
+				target = text2num(target)
+				. = TRUE
+			if(.)
+				input_level = clamp(target, 0, input_level_max)
+		if("output")
+			var/target = params["target"]
+			var/adjust = text2num(params["adjust"])
+			if(target == "min")
+				target = 0
+				. = TRUE
+			else if(target == "max")
+				target = output_level_max
+				. = TRUE
+			else if(adjust)
+				target = output_level + adjust
+				. = TRUE
+			else if(text2num(target) != null)
+				target = text2num(target)
+				. = TRUE
+			if(.)
+				output_level = clamp(target, 0, output_level_max)
+
+/*
 /obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(stat & BROKEN)
@@ -360,6 +442,13 @@
 		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
 		ui.set_auto_update(1)
 	..()
+*/
+/obj/machinery/power/smes/proc/getTerminalPower()
+	if (terminal && terminal.powernet)//checks if the SMES has a terminal, and if that terminal has a powernet.
+		. = round(terminal.powernet.avail, 0.1)
+	else
+		. = 0
+	return .
 
 /obj/machinery/power/smes/proc/Percentage()
 	return round(100.0*charge/capacity, 0.1)

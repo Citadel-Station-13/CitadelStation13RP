@@ -192,8 +192,49 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	if(stat & (BROKEN|NOPOWER) || !anchored) return
 	if(!circ1 || !circ2) //Just incase the middle part of the TEG was not wrenched last.
 		reconnect()
-	nano_ui_interact(user)
+	ui_interact(user)
 
+/obj/machinery/power/generator/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TEGenerator", name)
+		ui.open()
+
+/obj/machinery/power/generator/ui_data(mob/user)
+	// this is the data which will be sent to the ui
+	var/vertical = 0
+	if (dir == NORTH || dir == SOUTH)
+		vertical = 1
+
+	var/list/data = list()
+	data["totalOutput"] = effective_gen
+	data["maxTotalOutput"] = max_power
+	data["thermalOutput"] = last_thermal_gen
+
+	data["primary"] = list()
+	if(circ1)
+		//The one on the left (or top)
+		data["primary"]["dir"] = vertical ? "top" : "left"
+		data["primary"]["output"] = last_circ1_gen
+		data["primary"]["flowCapacity"] = circ1.volume_capacity_used*100
+		data["primary"]["inletPressure"] = circ1.air1.return_pressure()
+		data["primary"]["inletTemperature"] = circ1.air1.temperature
+		data["primary"]["outletPressure"] = circ1.air2.return_pressure()
+		data["primary"]["outletTemperature"] = circ1.air2.temperature
+
+	data["secondary"] = list()
+	if(circ2)
+		//Now for the one on the right (or bottom)
+		data["secondary"]["dir"] = vertical ? "bottom" : "right"
+		data["secondary"]["output"] = last_circ2_gen
+		data["secondary"]["flowCapacity"] = circ2.volume_capacity_used*100
+		data["secondary"]["inletPressure"] = circ2.air1.return_pressure()
+		data["secondary"]["inletTemperature"] = circ2.air1.temperature
+		data["secondary"]["outletPressure"] = circ2.air2.return_pressure()
+		data["secondary"]["outletTemperature"] = circ2.air2.temperature
+
+	return data
+/*
 /obj/machinery/power/generator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	// this is the data which will be sent to the ui
 	var/vertical = 0
@@ -244,7 +285,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		ui.open()
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
-
+*/
 /obj/machinery/power/generator/power_change()
 	..()
 	updateicon()

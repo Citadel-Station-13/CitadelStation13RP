@@ -759,6 +759,10 @@
 	// do APC interaction
 	src.interact(user)
 
+/obj/machinery/power/apc/attack_ai(mob/user)
+	add_hiddenprint(user)
+	ui_interact(user)
+
 /obj/machinery/power/apc/interact(mob/user)
 	if(!user)
 		return
@@ -767,9 +771,124 @@
 		wires.Interact(user)
 		return	//The panel is visibly dark when the wires are exposed, so we shouldn't be able to interact with it.
 
-	return nano_ui_interact(user)
+	return ui_interact(user)
 
+/obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "APC", name) // 510, 460
+		ui.open()
 
+/obj/machinery/power/apc/ui_data(mob/user)
+	var/list/data = list(
+		"locked" = locked,
+		"normallyLocked" = locked,
+		"emagged" = emagged,
+		"isOperating" = operating,
+		"externalPower" = main_status,
+		"powerCellStatus" = cell ? cell.percent() : null,
+		"chargeMode" = chargemode,
+		"chargingStatus" = charging,
+		"totalLoad" = round(lastused_total),
+		"totalCharging" = round(lastused_charging),
+		"failTime" = failure_timer * 2,
+		"gridCheck" = grid_check,
+		"coverLocked" = coverlocked,
+		"siliconUser" = issilicon(user) || (isobserver(user) && is_admin(user)), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
+
+		"powerChannels" = list(
+			list(
+				"title" = "Equipment",
+				"powerLoad" = lastused_equip,
+				"status" = equipment,
+				"topicParams" = list(
+					"auto" = list("eqp" = 3),
+					"on"   = list("eqp" = 2),
+					"off"  = list("eqp" = 1)
+				)
+			),
+			list(
+				"title" = "Lighting",
+				"powerLoad" = round(lastused_light),
+				"status" = lighting,
+				"topicParams" = list(
+					"auto" = list("lgt" = 3),
+					"on"   = list("lgt" = 2),
+					"off"  = list("lgt" = 1)
+				)
+			),
+			list(
+				"title" = "Environment",
+				"powerLoad" = round(lastused_environ),
+				"status" = environ,
+				"topicParams" = list(
+					"auto" = list("env" = 3),
+					"on"   = list("env" = 2),
+					"off"  = list("env" = 1)
+				)
+			)
+		)
+	)
+
+	return data
+
+/obj/machinery/power/apc/ui_act(action, params)
+	if(..() || !can_use(usr, TRUE))
+		return TRUE
+
+	// There's a handful of cases where we want to allow users to bypass the `locked` variable.
+	// If can_admin_interact() wasn't only defined on observers, this could just be part of a single-line
+	// conditional.
+	var/locked_exception = FALSE
+	if(issilicon(usr) || action == "nightshift")
+		locked_exception = TRUE
+	if(isobserver(usr))
+		var/mob/observer/dead/D = usr
+		if(D.can_admin_interact())
+			locked_exception = TRUE
+
+	if(locked && !locked_exception)
+		return
+
+	. = TRUE
+	switch(action)
+		if("lock")
+			if(locked_exception) // Yay code reuse
+				if(emagged || (stat & (BROKEN|MAINT)))
+					to_chat(usr, "The APC does not respond to the command.")
+					return
+				locked = !locked
+				update_icon()
+		if("cover")
+			coverlocked = !coverlocked
+		if("breaker")
+			toggle_breaker()
+		if("charge")
+			chargemode = !chargemode
+			if(!chargemode)
+				charging = 0
+				update_icon()
+		if("channel")
+			if(params["eqp"])
+				equipment = setsubsystem(text2num(params["eqp"]))
+				update_icon()
+				update()
+			else if(params["lgt"])
+				lighting = setsubsystem(text2num(params["lgt"]))
+				update_icon()
+				update()
+			else if(params["env"])
+				environ = setsubsystem(text2num(params["env"]))
+				update_icon()
+				update()
+		if("reboot")
+			failure_timer = 0
+			update_icon()
+			update()
+		if("overload")
+			if(locked_exception) // Reusing for simplicity!
+				overload_lighting()
+/*
 /obj/machinery/power/apc/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!user)
 		return
@@ -835,7 +954,7 @@
 		ui.open()
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
-
+*/
 /obj/machinery/power/apc/proc/report()
 	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
 
@@ -1350,5 +1469,15 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 	spawn(15 MINUTES) // Protection against someone deconning the grid checker after a grid check happens, preventing infinte blackout.
 		if(src && grid_check == TRUE)
 			grid_check = FALSE
+
+/obj/machinery/power/apc/proc/update_area()//From apc_vr.dm
+	var/area/NA = get_area(src)
+	if(!(NA == area))
+		if(area.apc == src)
+			area.apc = null
+		NA.apc = src
+		area = NA
+		name = "[area.name] APC"
+	update()
 
 #undef APC_UPDATE_ICON_COOLDOWN

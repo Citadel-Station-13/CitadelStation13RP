@@ -1145,6 +1145,37 @@ About the new airlock wires panel:
 		src.closeOther.close()
 	return ..()
 
+/obj/machinery/door/airlock/close(var/forced=0)
+	if(!can_close(forced))
+		return 0
+
+	if(safe)
+		for(var/turf/turf in locs)
+			for(var/atom/movable/AM in turf)
+				if(AM.blocks_airlock())
+					if(!has_beeped)
+						playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
+						has_beeped = 1
+					close_door_at = world.time + 6
+					return
+
+	for(var/turf/turf in locs)
+		for(var/atom/movable/AM in turf)
+			if(AM.airlock_crush(DOOR_CRUSH_DAMAGE))
+				take_damage(DOOR_CRUSH_DAMAGE)
+
+	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
+	has_beeped = 0
+	if(arePowerSystemsOn())
+		playsound(src.loc, close_sound_powered, 50, 1)
+	else
+		playsound(src.loc, open_sound_unpowered, 75, 1)
+	for(var/turf/turf in locs)
+		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
+		if(killthis)
+			killthis.ex_act(2)//Smashin windows
+	return ..()
+
 /obj/machinery/door/airlock/can_open(var/forced=0)
 	if(!forced)
 		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
@@ -1164,6 +1195,10 @@ About the new airlock wires panel:
 			return	0
 
 	return ..()
+
+/obj/machinery/door/airlock/toggle_open(forced)
+	. = ..()
+
 
 /atom/movable/proc/blocks_airlock()
 	return density
@@ -1212,37 +1247,6 @@ About the new airlock wires panel:
 	adjustBruteLoss(crush_damage)
 	return 0
 
-/obj/machinery/door/airlock/close(var/forced=0)
-	if(!can_close(forced))
-		return 0
-
-	if(safe)
-		for(var/turf/turf in locs)
-			for(var/atom/movable/AM in turf)
-				if(AM.blocks_airlock())
-					if(!has_beeped)
-						playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
-						has_beeped = 1
-					close_door_at = world.time + 6
-					return
-
-	for(var/turf/turf in locs)
-		for(var/atom/movable/AM in turf)
-			if(AM.airlock_crush(DOOR_CRUSH_DAMAGE))
-				take_damage(DOOR_CRUSH_DAMAGE)
-
-	use_power(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
-	has_beeped = 0
-	if(arePowerSystemsOn())
-		playsound(src.loc, close_sound_powered, 50, 1)
-	else
-		playsound(src.loc, open_sound_unpowered, 75, 1)
-	for(var/turf/turf in locs)
-		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
-		if(killthis)
-			killthis.ex_act(2)//Smashin windows
-	return ..()
-
 /obj/machinery/door/airlock/proc/lock(var/forced=0)
 	if(locked)
 		return 0
@@ -1269,6 +1273,12 @@ About the new airlock wires panel:
 		M.show_message("You hear a click from the bottom of the door.", 2)
 	update_icon()
 	return 1
+
+/obj/machinery/door/airlock/proc/toggle_bolt(var/forced=0)//Toggles bolts either up or down
+	if(locked)
+		unlock(forced)//checks for ligitamacy run here
+	else
+		lock(forced)//checks for ligitamacy run here
 
 /obj/machinery/door/airlock/allowed(mob/M)
 	if(locked)

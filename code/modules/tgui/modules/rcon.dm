@@ -95,7 +95,8 @@
 	known_SMESs = new /list()
 
 	var/z = get_z(ui_host())
-	var/list/map_levels = GLOB.using_map.get_map_levels(z)
+	var/datum/map/active = GLOB.using_map
+	var/list/map_levels = active.get_map_levels(z)
 
 	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.smeses)
 		if(!(SMES.z in map_levels))
@@ -115,4 +116,4 @@
 
 /datum/tgui_module/rcon/robot
 /datum/tgui_module/rcon/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state

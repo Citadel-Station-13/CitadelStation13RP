@@ -86,6 +86,12 @@
 	explosion(src.loc, -1, 3, 5, -1)
 	qdel(src)
 
+/obj/machinery/power/port_gen/proc/TogglePower()
+	if(active)
+		active = FALSE
+	else if(HasFuel())
+		active = TRUE
+
 #define TEMPERATURE_DIVISOR 40
 #define TEMPERATURE_CHANGE_MAX 20
 
@@ -301,8 +307,70 @@
 	nano_ui_interact(user)
 
 /obj/machinery/power/port_gen/pacman/attack_ai(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
+/obj/machinery/power/port_gen/pacman/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PortableGenerator", name)
+		ui.open()
+
+/obj/machinery/power/port_gen/pacman/ui_data(mob/user)
+	var/list/data = list()
+
+	data["active"] = active
+
+	if(istype(user, /mob/living/silicon/ai))
+		data["is_ai"] = TRUE
+	else if(istype(user, /mob/living/silicon/robot) && !Adjacent(user))
+		data["is_ai"] = TRUE
+	else
+		data["is_ai"] = FALSE
+
+	data["sheet_name"] = capitalize(sheet_name)
+	data["fuel_stored"] = round((sheets * 1000) + (sheet_left * 1000))
+	data["fuel_capacity"] = round(max_sheets * 1000, 0.1)
+	data["fuel_usage"] = active ? round((power_output / time_per_sheet) * 1000) : 0
+
+	data["anchored"] = anchored
+	data["connected"] = (powernet == null ? 0 : 1)
+	data["ready_to_boot"] = anchored && HasFuel()
+	data["power_generated"] = DisplayPower(power_gen)
+	data["power_output"] = DisplayPower(power_gen * power_output)
+	data["unsafe_output"] = power_output > max_safe_output
+	data["power_available"] = (powernet == null ? 0 : DisplayPower(avail()))
+	data["temperature_current"] = temperature
+	data["temperature_max"] = max_temperature
+	data["temperature_overheat"] = overheating
+	// 1 sheet = 1000cm3?
+
+	return data
+
+/obj/machinery/power/port_gen/pacman/ui_act(action, params)
+	if(..())
+		return
+
+	add_fingerprint(usr)
+	switch(action)
+		if("toggle_power")
+			TogglePower()
+			. = TRUE
+
+		if("eject")
+			if(!active)
+				DropFuel()
+				. = TRUE
+
+		if("lower_power")
+			if(power_output > 1)
+				power_output--
+				. = TRUE
+
+		if("higher_power")
+			if(power_output < max_power_output || (emagged && power_output < round(max_power_output * 2.5)))
+				power_output++
+				. = TRUE
+/*
 /obj/machinery/power/port_gen/pacman/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(IsBroken())
 		return
@@ -337,7 +405,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-
+*/
 /*
 /obj/machinery/power/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
