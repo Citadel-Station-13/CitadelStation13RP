@@ -18,6 +18,13 @@ SUBSYSTEM_DEF(input)
 	/// Macro set for classic.
 	var/list/input_mode_macros
 
+	/// Tolerance for keepalive - deciseconds a client must have refreshed to server to move.
+	var/keepAliveTolerance = 3
+	/// Send ping packets every this many deciseoncds
+	var/keepAlivePing = 1
+	/// Last time we sent a ping packet
+	var/keepAliveLast = 0
+
 /datum/controller/subsystem/input/Initialize()
 	setup_macrosets()
 
@@ -110,8 +117,15 @@ SUBSYSTEM_DEF(input)
 
 /datum/controller/subsystem/input/fire()
 	var/list/clients = GLOB.clients // Let's sing the list cache song
-	for(var/i in 1 to clients.len)
-		var/client/C = clients[i]
+	var/sendPings = (keepAliveLast <= (world.time - keepAlivePing))
+	if(sendPings)
+		keepAliveLast = world.time
+	for(var/client/C in clients)		// screw your performance, stop the runtimes.
+		// send ping
+		if(sendPings)
+			C.keepAlive()
+		if(C.keptAlive < (world.time - keepAliveTolerance))
+			continue		// they're lagging
 		C.keyLoop()
 
 /// *sigh

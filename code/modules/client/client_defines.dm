@@ -26,6 +26,9 @@
 	var/time_died_as_mouse = null //when the client last died as a mouse
 	var/datum/tooltip/tooltips 	= null
 
+	/// last time keepalive was received by client.
+	var/keptAlive = 0
+
 	var/adminhelped = 0
 
 		///////////////
