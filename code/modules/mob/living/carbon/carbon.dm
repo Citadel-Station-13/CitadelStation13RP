@@ -318,12 +318,32 @@
 /mob/living/carbon/cannot_use_vents()
 	return
 
-/mob/living/carbon/slip(var/slipped_on,stun_duration=8)
+/mob/living/carbon/human/slip(var/slipped_on,stun_duration=8)
+	var/dislocated = rand(1,30)
+	var/obj/item/organ/external/l_foot = src.get_organ("l_foot")
+	var/obj/item/organ/external/r_foot = src.get_organ("r_foot")
+	var/obj/item/organ/external/l_hand = src.get_organ("l_hand")
+	var/obj/item/organ/external/r_hand = src.get_organ("r_hand")
 	if(buckled)
 		return 0
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
+	switch(dislocated)
+		if(1)
+			l_foot.dislocate()
+		if(2)
+			r_foot.dislocate()
+		if(3)
+			l_hand.dislocate()
+		if(4)
+			r_hand.dislocate()
+		if(5)
+			l_foot.dislocate()
+			r_foot.dislocate()
+			l_hand.dislocate()
+			r_hand.dislocate()
+			to_chat(src, "<span class='danger'>You feel a sudden, sharp pain shoot through your body as you fall onto the floor!</span>")
 	Weaken(FLOOR(stun_duration/2, 1))
 	return 1
 
