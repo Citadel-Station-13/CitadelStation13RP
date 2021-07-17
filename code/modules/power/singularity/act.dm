@@ -1,9 +1,9 @@
 #define I_SINGULO "singulo"
 
-/atom/proc/singularity_act()
+/atom/proc/singularity_act(obj/singularity/S, current_size)
 	return
 
-/atom/proc/singularity_pull(S, current_size)
+/atom/proc/singularity_pull(obj/singularity/S, current_size)
 	return
 
 /mob/living/singularity_act()

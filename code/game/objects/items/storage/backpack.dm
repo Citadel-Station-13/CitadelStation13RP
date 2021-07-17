@@ -61,6 +61,14 @@
 		return
 	. = ..()
 
+/obj/item/storage/backpack/holding/singularity_act(obj/singularity/S, current_size)
+	var/turf/lastLoc = get_turf(src)
+	. = ..()
+	if(lastLoc)
+		var/dist = max((current_size - 2),1)
+		log_game("Bag of holding detonated at [COORD(lastLoc)]")
+		explosion(lastLoc, (dist), (dist*2), (dist*4))
+
 //Please don't clutter the parent storage item with stupid hacks.
 /*/obj/item/storage/backpack/holding/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(istype(W, /obj/item/storage/backpack/holding))

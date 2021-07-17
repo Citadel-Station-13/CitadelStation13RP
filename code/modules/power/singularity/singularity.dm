@@ -50,20 +50,19 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	consume(user)
 	return 1
 
-/obj/singularity/ex_act(severity)
-	if(current_size == STAGE_SUPER)//IT'S UNSTOPPABLE
-		return
+/obj/singularity/ex_act(severity, target)
 	switch(severity)
-		if(1.0)
-			if(prob(25))
-				investigate_log("has been destroyed by an explosion.", I_SINGULO)
+		if(1)
+			if(current_size <= STAGE_TWO)
+				investigate_log("has been destroyed by a heavy explosion.", I_SINGULO)
 				qdel(src)
 				return
 			else
-				energy += 50
-		if(2.0 to 3.0)
-			energy += round((rand(20,60)/2),1)
-			return
+				energy -= round(((energy+1)/2),1)
+		if(2)
+			energy -= round(((energy+1)/3),1)
+		if(3)
+			energy -= round(((energy+1)/4),1)
 
 /obj/singularity/bullet_act(obj/item/projectile/P)
 	return 0 //Will there be an impact? Who knows. Will we see it? No.
@@ -135,28 +134,29 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			if(chained)
 				overlays = "chain_s1"
 			visible_message("<span class='notice'>The singularity has shrunk to a rather pitiful size.</span>")
-		if (STAGE_TWO) //1 to 3 does not check for the turfs if you put the gens right next to a 1x1 then its going to eat them.
-			name = "gravitational singularity"
-			desc = "A gravitational singularity."
-			current_size = STAGE_TWO
-			icon = 'icons/effects/96x96.dmi'
-			icon_state = "singularity_s3"
-			pixel_x = -32
-			pixel_y = -32
-			grav_pull = 6
-			consume_range = 1
-			dissipate_delay = 10
-			dissipate_track = 0
-			dissipate_strength = 5
-			overlays = 0
-			if(chained)
-				overlays = "chain_s3"
-			if(growing)
-				visible_message("<span class='notice'>The singularity noticeably grows in size.</span>")
-			else
-				visible_message("<span class='notice'>The singularity has shrunk to a less powerful size.</span>")
+		if (STAGE_TWO)
+			if(check_cardinals_range(1, TRUE))
+				name = "gravitational singularity"
+				desc = "A gravitational singularity."
+				current_size = STAGE_TWO
+				icon = 'icons/effects/96x96.dmi'
+				icon_state = "singularity_s3"
+				pixel_x = -32
+				pixel_y = -32
+				grav_pull = 6
+				consume_range = 1
+				dissipate_delay = 10
+				dissipate_track = 0
+				dissipate_strength = 5
+				overlays = 0
+				if(chained)
+					overlays = "chain_s3"
+				if(growing)
+					visible_message("<span class='notice'>The singularity noticeably grows in size.</span>")
+				else
+					visible_message("<span class='notice'>The singularity has shrunk to a less powerful size.</span>")
 		if (STAGE_THREE)
-			if ((check_turfs_in(1, 2)) && (check_turfs_in(2, 2)) && (check_turfs_in(4, 2)) && (check_turfs_in(8, 2)))
+			if(check_cardinals_range(2, TRUE))
 				name = "gravitational singularity"
 				desc = "A gravitational singularity."
 				current_size = STAGE_THREE
@@ -177,7 +177,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				else
 					visible_message("<span class='notice'>The singularity has returned to a safe size.</span>")
 		if(STAGE_FOUR)
-			if ((check_turfs_in(1, 3)) && (check_turfs_in(2, 3)) && (check_turfs_in(4, 3)) && (check_turfs_in(8, 3)))
+			if(check_cardinals_range(3, TRUE))
 				name = "gravitational singularity"
 				desc = "A gravitational singularity."
 				current_size = STAGE_FOUR
@@ -264,16 +264,23 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	return 1
 
 /obj/singularity/proc/eat()
-	for(var/T in orange(grav_pull, src))
-		var/atom/X = T
-		if(!X.simulated)
+	set waitfor = FALSE
+	for(var/tile in spiral_range_turfs(grav_pull, src))
+		var/turf/T = tile
+		if(!T || !isturf(loc))
 			continue
-		var/dist = get_dist(X, src)
-		if(dist > consume_range)
-			X.singularity_pull(src, current_size)
+		if(get_dist(T, src) > consume_range)
+			T.singularity_pull(src, current_size)
 		else
-			consume(X)
-	return
+			consume(T)
+		for(var/thing in T)
+			if(isturf(loc) && thing != src)
+				var/atom/movable/X = thing
+				if(get_dist(X, src) > consume_range)
+					X.singularity_pull(src, current_size)
+				else
+					consume(X)
+			CHECK_TICK
 
 /obj/singularity/proc/consume(const/atom/A)
 	src.energy += A.singularity_act(src, current_size)
@@ -301,7 +308,18 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 
 	step(src, movement_dir)
 
-/obj/singularity/proc/check_turfs_in(var/direction = 0, var/step = 0)
+/obj/singularity/proc/check_cardinals_range(steps, retry_with_move = FALSE)
+	. = length(GLOB.cardinal)			//Should be 4.
+	for(var/i in GLOB.cardinal)
+		. -= check_turfs_in(i, steps)	//-1 for each working direction
+	if(. && retry_with_move)			//If there's still a positive value it means it didn't pass. Retry with move if applicable
+		for(var/i in GLOB.cardinal)
+			if(step(src, i))			//Move in each direction.
+				if(check_cardinals_range(steps, FALSE))		//New location passes, return true.
+					return TRUE
+	. = !.
+
+/obj/singularity/proc/check_turfs_in(direction = 0, step = 0)
 	if(!direction)
 		return 0
 	var/steps = 0
@@ -317,8 +335,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				steps = 4
 			if(STAGE_FIVE)
 				steps = 5
-			if(STAGE_SUPER)
-				steps = 6
 	else
 		steps = step
 	var/list/turfs = list()
@@ -338,12 +354,12 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			dir2 = 1
 			dir3 = 2
 	var/turf/T2 = T
-	for(var/j = 1 to steps)
+	for(var/j = 1 to steps-1)
 		T2 = get_step(T2,dir2)
 		if(!isturf(T2))
 			return 0
 		turfs.Add(T2)
-	for(var/k = 1 to steps)
+	for(var/k = 1 to steps-1)
 		T = get_step(T,dir3)
 		if(!isturf(T))
 			return 0
@@ -355,26 +371,19 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			return 0
 	return 1
 
-/obj/singularity/proc/can_move(const/turf/T)
-	if (!isturf(T))
-		return 0
 
-	// VOREStation Edit Start
-	if(istype(get_area(T), /area/crew_quarters/sleep)) //No going to dorms
+/obj/singularity/proc/can_move(turf/T)
+	if(!T)
 		return 0
-	// VOREStation Edit End
-
-	if ((locate(/obj/machinery/containment_field) in T) || (locate(/obj/machinery/shieldwall) in T))
+	if((locate(/obj/machinery/containment_field) in T)||(locate(/obj/machinery/shieldwall) in T))
 		return 0
-	else if (locate(/obj/machinery/field_generator) in T)
+	else if(locate(/obj/machinery/field_generator) in T)
 		var/obj/machinery/field_generator/G = locate(/obj/machinery/field_generator) in T
-
-		if (G && G.active)
+		if(G && G.active)
 			return 0
-	else if (locate(/obj/machinery/shieldwallgen) in T)
+	else if(locate(/obj/machinery/shieldwallgen) in T)
 		var/obj/machinery/shieldwallgen/S = locate(/obj/machinery/shieldwallgen) in T
-
-		if (S && S.active)
+		if(S && S.active)
 			return 0
 	return 1
 
