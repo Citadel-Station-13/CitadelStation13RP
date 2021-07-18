@@ -1349,6 +1349,9 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/effect/landmark/start{
+	name = "Talon Engineer"
+	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "cO" = (
@@ -2413,6 +2416,15 @@
 /obj/machinery/photocopier/faxmachine/talon,
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
+"mt" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Talon Engineer"
+	},
+/turf/simulated/floor/tiled/eris/dark/brown_perforated,
+/area/talon/deckone/port_eng)
 "mB" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -2665,6 +2677,9 @@
 "pz" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Talon Doctor"
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
@@ -2956,6 +2971,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Talon Engineer"
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/starboard_eng_store)
@@ -4925,6 +4943,9 @@
 /obj/structure/bed/chair/bay/comfy/red{
 	dir = 4
 	},
+/obj/effect/landmark/start{
+	name = "Talon Pilot"
+	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "Ow" = (
@@ -5087,6 +5108,12 @@
 	},
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_starboard_aft_wing)
+"Rn" = (
+/obj/effect/landmark/start{
+	name = "Talon Doctor"
+	},
+/turf/simulated/floor/tiled/eris/white/bluecorner,
+/area/talon/deckone/medical)
 "Rr" = (
 /obj/machinery/alarm/talon{
 	dir = 1;
@@ -5770,6 +5797,9 @@
 "Yh" = (
 /obj/structure/bed/chair/bay/comfy/brown{
 	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Talon Pilot"
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
@@ -14553,7 +14583,7 @@ iA
 cP
 iX
 vV
-lM
+mt
 ir
 YI
 Fw
@@ -16522,7 +16552,7 @@ Bn
 Gb
 FA
 So
-Gb
+Rn
 Gb
 ce
 Tq
@@ -17515,7 +17545,7 @@ Nm
 dO
 hv
 xE
-Gb
+Rn
 UG
 UQ
 dO
