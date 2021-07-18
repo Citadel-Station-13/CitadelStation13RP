@@ -67,6 +67,7 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/kahlua,
 			/obj/item/reagent_containers/chem_disp_cartridge/whiskey,
 			/obj/item/reagent_containers/chem_disp_cartridge/wine,
+			/obj/item/reagent_containers/chem_disp_cartridge/whitewine,
 			/obj/item/reagent_containers/chem_disp_cartridge/vodka,
 			/obj/item/reagent_containers/chem_disp_cartridge/gin,
 			/obj/item/reagent_containers/chem_disp_cartridge/rum,

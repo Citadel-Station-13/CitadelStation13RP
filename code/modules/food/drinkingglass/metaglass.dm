@@ -281,7 +281,11 @@ Drinks Data
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/wine
-	glass_icon_state = "wineglass"
+	glass_icon_state = "redwineglass"
+	glass_center_of_mass = list("x"=15, "y"=7)
+
+/datum/reagent/ethanol/whitewine
+	glass_icon_state = "whitewineglass"
 	glass_center_of_mass = list("x"=15, "y"=7)
 
 /datum/reagent/ethanol/acid_spit

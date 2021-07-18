@@ -319,14 +319,24 @@
 	reagents.add_reagent("cognac", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/wine
-	name = "Doublebeard Bearded Special Wine"
-	desc = "Cheap cooking wine pretending to be drinkable."
+	name = "Crab Cove Merlot"
+	desc = "Cheap red cooking wine pretending to be drinkable."
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
 /obj/item/reagent_containers/food/drinks/bottle/wine/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("wine", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/whitewine
+	name = "Crab Cove Sauvignon Blanc"
+	desc = "White wine that's oddly better than the company's red variant."
+	icon_state = "whitewinebottle"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/whitewine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("whitewine", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/bitters
 	name = "Rattison's Bitters"

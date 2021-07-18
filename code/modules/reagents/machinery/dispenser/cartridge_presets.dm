@@ -37,6 +37,7 @@
 	kahlua		spawn_reagent = "kahlua"
 	whiskey		spawn_reagent = "whiskey"
 	wine		spawn_reagent = "wine"
+	whitewine spawn_reagent = "whitewine"
 	vodka		spawn_reagent = "vodka"
 	gin			spawn_reagent = "gin"
 	rum			spawn_reagent = "rum"

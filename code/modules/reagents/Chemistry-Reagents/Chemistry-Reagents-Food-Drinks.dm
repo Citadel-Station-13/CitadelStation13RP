@@ -1315,7 +1315,7 @@ End Citadel Change */
 
 	glass_name = "Brown Star"
 	glass_desc = "It's not what it sounds like..."
-	
+
 /datum/reagent/drink/soda/orangeale
 	name = "Orange Ale"
 	id = "orangeale"
@@ -2255,15 +2255,26 @@ End Citadel Change */
 	glass_desc = "The silky, smokey whiskey goodness inside the glass makes the drink look very classy."
 
 /datum/reagent/ethanol/wine
-	name = "Wine"
+	name = "Red Wine"
 	id = "wine"
-	description = "An premium alchoholic beverage made from distilled grape juice."
+	description = "A premium alchoholic beverage made from distilled grape juice. This one's red!"
 	taste_description = "bitter sweetness"
 	color = "#7E4043" // rgb: 126, 64, 67
 	strength = 15
 
 	glass_name = "wine"
 	glass_desc = "A very classy looking drink."
+
+/datum/reagent/ethanol/whitewine
+	name = "White Wine"
+	id = "whitewine"
+	description = "A premium alchoholic beverage made from distilled grape juice. This one's white!"
+	taste_description = "bitter sweetness"
+	color = "#FCF1D2"
+	strength = 13
+
+	glass_name = "white wine"
+	glass_desc = "A very classy looking drink. Now in white!"
 
 /datum/reagent/ethanol/peppermintschnapps
 	name = "Peppermint Schnapps"

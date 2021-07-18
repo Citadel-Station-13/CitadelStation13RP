@@ -705,6 +705,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
+          /obj/item/reagent_containers/food/drinks/bottle/whitewine = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/bitters = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/small/ale = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/beer = 15,
