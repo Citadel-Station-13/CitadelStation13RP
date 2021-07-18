@@ -538,6 +538,10 @@
 			icon_living = "puddle0"
 			update_icon()
 
+/mob/living/simple_mob/protean_blob/Login()
+	..()
+	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+
 /datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
 	name = "Protean Blob Effect - Steel"
 	desc = "You're affected by the presence of steel."
