@@ -17,7 +17,7 @@ mob/proc/airflow_stun()
 		return 0
 	if(!lying)
 		to_chat(src, "<span class='warning'>The sudden rush of air knocks you over!</span>")
-	Weaken(5)
+	Weaken(2)
 	last_airflow_stun = world.time
 
 mob/living/silicon/airflow_stun()
