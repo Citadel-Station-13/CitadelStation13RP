@@ -31,7 +31,7 @@
 			            access_heads, access_construction, access_sec_doors,
 			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
 	minimal_player_age = 7
-	alt_titles = list("Head Engineer" = /datum/alt_title/head_engineer, "Foreman" = /datum/alt_title/foreman, "Maintenance Manager" = /datum/alt_title/maintenance_manager, "Engineering Director" = /datum/alt_title/engineering_director)
+	alt_titles = list("Head Engineer" = /datum/alt_title/head_engineer, "Maintenance Manager" = /datum/alt_title/maintenance_manager, "Engineering Director" = /datum/alt_title/engineering_director)
 
 	outfit_type = /decl/hierarchy/outfit/job/engineering/chief_engineer
 	job_description = "The Chief Engineer manages the Engineering Department, ensuring that the Engineers work on what needs to be done, handling distribution \
@@ -44,9 +44,6 @@
 
 /datum/alt_title/head_engineer
 	title = "Head Engineer"
-
-/datum/alt_title/foreman
-	title = "Foreman"
 
 /datum/alt_title/maintenance_manager
 	title = "Maintenance Manager"
@@ -70,7 +67,7 @@
 	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction)
 	alt_titles = list("Maintenance Technician" = /datum/alt_title/maint_tech,
 						"Engine Technician" = /datum/alt_title/engine_tech, "Electrician" = /datum/alt_title/electrician,
-						"Shipwright" = /datum/alt_title/shipwright, "Apprentice Engineer" = /datum/alt_title/apprentice_engineer)
+						"Apprentice Engineer" = /datum/alt_title/apprentice_engineer)
 
 	minimal_player_age = 3
 
@@ -94,9 +91,6 @@
 	title = "Electrician"
 	title_blurb = "An Electrician's primary duty is making sure power is properly distributed thoughout the station, utilizing solars, substations, and other \
 					methods to ensure every department has power in an emergency."
-
-/datum/alt_title/shipwright
-	title = "Shipwright"
 
 /datum/alt_title/apprentice_engineer
 	title = "Apprentice Engineer"

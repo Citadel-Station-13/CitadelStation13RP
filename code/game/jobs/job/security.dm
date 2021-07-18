@@ -73,11 +73,6 @@
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
-	alt_titles = list("Senior Constable" = /datum/alt_title/senior_constable)
-
-
-/datum/alt_title/senior_constable
-	title = "Senior Constable"
 
 //////////////////////////////////
 //			Detective
@@ -137,7 +132,7 @@
 						apprehending criminals. A Security Officer is responsible for the health, safety, and processing of any prisoner they arrest. \
 						No one is above the Law, not Security or Command."
 	alt_titles = list("Junior Officer" = /datum/alt_title/security_officer/junior, "Security Cadet" = /datum/alt_title/security_officer/cadet,
-		"Security Guard" = /datum/alt_title/security_officer/guard, "Constable" = /datum/alt_title/security_officer/constable)
+		"Security Guard" = /datum/alt_title/security_officer/guard)
 
 // Security Officer Alt Titles
 /datum/alt_title/security_officer/junior
@@ -151,6 +146,3 @@
 
 /datum/alt_title/security_officer/guard
 	title = "Security Guard"
-
-/datum/alt_title/security_officer/constable
-	title = "Constable"

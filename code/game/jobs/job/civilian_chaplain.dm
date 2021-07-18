@@ -29,9 +29,6 @@
 /datum/alt_title/chaplain/scholar
 	title = "Paracausal Scholar"
 
-/datum/alt_title/chaplain/exorcist
-	title = "Exorcist"
-
 /datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
 	if(!.)

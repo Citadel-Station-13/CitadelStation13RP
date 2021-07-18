@@ -95,8 +95,7 @@
 	minimal_access = list(access_pilot, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/pilot
 	job_description = "A Pilot flies the various shuttles in the Virgo-Erigone System."
-	alt_titles = list("Co-Pilot" = /datum/alt_title/co_pilot, "Navigator" = /datum/alt_title/navigator,
-		"Aviator" = /datum/alt_title/pilot/aviator)
+	alt_titles = list("Co-Pilot" = /datum/alt_title/co_pilot, "Navigator" = /datum/alt_title/navigator)
 
 /datum/alt_title/co_pilot
 	title = "Co-Pilot"
@@ -105,8 +104,6 @@
 /datum/alt_title/navigator
 	title = "Navigator"
 
-/datum/alt_title/pilot/aviator
-	title = "Aviator"
 
 /datum/job/explorer
 	title = "Explorer"
