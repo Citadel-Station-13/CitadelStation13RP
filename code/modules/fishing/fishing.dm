@@ -39,7 +39,6 @@ GLOBAL_LIST_INIT(generic_fishing_pool_list, list(
 		/obj/item/spacecash/c100 = 1
 		))
 
-GLOBAL_LIST_INIT(indoor_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNCOMMON = 20, FISHING_COMMON = 30, FISHING_JUNK = 5, FISHING_NOTHING = 50))
 GLOBAL_LIST_INIT(indoor_fishing_junk_list, list(
 		/obj/random/junk = 15,
 		/obj/random/maintenance/clean = 1
@@ -52,6 +51,7 @@ GLOBAL_LIST_INIT(indoor_fishing_junk_list, list(
 #define FISHING_NOTHING  "nothing"
 
 GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UNCOMMON = 20, FISHING_COMMON = 35, FISHING_JUNK = 15, FISHING_NOTHING = 40))
+GLOBAL_LIST_INIT(indoor_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNCOMMON = 20, FISHING_COMMON = 30, FISHING_JUNK = 5, FISHING_NOTHING = 50))
 
 /turf/simulated/floor/water
 	var/has_fish = TRUE //If the water has fish or not.
